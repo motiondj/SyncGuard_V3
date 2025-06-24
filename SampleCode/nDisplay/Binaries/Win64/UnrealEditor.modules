@@ -1,0 +1,32 @@
+{
+	"BuildId": "37670630",
+	"Modules": 
+	{
+		"DisplayCluster": "UnrealEditor-DisplayCluster.dll",
+		"DisplayClusterColorGrading": "UnrealEditor-DisplayClusterColorGrading.dll",
+		"DisplayClusterConfiguration": "UnrealEditor-DisplayClusterConfiguration.dll",
+		"DisplayClusterConfigurator": "UnrealEditor-DisplayClusterConfigurator.dll",
+		"DisplayClusterDetails": "UnrealEditor-DisplayClusterDetails.dll",
+		"DisplayClusterEditor": "UnrealEditor-DisplayClusterEditor.dll",
+		"DisplayClusterFillDerivedDataCache": "UnrealEditor-DisplayClusterFillDerivedDataCache.dll",
+		"DisplayClusterLightCardEditor": "UnrealEditor-DisplayClusterLightCardEditor.dll",
+		"DisplayClusterLightCardEditorShaders": "UnrealEditor-DisplayClusterLightCardEditorShaders.dll",
+		"DisplayClusterMedia": "UnrealEditor-DisplayClusterMedia.dll",
+		"DisplayClusterMediaEditor": "UnrealEditor-DisplayClusterMediaEditor.dll",
+		"DisplayClusterMessageInterception": "UnrealEditor-DisplayClusterMessageInterception.dll",
+		"DisplayClusterMoviePipeline": "UnrealEditor-DisplayClusterMoviePipeline.dll",
+		"DisplayClusterMoviePipelineEditor": "UnrealEditor-DisplayClusterMoviePipelineEditor.dll",
+		"DisplayClusterMultiUser": "UnrealEditor-DisplayClusterMultiUser.dll",
+		"DisplayClusterOperator": "UnrealEditor-DisplayClusterOperator.dll",
+		"DisplayClusterProjection": "UnrealEditor-DisplayClusterProjection.dll",
+		"DisplayClusterRemoteControlInterceptor": "UnrealEditor-DisplayClusterRemoteControlInterceptor.dll",
+		"DisplayClusterReplication": "UnrealEditor-DisplayClusterReplication.dll",
+		"DisplayClusterScenePreview": "UnrealEditor-DisplayClusterScenePreview.dll",
+		"DisplayClusterShaders": "UnrealEditor-DisplayClusterShaders.dll",
+		"DisplayClusterStageMonitoring": "UnrealEditor-DisplayClusterStageMonitoring.dll",
+		"DisplayClusterTests": "UnrealEditor-DisplayClusterTests.dll",
+		"DisplayClusterWarp": "UnrealEditor-DisplayClusterWarp.dll",
+		"SharedMemoryMedia": "UnrealEditor-SharedMemoryMedia.dll",
+		"SharedMemoryMediaEditor": "UnrealEditor-SharedMemoryMediaEditor.dll"
+	}
+}

@@ -1,0 +1,219 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+/*===========================================================================
+	Generated code exported from UnrealHeaderTool.
+	DO NOT modify this manually! Edit the corresponding .h files instead!
+===========================================================================*/
+
+// IWYU pragma: private, include "DisplayClusterMoviePipelineViewportPass.h"
+#include "UObject/ObjectMacros.h"
+#include "UObject/ScriptMacros.h"
+
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#ifdef DISPLAYCLUSTERMOVIEPIPELINE_DisplayClusterMoviePipelineViewportPass_generated_h
+#error "DisplayClusterMoviePipelineViewportPass.generated.h already included, missing '#pragma once' in DisplayClusterMoviePipelineViewportPass.h"
+#endif
+#define DISPLAYCLUSTERMOVIEPIPELINE_DisplayClusterMoviePipelineViewportPass_generated_h
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_17_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPassBase(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPassBase_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPassBase, UMoviePipelineDeferredPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPassBase)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_17_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPassBase(UDisplayClusterMoviePipelineViewportPassBase&&); \
+	UDisplayClusterMoviePipelineViewportPassBase(const UDisplayClusterMoviePipelineViewportPassBase&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPassBase); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPassBase); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPassBase) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPassBase();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_13_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_17_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_17_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPassBase>();
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_100_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPass_Unlit(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPass_Unlit_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPass_Unlit, UDisplayClusterMoviePipelineViewportPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPass_Unlit)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_100_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPass_Unlit(UDisplayClusterMoviePipelineViewportPass_Unlit&&); \
+	UDisplayClusterMoviePipelineViewportPass_Unlit(const UDisplayClusterMoviePipelineViewportPass_Unlit&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPass_Unlit); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPass_Unlit); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPass_Unlit) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPass_Unlit();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_96_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_100_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_100_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_100_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPass_Unlit>();
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_123_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPass_DetailLighting(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPass_DetailLighting_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPass_DetailLighting, UDisplayClusterMoviePipelineViewportPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPass_DetailLighting)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_123_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPass_DetailLighting(UDisplayClusterMoviePipelineViewportPass_DetailLighting&&); \
+	UDisplayClusterMoviePipelineViewportPass_DetailLighting(const UDisplayClusterMoviePipelineViewportPass_DetailLighting&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPass_DetailLighting); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPass_DetailLighting); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPass_DetailLighting) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPass_DetailLighting();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_119_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_123_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_123_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_123_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPass_DetailLighting>();
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_147_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPass_LightingOnly(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPass_LightingOnly_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPass_LightingOnly, UDisplayClusterMoviePipelineViewportPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPass_LightingOnly)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_147_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPass_LightingOnly(UDisplayClusterMoviePipelineViewportPass_LightingOnly&&); \
+	UDisplayClusterMoviePipelineViewportPass_LightingOnly(const UDisplayClusterMoviePipelineViewportPass_LightingOnly&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPass_LightingOnly); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPass_LightingOnly); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPass_LightingOnly) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPass_LightingOnly();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_143_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_147_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_147_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_147_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPass_LightingOnly>();
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_171_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPass_ReflectionsOnly(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly, UDisplayClusterMoviePipelineViewportPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_171_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly(UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly&&); \
+	UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly(const UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_167_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_171_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_171_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_171_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPass_ReflectionsOnly>();
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_194_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUDisplayClusterMoviePipelineViewportPass_PathTracer(); \
+	friend struct Z_Construct_UClass_UDisplayClusterMoviePipelineViewportPass_PathTracer_Statics; \
+public: \
+	DECLARE_CLASS(UDisplayClusterMoviePipelineViewportPass_PathTracer, UDisplayClusterMoviePipelineViewportPassBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/DisplayClusterMoviePipeline"), NO_API) \
+	DECLARE_SERIALIZER(UDisplayClusterMoviePipelineViewportPass_PathTracer)
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_194_ENHANCED_CONSTRUCTORS \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	UDisplayClusterMoviePipelineViewportPass_PathTracer(UDisplayClusterMoviePipelineViewportPass_PathTracer&&); \
+	UDisplayClusterMoviePipelineViewportPass_PathTracer(const UDisplayClusterMoviePipelineViewportPass_PathTracer&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDisplayClusterMoviePipelineViewportPass_PathTracer); \
+	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDisplayClusterMoviePipelineViewportPass_PathTracer); \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UDisplayClusterMoviePipelineViewportPass_PathTracer) \
+	NO_API virtual ~UDisplayClusterMoviePipelineViewportPass_PathTracer();
+
+
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_191_PROLOG
+#define FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_194_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_194_INCLASS_NO_PURE_DECLS \
+	FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h_194_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+template<> DISPLAYCLUSTERMOVIEPIPELINE_API UClass* StaticClass<class UDisplayClusterMoviePipelineViewportPass_PathTracer>();
+
+#undef CURRENT_FILE_ID
+#define CURRENT_FILE_ID FID_Engine_Plugins_Runtime_nDisplay_Source_DisplayClusterMoviePipeline_Public_DisplayClusterMoviePipelineViewportPass_h
+
+
+PRAGMA_ENABLE_DEPRECATION_WARNINGS

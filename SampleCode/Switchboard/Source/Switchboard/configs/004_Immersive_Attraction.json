@@ -1,0 +1,261 @@
+{
+    "project_name": "BuildCityPark52_V1",
+    "uproject": "",
+    "engine_dir": "",
+    "engine_sync_method": "Use Existing (do not sync/build)",
+    "maps_path": "",
+    "maps_filter": "*.umap",
+    "content_plugin_filters": [],
+    "listener_exe": "SwitchboardListener",
+    "sblhelper_exe": "SwitchboardListenerHelper",
+    "tracing_enabled": false,
+    "tracing_args": "default,concert,messaging,tasks",
+    "tracing_stat_events": true,
+    "osc_server_port": 6000,
+    "p4_enabled": false,
+    "p4_sync_path": "",
+    "p4_engine_path": "",
+    "source_control_workspace": null,
+    "muserver_command_line_arguments": "",
+    "muserver_server_name": "CityPark52_V1_MU_Server",
+    "muserver_endpoint": ":9030",
+    "multiuser_exe": "UnrealMultiUserServer",
+    "multiuserslate_exe": "UnrealMultiUserSlateServer",
+    "muserver_auto_launch": true,
+    "muserver_slate_mode": true,
+    "muserver_clean_history": false,
+    "muserver_auto_build": true,
+    "muserver_auto_endpoint": true,
+    "muserver_multicast_endpoint": "230.0.0.1:6666",
+    "muserver_auto_join": false,
+    "muserver_archive_dir": "",
+    "muserver_working_dir": "",
+    "current_level": null,
+    "devices": {
+        "KiPro": {
+            "settings": {
+                "is_recording_device": true
+            }
+        },
+        "LiveLinkFace": {
+            "settings": {
+                "osc_port": 8000
+            }
+        },
+        "Motive": {
+            "settings": {
+                "is_recording_device": true,
+                "motive_port": 1510
+            }
+        },
+        "MultiplayerServer": {
+            "settings": {
+                "executable_path": "",
+                "level_path": "",
+                "multiplayer_port": 7777,
+                "port": 2980
+            }
+        },
+        "Unreal": {
+            "settings": {
+                "is_recording_device": true,
+                "buffer_size": 1024,
+                "command_line_arguments": "",
+                "exec_cmds": [],
+                "dp_cvars": [],
+                "port": 2980,
+                "osc_port": 5500,
+                "roles_filename": "VPRoles.ini",
+                "stage_session_id": 0,
+                "editor_exe": "UnrealEditor.exe",
+                "max_gpu_count": 1,
+                "priority_modifier": "Normal",
+                "auto_decline_package_recovery": false,
+                "udpmessaging_unicast_endpoint": ":0",
+                "udpmessaging_extra_static_endpoints": "",
+                "udpmessaging_multicast_endpoint": "230.0.0.1:6666",
+                "log_download_dir": "",
+                "reflect_visibility_to_game": true,
+                "rsync_port": 8730,
+                "listener_inactive_timeout": 5,
+                "slate_allow_throttling": false,
+                "retrieve_logs": true,
+                "livelink_preset": "",
+                "mediaprofile": "",
+                "lock_gpu_clock": false,
+                "use_sync_filters": false,
+                "included_sync_categories": [
+                    [
+                        "6703e989-d912-451d-93ad-b48de748d282",
+                        "Content"
+                    ],
+                    [
+                        "f44b2d25-cbc0-4a8f-b6b3-e4a8125533dd",
+                        "Platform Support: Linux"
+                    ],
+                    [
+                        "5206ccee-9024-4e36-8b89-f5f5a7d288d2",
+                        "Platform Support: Win64"
+                    ],
+                    [
+                        "cfec942a-bb90-4f0c-accf-238ecaad9430",
+                        "Source Code"
+                    ]
+                ],
+                "custom_sync_view": ""
+            }
+        },
+        "nDisplay": {
+            "settings": {
+                "ndisplay_cfg_file": "D:\\!ndisplay_config_Json\\NDC\\Citypark\\NDC_lumiflo_Cave_Half.uasset",
+                "launch_mode": "Standalone (ICVFX)",
+                "packaged_game_path": "",
+                "use_all_available_cores": true,
+                "texture_streaming": false,
+                "sound": true,
+                "loading_screen": false,
+                "allow_python": false,
+                "incremental_gc_reachability": false,
+                "render_api": "dx12",
+                "multiplayer_mode": "None",
+                "dedicated_server_address": "127.0.0.1",
+                "dedicated_server_port": "7777",
+                "render_mode": "Mono",
+                "render_sync_policy": "Config",
+                "executable_filename": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe",
+                "ndisplay_cmd_args": "",
+                "ndisplay_exec_cmds": [],
+                "ndisplay_dp_cvars": [],
+                "ndisplay_unattended": true,
+                "max_gpu_count": 2,
+                "priority_modifier": "Normal",
+                "populated_config_itemDatas": [],
+                "minimize_before_launch": true,
+                "primary_device_name": "Node_Front",
+                "logging": {
+                    "LogConcert": null,
+                    "LogDisplayClusterCluster": null,
+                    "LogDisplayClusterConfig": null,
+                    "LogDisplayClusterEngine": null,
+                    "LogDisplayClusterGame": null,
+                    "LogDisplayClusterMedia": null,
+                    "LogDisplayClusterNetwork": null,
+                    "LogDisplayClusterRender": null,
+                    "LogDisplayClusterRenderSync": null,
+                    "LogDisplayClusterStageMonitoringDWM": null,
+                    "LogDisplayClusterViewport": null,
+                    "LogLiveLink": null,
+                    "LogRemoteControl": null
+                },
+                "udpmessaging_unicast_endpoint": ":0",
+                "udpmessaging_extra_static_endpoints": "",
+                "disable_ensures": true,
+                "disable_all_screen_messages": true,
+                "livelink_preset": "",
+                "graphics_adapter": "Config",
+                "mediaprofile": "",
+                "lock_gpu_clock": true,
+                "port": 2980,
+                "roles_filename": "VPRoles.ini",
+                "stage_session_id": 0
+            },
+            "Node_Front": {
+                "address": "192.168.0.201",
+                "roles": [],
+                "ddc_build_platforms": [
+                    "Windows",
+                    "WindowsEditor",
+                    "Linux",
+                    "LinuxEditor"
+                ],
+                "autojoin_mu_server": true,
+                "last_launch_command": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Front\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS-01\\AppData\\Local\\Temp\\ndisplay\\68DE5D9C459182707C0160A1B2F07370.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Front Log=Node_Front.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.201:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=2964 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Front\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "last_log_path": "Saved\\Logs\\Switchboard\\Node_Front.log",
+                "last_trace_path": "",
+                "exclude_from_build": true,
+                "exclude_from_insights": false,
+                "last_sync_filter_hash": "",
+                "ue_command_line": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Front\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS-01\\AppData\\Local\\Temp\\ndisplay\\68DE5D9C459182707C0160A1B2F07370.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Front Log=Node_Front.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.201:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=2964 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Front\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "window_position": [
+                    0,
+                    0
+                ],
+                "window_resolution": [
+                    2964,
+                    1200
+                ],
+                "fullscreen": false,
+                "headless": false,
+                "config_graphics_adapter": -1
+            },
+            "Node_Right": {
+                "address": "192.168.0.203",
+                "roles": [],
+                "ddc_build_platforms": [
+                    "Windows",
+                    "WindowsEditor",
+                    "Linux",
+                    "LinuxEditor"
+                ],
+                "autojoin_mu_server": true,
+                "last_launch_command": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Right\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS03\\AppData\\Local\\Temp\\ndisplay\\5556CCAC4BD97B84C9577FA71D579BDE.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Right Log=Node_Right.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.203:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=3160 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Right\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "last_log_path": "Saved\\Logs\\Switchboard\\Node_Right.log",
+                "last_trace_path": "",
+                "exclude_from_build": true,
+                "exclude_from_insights": false,
+                "last_sync_filter_hash": "",
+                "ue_command_line": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Right\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS03\\AppData\\Local\\Temp\\ndisplay\\5556CCAC4BD97B84C9577FA71D579BDE.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Right Log=Node_Right.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.203:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=3160 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Right\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "window_position": [
+                    0,
+                    0
+                ],
+                "window_resolution": [
+                    3160,
+                    1200
+                ],
+                "fullscreen": false,
+                "headless": false,
+                "config_graphics_adapter": -1
+            },
+            "Node_Left": {
+                "address": "192.168.0.202",
+                "roles": [],
+                "ddc_build_platforms": [
+                    "Windows",
+                    "WindowsEditor",
+                    "Linux",
+                    "LinuxEditor"
+                ],
+                "autojoin_mu_server": true,
+                "last_launch_command": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Left\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS02\\AppData\\Local\\Temp\\ndisplay\\DC73C06644A6DDC12C1C079CF44F0F7F.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Left Log=Node_Left.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.202:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=3160 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Left\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "last_log_path": "Saved\\Logs\\Switchboard\\Node_Left.log",
+                "last_trace_path": "",
+                "exclude_from_build": false,
+                "exclude_from_insights": false,
+                "last_sync_filter_hash": "",
+                "ue_command_line": "D:\\Build_CityPark52_V1\\CityPark52_V1.exe  -game None -messaging -dc_cluster -nosplash -fixedseed -NoVerifyGC -noxrstereo -xrtrackingonly -RemoteControlIsHeadless   -StageFriendlyName=\"Node_Left\"  -MaxGPUCount=2 -dc_cfg=\"C:\\Users\\MS02\\AppData\\Local\\Temp\\ndisplay\\DC73C06644A6DDC12C1C079CF44F0F7F.ndisplay\" -dx12 -dc_dev_mono -useallavailablecores -notexturestreaming  -NoLoadingScreen -DisablePython -dc_node=Node_Left Log=Node_Left.log -ini:Engine:[/Script/Engine.Engine]:GameEngine=/Script/DisplayCluster.DisplayClusterGameEngine,[/Script/Engine.Engine]:GameViewportClientClassName=/Script/DisplayCluster.DisplayClusterViewportClient,[/Script/Engine.UserInterfaceSettings]:bAllowHighDPIInGameMode=True -ini:Game:[/Script/EngineSettings.GeneralProjectSettings]:bUseBorderlessWindow=True -ini:Input:[/Script/Engine.InputSettings]:DefaultPlayerInputClass=/Script/DisplayCluster.DisplayClusterPlayerInput -unattended -NoScreenMessages -handleensurepercent=0 -UDPMESSAGING_TRANSPORT_MULTICAST=\"230.0.0.1:6666\" -UDPMESSAGING_TRANSPORT_UNICAST=\"192.168.0.202:0\" -UDPMESSAGING_TRANSPORT_STATIC=\"192.168.0.150:9030\" -ExecCmds=\"DisableAllScreenMessages\" -windowed -forceres WinX=0 WinY=0 ResX=3160 ResY=1200 -CONCERTSERVER=\"CityPark52_V1_MU_Server_UwQnSevra5Qt\" -CONCERTSESSION=\"MU_Session\" -CONCERTDISPLAYNAME=\"Node_Left\" -CONCERTISHEADLESS -DPCVars=\"Slate.bAllowNotifications=0,p.Chaos.Solver.Deterministic=1,LevelInstance.ForceEditorWorldMode=1\" ",
+                "window_position": [
+                    0,
+                    0
+                ],
+                "window_resolution": [
+                    3160,
+                    1200
+                ],
+                "fullscreen": false,
+                "headless": false,
+                "config_graphics_adapter": -1
+            }
+        },
+        "Shogun": {
+            "settings": {
+                "is_recording_device": true
+            }
+        },
+        "SoundDevices": {
+            "settings": {
+                "is_recording_device": true
+            }
+        }
+    }
+}
