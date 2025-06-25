@@ -1,0 +1,11 @@
+SyncChecker 초기화 실패: EntryPointNotFoundException
+오류 메시지: Unable to find an entry point named 'NvAPI_Initialize' in DLL 'nvapi64.dll'.
+스택 트레이스:    at SyncGuard.Core.SyncChecker.NvAPI_Initialize()
+   at SyncGuard.Core.SyncChecker..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Core\Class1.cs:line 70
+   at SyncGuard.Tray.Form1..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Tray\Form1.cs:line 24
+
+SyncChecker 초기화 실패: InvalidOperationException
+오류 메시지: NVAPI 함수를 찾을 수 없습니다.
+스택 트레이스:    at SyncGuard.Core.SyncChecker..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Core\Class1.cs:line 83
+   at SyncGuard.Tray.Form1..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Tray\Form1.cs:line 24
+
