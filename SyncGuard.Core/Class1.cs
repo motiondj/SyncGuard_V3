@@ -15,8 +15,16 @@ namespace SyncGuard.Core
         public enum SyncStatus
         {
             Unknown,
-            Synced,    // Locked - 타이밍 서버 지정됨
-            Free       // Unlocked - 타이밍 서버 미지정
+            Synced,         // 동기화됨 (설정값과 타이밍 서버 일치)
+            Free,           // 동기화 안됨 (displaySyncState: 0)
+            ConfigConflict  // 설정 충돌 (설정값과 타이밍 서버 불일치)
+        }
+
+        // 사용자 설정 역할
+        public enum SyncRole
+        {
+            Master,
+            Slave
         }
 
         // 디스플레이 동기화 진단 결과
@@ -27,6 +35,8 @@ namespace SyncGuard.Core
             public string SelectedDisplay { get; set; } = "";
             public string DiagnosisMessage { get; set; } = "";
             public string RawData { get; set; } = "";
+            public SyncRole UserRole { get; set; } = SyncRole.Slave;
+            public bool IsConfigConflict { get; set; } = false;
         }
         
         private SyncStatus lastStatus = SyncStatus.Unknown;
@@ -34,13 +44,20 @@ namespace SyncGuard.Core
         private ManagementEventWatcher? eventWatcher;
         private NvApiWrapper? nvApiWrapper;
         private bool isDisposed = false;
+        private SyncRole userRole = SyncRole.Slave; // 기본값: Slave
         
         // 이벤트: Sync 상태 변경 시 발생
         public event EventHandler<SyncStatus>? SyncStatusChanged;
         
         public SyncChecker()
         {
-            WriteLogAndConsole("=== SyncChecker 초기화 시작 (새로운 진단 로직) ===");
+            WriteLogAndConsole("=== SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===");
+            
+            // 프로그램 시작 시 설정을 Slave로 리셋
+            ResetUserRoleOnStartup();
+            
+            // 사용자 설정 로드
+            LoadUserRole();
             
             // Quadro Sync II NVAPI 래퍼 초기화
             try
@@ -58,6 +75,92 @@ namespace SyncGuard.Core
             StartWmiEventMonitoring();
             
             WriteLogAndConsole("=== SyncChecker 초기화 완료 ===");
+        }
+
+        // 프로그램 시작 시 설정 리셋
+        private void ResetUserRoleOnStartup()
+        {
+            try
+            {
+                string configPath = "syncguard_config.txt";
+                if (File.Exists(configPath))
+                {
+                    // 기존 설정 파일 삭제
+                    File.Delete(configPath);
+                    WriteLogAndConsole("프로그램 시작 시 기존 설정 파일 삭제됨");
+                }
+                
+                // 기본값(Slave)으로 설정
+                userRole = SyncRole.Slave;
+                SaveUserRole();
+                WriteLogAndConsole("프로그램 시작 시 설정을 Slave로 리셋");
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"프로그램 시작 시 설정 리셋 실패: {ex.Message}");
+            }
+        }
+
+        // 사용자 역할 설정
+        public void SetUserRole(SyncRole role)
+        {
+            userRole = role;
+            SaveUserRole();
+            WriteLogAndConsole($"사용자 역할 설정: {role}");
+            
+            // 설정 변경 시 상태 재확인
+            RefreshSyncStatus();
+        }
+
+        // 현재 사용자 역할 가져오기
+        public SyncRole GetUserRole()
+        {
+            return userRole;
+        }
+
+        // 사용자 설정 저장
+        private void SaveUserRole()
+        {
+            try
+            {
+                string configPath = "syncguard_config.txt";
+                File.WriteAllText(configPath, userRole.ToString());
+                WriteLogAndConsole($"사용자 설정 저장: {userRole}");
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"사용자 설정 저장 실패: {ex.Message}");
+            }
+        }
+
+        // 사용자 설정 로드
+        private void LoadUserRole()
+        {
+            try
+            {
+                string configPath = "syncguard_config.txt";
+                if (File.Exists(configPath))
+                {
+                    string roleText = File.ReadAllText(configPath).Trim();
+                    if (Enum.TryParse<SyncRole>(roleText, out SyncRole role))
+                    {
+                        userRole = role;
+                        WriteLogAndConsole($"사용자 설정 로드: {userRole}");
+                    }
+                    else
+                    {
+                        WriteLogAndConsole($"잘못된 사용자 설정: {roleText}, 기본값(Slave) 사용");
+                    }
+                }
+                else
+                {
+                    WriteLogAndConsole("사용자 설정 파일 없음, 기본값(Slave) 사용");
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"사용자 설정 로드 실패: {ex.Message}, 기본값(Slave) 사용");
+            }
         }
 
         // 새로운 진단 로직: 타이밍 서버와 디스플레이 선택 상태 확인
@@ -101,7 +204,44 @@ namespace SyncGuard.Core
                         WriteLogAndConsole("=== SyncTopology 속성 분석 ===");
                         WriteLogAndConsole(diagnosis.RawData);
                         
-                        // 1. displaySyncState를 우선 확인 (가장 신뢰할 수 있는 지표)
+                        // WMI에서 사용 가능한 모든 속성 확인
+                        WriteLogAndConsole("=== 사용 가능한 모든 속성 ===");
+                        foreach (var prop in obj.Properties)
+                        {
+                            WriteLogAndConsole($"속성: {prop.Name} = {prop.Value}");
+                        }
+                        WriteLogAndConsole("=== 속성 확인 완료 ===");
+                        
+                        // 추가 디버깅: name, uname, ver 속성 상세 분석
+                        WriteLogAndConsole("=== 상세 속성 분석 ===");
+                        try
+                        {
+                            var nameValue = obj["name"];
+                            WriteLogAndConsole($"name 속성 타입: {nameValue?.GetType()}, 값: '{nameValue}'");
+                            
+                            var unameValue = obj["uname"];
+                            WriteLogAndConsole($"uname 속성 타입: {unameValue?.GetType()}, 값: '{unameValue}'");
+                            
+                            var verValue = obj["ver"];
+                            WriteLogAndConsole($"ver 속성 타입: {verValue?.GetType()}, 값: '{verValue}'");
+                            
+                            // ver가 ManagementBaseObject인 경우 내부 속성 확인
+                            if (verValue is ManagementBaseObject verObj)
+                            {
+                                WriteLogAndConsole("=== ver 객체 내부 속성 ===");
+                                foreach (var verProp in verObj.Properties)
+                                {
+                                    WriteLogAndConsole($"  ver.{verProp.Name} = {verProp.Value}");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLogAndConsole($"상세 속성 분석 중 오류: {ex.Message}");
+                        }
+                        WriteLogAndConsole("=== 상세 속성 분석 완료 ===");
+                        
+                        // 1. displaySyncState를 우선 확인
                         int displaySyncState = 0;
                         try
                         {
@@ -110,113 +250,110 @@ namespace SyncGuard.Core
                         catch { }
                         
                         WriteLogAndConsole($"displaySyncState: {displaySyncState}");
+                        WriteLogAndConsole($"사용자 설정 역할: {userRole}");
                         
-                        // displaySyncState가 1이면 동기화됨, 0이면 동기화 안됨
-                        if (displaySyncState == 1)
+                        // 2. isDisplayMasterable로 실제 Master/Slave 판단
+                        bool isActuallyMaster = false;
+                        try
                         {
-                            diagnosis.IsSynced = true;
-                            diagnosis.DiagnosisMessage = "displaySyncState=1: 동기화됨";
-                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
-                            WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
-                            return diagnosis;
+                            isActuallyMaster = Convert.ToBoolean(obj["isDisplayMasterable"]);
+                            WriteLogAndConsole($"isDisplayMasterable: {isActuallyMaster} → 이 시스템이 {(isActuallyMaster ? "Master" : "Slave")}입니다");
                         }
-                        else if (displaySyncState == 0)
+                        catch (Exception ex)
                         {
-                            diagnosis.DiagnosisMessage = "displaySyncState=0: 동기화되지 않음";
-                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
-                            return diagnosis;
+                            WriteLogAndConsole($"isDisplayMasterable 속성 읽기 실패: {ex.Message}");
+                            isActuallyMaster = false;
                         }
                         
-                        // 2. displaySyncState가 예상값이 아닌 경우, 기존 로직으로 fallback
-                        // 타이밍 서버 확인
-                        string? timingServer = obj["timingServer"]?.ToString();
-                        diagnosis.TimingServer = timingServer ?? "미지정";
-                        
-                        WriteLogAndConsole($"타이밍 서버: {diagnosis.TimingServer}");
-                        
-                        if (string.IsNullOrEmpty(timingServer))
+                        // 3. Master 케이스 (isDisplayMasterable: True)
+                        if (isActuallyMaster)
                         {
-                            diagnosis.DiagnosisMessage = "타이밍 서버가 지정되지 않았습니다.";
-                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
-                            return diagnosis;
-                        }
-                        
-                        // 2. 디스플레이 선택 상태 확인
-                        var displayList = obj["displayList"];
-                        string selectedDisplayInfo = "";
-                        
-                        if (displayList != null)
-                        {
-                            var displays = displayList as System.Collections.IEnumerable;
-                            if (displays != null)
-                            {
-                                bool hasSelectedDisplay = false;
-                                var displayDetails = new System.Text.StringBuilder();
-                                
-                                foreach (var disp in displays)
-                                {
-                                    var dispObj = disp as ManagementBaseObject;
-                                    if (dispObj == null) continue;
-                                    
-                                    string name = dispObj["name"]?.ToString() ?? "unknown";
-                                    bool isActive = false;
-                                    bool isSelected = false;
-                                    
-                                    try
-                                    {
-                                        isActive = Convert.ToBoolean(dispObj["active"]);
-                                        isSelected = Convert.ToBoolean(dispObj["selected"]);
-                                    }
-                                    catch { }
-                                    
-                                    string freq = dispObj["refreshRate"]?.ToString() ?? "?";
-                                    string res = dispObj["resolution"]?.ToString() ?? "?";
-                                    
-                                    displayDetails.AppendLine($"  - {name}: 활성={isActive}, 선택={isSelected}, 주사율={freq}, 해상도={res}");
-                                    
-                                    if (isSelected)
-                                    {
-                                        hasSelectedDisplay = true;
-                                        selectedDisplayInfo = name;
-                                    }
-                                }
-                                
-                                diagnosis.SelectedDisplay = selectedDisplayInfo;
-                                WriteLogAndConsole("=== 디스플레이 정보 ===");
-                                WriteLogAndConsole(displayDetails.ToString());
-                                
-                                if (!hasSelectedDisplay)
-                                {
-                                    diagnosis.DiagnosisMessage = "타이밍 서버는 지정되었지만, 선택된 디스플레이가 없습니다.";
-                                    WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
-                                    return diagnosis;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            // displayList가 없는 경우, 다른 속성에서 디스플레이 정보 찾기
-                            var selectedDisplay = obj["selectedDisplay"]?.ToString();
-                            diagnosis.SelectedDisplay = selectedDisplay ?? "미지정";
+                            WriteLogAndConsole("Master 케이스: 디스플레이 선택 여부 확인 필요");
                             
-                            WriteLogAndConsole($"선택된 디스플레이: {diagnosis.SelectedDisplay}");
+                            // 타이밍 서버 정보 설정
+                            diagnosis.TimingServer = "ThisSystem";
+                            WriteLogAndConsole($"타이밍 서버: {diagnosis.TimingServer}");
                             
-                            if (string.IsNullOrEmpty(selectedDisplay))
+                            // Master일 때도 displaySyncState 확인
+                            if (displaySyncState == 0)
                             {
-                                diagnosis.DiagnosisMessage = "타이밍 서버는 지정되었지만, 선택된 디스플레이 정보가 없습니다.";
+                                // 디스플레이 선택 안됨 - Master는 동기화 안됨으로 처리
+                                diagnosis.IsSynced = false;
+                                diagnosis.DiagnosisMessage = "Master이지만 동기화 꺼짐: 동기화되지 않음";
+                                
+                                diagnosis.UserRole = userRole;
                                 WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
+                                return diagnosis;
+                            }
+                            else if (displaySyncState == 1)
+                            {
+                                // 디스플레이 선택됨 - 사용자 설정과 비교
+                                if (userRole == SyncRole.Master)
+                                {
+                                    // 설정: Master, 실제: Master → 일치
+                                    diagnosis.IsSynced = true;
+                                    diagnosis.DiagnosisMessage = "설정: Master, 실제: Master → 동기화됨";
+                                }
+                                else
+                                {
+                                    // 설정: Slave, 실제: Master → 불일치
+                                    diagnosis.IsSynced = false;
+                                    diagnosis.IsConfigConflict = true;
+                                    diagnosis.DiagnosisMessage = "설정: Slave, 실제: Master → 설정 충돌";
+                                }
+                                
+                                diagnosis.UserRole = userRole;
+                                WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
                                 return diagnosis;
                             }
                         }
                         
-                        // 3. 모든 조건이 만족되면 Synced 상태
-                        diagnosis.IsSynced = true;
-                        diagnosis.DiagnosisMessage = $"동기화 설정 완료 - 타이밍 서버: {diagnosis.TimingServer}, 선택된 디스플레이: {diagnosis.SelectedDisplay}";
-                        
-                        WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
-                        WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
-                        
-                        return diagnosis;
+                        // 4. Slave 케이스 (isDisplayMasterable: False)
+                        else
+                        {
+                            WriteLogAndConsole("Slave 케이스: 디스플레이 선택 여부 확인 필요");
+                            
+                            // 타이밍 서버 정보 설정
+                            diagnosis.TimingServer = "OtherSystem";
+                            WriteLogAndConsole($"타이밍 서버: {diagnosis.TimingServer}");
+                            
+                            // Slave일 때는 displaySyncState 확인
+                            if (displaySyncState == 0)
+                            {
+                                // 디스플레이 선택 안됨 - Slave도 동기화 안됨으로 처리
+                                diagnosis.IsSynced = false;
+                                diagnosis.DiagnosisMessage = "Slave이지만 동기화 꺼짐: 동기화되지 않음";
+                                
+                                diagnosis.UserRole = userRole;
+                                WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
+                                return diagnosis;
+                            }
+                            else if (displaySyncState == 1)
+                            {
+                                // 디스플레이 선택됨 - 사용자 설정과 비교
+                                if (userRole == SyncRole.Slave)
+                                {
+                                    // 설정: Slave, 실제: Slave → 일치
+                                    diagnosis.IsSynced = true;
+                                    diagnosis.DiagnosisMessage = "설정: Slave, 실제: Slave → 동기화됨";
+                                }
+                                else
+                                {
+                                    // 설정: Master, 실제: Slave → 불일치
+                                    diagnosis.IsSynced = false;
+                                    diagnosis.IsConfigConflict = true;
+                                    diagnosis.DiagnosisMessage = "설정: Master, 실제: Slave → 설정 충돌";
+                                }
+                                
+                                diagnosis.UserRole = userRole;
+                                WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
+                                return diagnosis;
+                            }
+                        }
                     }
                 }
                 
@@ -239,7 +376,20 @@ namespace SyncGuard.Core
                 // 새로운 진단 로직으로 상태 확인
                 var diagnosis = DiagnoseDisplaySync();
                 
-                SyncStatus currentStatus = diagnosis.IsSynced ? SyncStatus.Synced : SyncStatus.Free;
+                SyncStatus currentStatus;
+                
+                if (diagnosis.IsConfigConflict)
+                {
+                    currentStatus = SyncStatus.ConfigConflict;
+                }
+                else if (diagnosis.IsSynced)
+                {
+                    currentStatus = SyncStatus.Synced;
+                }
+                else
+                {
+                    currentStatus = SyncStatus.Free;
+                }
                 
                 // NVAPI 보조 정보 (GPU/드라이버 정보)
                 if (nvApiWrapper != null)
