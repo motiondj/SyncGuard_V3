@@ -199,6 +199,9 @@ _pkginfo.txt
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
 
+# Unreal Engine 5.5 (용량이 너무 커서 제외)
+SampleCode/UnrealEngine-5.5/
+
 # Others
 ClientBin/
 ~$*

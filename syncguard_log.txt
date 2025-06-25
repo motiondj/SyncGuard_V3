@@ -9,3 +9,3018 @@ SyncChecker 초기화 실패: InvalidOperationException
 스택 트레이스:    at SyncGuard.Core.SyncChecker..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Core\Class1.cs:line 83
    at SyncGuard.Tray.Form1..ctor() in D:\ProgramDevelop\SyncGuard_V3\SyncGuard.Tray\Form1.cs:line 24
 
+[2025-06-25 12:49:39] === SyncChecker 초기화 시작 (WMI 전용) ===
+[2025-06-25 12:49:39] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 12:49:39] === SyncChecker 초기화 완료 ===
+[2025-06-25 12:49:39] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:39] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:39] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:39] 모든 모니터 열거 중...
+[2025-06-25 12:49:39] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:39] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:39] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:39]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:39]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:39] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:39]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:39]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:39]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:39] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:39] 모니터: 기본 모니터
+[2025-06-25 12:49:39]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:39]   Availability: True
+[2025-06-25 12:49:39] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:39]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:39]   Availability: True
+[2025-06-25 12:49:39] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:39] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:39] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:39] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:39] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:39] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:39] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:39] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:39]   count: 0
+[2025-06-25 12:49:39]   displaySyncState: 1
+[2025-06-25 12:49:39]   id: 1001
+[2025-06-25 12:49:39]   isDisplayMasterable: True
+[2025-06-25 12:49:39]   name: 
+[2025-06-25 12:49:39]   ordinal: 1
+[2025-06-25 12:49:39]   uname: invalid
+[2025-06-25 12:49:39]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:39] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:39] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:39]   count: 0
+[2025-06-25 12:49:39]   displaySyncState: 2
+[2025-06-25 12:49:39]   id: 1002
+[2025-06-25 12:49:39]   isDisplayMasterable: True
+[2025-06-25 12:49:39]   name: 
+[2025-06-25 12:49:39]   ordinal: 1
+[2025-06-25 12:49:39]   uname: invalid
+[2025-06-25 12:49:39]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:39] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:39] isGPUSynced() 결과: False
+[2025-06-25 12:49:39] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:39] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:39] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:39] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:39] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:49:40] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:40] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:40] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:40] 모든 모니터 열거 중...
+[2025-06-25 12:49:40] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:40] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:40] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:40]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:40]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:40] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:40]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:40]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:40]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:40] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:40] 모니터: 기본 모니터
+[2025-06-25 12:49:40]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:40]   Availability: True
+[2025-06-25 12:49:40] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:40]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:40]   Availability: True
+[2025-06-25 12:49:40] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:40] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:40] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:40] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:40] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:40] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:41] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:41] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:41]   count: 0
+[2025-06-25 12:49:41]   displaySyncState: 1
+[2025-06-25 12:49:41]   id: 1001
+[2025-06-25 12:49:41]   isDisplayMasterable: True
+[2025-06-25 12:49:41]   name: 
+[2025-06-25 12:49:41]   ordinal: 1
+[2025-06-25 12:49:41]   uname: invalid
+[2025-06-25 12:49:41]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:41] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:41] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:41]   count: 0
+[2025-06-25 12:49:41]   displaySyncState: 2
+[2025-06-25 12:49:41]   id: 1002
+[2025-06-25 12:49:41]   isDisplayMasterable: True
+[2025-06-25 12:49:41]   name: 
+[2025-06-25 12:49:41]   ordinal: 1
+[2025-06-25 12:49:41]   uname: invalid
+[2025-06-25 12:49:41]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:41] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:41] isGPUSynced() 결과: False
+[2025-06-25 12:49:41] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:41] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:41] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:41] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:41] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:49:42] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:42] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:42] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:42] 모든 모니터 열거 중...
+[2025-06-25 12:49:42] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:42] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:42] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:42]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:42]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:42] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:42]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:42]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:42]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:42] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:42] 모니터: 기본 모니터
+[2025-06-25 12:49:42]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:42]   Availability: True
+[2025-06-25 12:49:42] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:42]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:42]   Availability: True
+[2025-06-25 12:49:42] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:42] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:42] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:42] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:42] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:42] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:42] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:42] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:42]   count: 0
+[2025-06-25 12:49:42]   displaySyncState: 1
+[2025-06-25 12:49:42]   id: 1001
+[2025-06-25 12:49:42]   isDisplayMasterable: True
+[2025-06-25 12:49:42]   name: 
+[2025-06-25 12:49:42]   ordinal: 1
+[2025-06-25 12:49:42]   uname: invalid
+[2025-06-25 12:49:42]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:42] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:42] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:42]   count: 0
+[2025-06-25 12:49:42]   displaySyncState: 2
+[2025-06-25 12:49:42]   id: 1002
+[2025-06-25 12:49:42]   isDisplayMasterable: True
+[2025-06-25 12:49:42]   name: 
+[2025-06-25 12:49:42]   ordinal: 1
+[2025-06-25 12:49:42]   uname: invalid
+[2025-06-25 12:49:42]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:42] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:42] isGPUSynced() 결과: False
+[2025-06-25 12:49:42] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:42] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:42] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:42] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:42] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:49:43] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:43] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:43] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:43] 모든 모니터 열거 중...
+[2025-06-25 12:49:43] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:43] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:43] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:43]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:43]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:43] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:43]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:43]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:43]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:43] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:43] 모니터: 기본 모니터
+[2025-06-25 12:49:43]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:43]   Availability: True
+[2025-06-25 12:49:43] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:43]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:43]   Availability: True
+[2025-06-25 12:49:43] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:43] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:43] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:43] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:43] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:43] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:43] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:43] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:43]   count: 0
+[2025-06-25 12:49:43]   displaySyncState: 1
+[2025-06-25 12:49:43]   id: 1001
+[2025-06-25 12:49:43]   isDisplayMasterable: True
+[2025-06-25 12:49:43]   name: 
+[2025-06-25 12:49:43]   ordinal: 1
+[2025-06-25 12:49:43]   uname: invalid
+[2025-06-25 12:49:43]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:43] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:43] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:43]   count: 0
+[2025-06-25 12:49:43]   displaySyncState: 2
+[2025-06-25 12:49:43]   id: 1002
+[2025-06-25 12:49:43]   isDisplayMasterable: True
+[2025-06-25 12:49:43]   name: 
+[2025-06-25 12:49:43]   ordinal: 1
+[2025-06-25 12:49:43]   uname: invalid
+[2025-06-25 12:49:43]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:43] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:43] isGPUSynced() 결과: False
+[2025-06-25 12:49:43] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:43] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:43] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:43] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:43] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:49:44] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:44] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:44] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:44] 모든 모니터 열거 중...
+[2025-06-25 12:49:44] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:44] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:44] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:44]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:44]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:44] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:44]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:44]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:44]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:44] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:44] 모니터: 기본 모니터
+[2025-06-25 12:49:44]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:44]   Availability: True
+[2025-06-25 12:49:44] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:44]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:44]   Availability: True
+[2025-06-25 12:49:44] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:44] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:44] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:44] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:44] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:44] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:45] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:45] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:45]   count: 0
+[2025-06-25 12:49:45]   displaySyncState: 1
+[2025-06-25 12:49:45]   id: 1001
+[2025-06-25 12:49:45]   isDisplayMasterable: True
+[2025-06-25 12:49:45]   name: 
+[2025-06-25 12:49:45]   ordinal: 1
+[2025-06-25 12:49:45]   uname: invalid
+[2025-06-25 12:49:45]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:45] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:45] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:45]   count: 0
+[2025-06-25 12:49:45]   displaySyncState: 2
+[2025-06-25 12:49:45]   id: 1002
+[2025-06-25 12:49:45]   isDisplayMasterable: True
+[2025-06-25 12:49:45]   name: 
+[2025-06-25 12:49:45]   ordinal: 1
+[2025-06-25 12:49:45]   uname: invalid
+[2025-06-25 12:49:45]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:45] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:45] isGPUSynced() 결과: False
+[2025-06-25 12:49:45] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:45] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:45] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:45] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:45] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:49:46] === 모든 디스플레이 정보 확인 ===
+[2025-06-25 12:49:46] Windows API로 주 모니터 정보 확인 중...
+[2025-06-25 12:49:46] 주 모니터 정보를 가져올 수 없습니다.
+[2025-06-25 12:49:46] 모든 모니터 열거 중...
+[2025-06-25 12:49:46] WMI로 디스플레이 정보 확인 중...
+[2025-06-25 12:49:46] WMI에서 2개의 비디오 컨트롤러 발견
+[2025-06-25 12:49:46] 비디오 컨트롤러: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:46]   Description: AMD Radeon(TM) Graphics
+[2025-06-25 12:49:46]   PNP Device ID: PCI\VEN_1002&DEV_164E&SUBSYS_88771043&REV_C1\4&1EBE6A9C&0&0041
+[2025-06-25 12:49:46] 비디오 컨트롤러: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:46]   Description: NVIDIA RTX 6000 Ada Generation
+[2025-06-25 12:49:46]   PNP Device ID: PCI\VEN_10DE&DEV_26B1&SUBSYS_16A110DE&REV_A1\4&1BABDF5B&0&0009
+[2025-06-25 12:49:46]   *** NVIDIA 디바이스 발견: NVIDIA RTX 6000 Ada Generation ***
+[2025-06-25 12:49:46] WMI에서 2개의 데스크톱 모니터 발견
+[2025-06-25 12:49:46] 모니터: 기본 모니터
+[2025-06-25 12:49:46]   Device ID: DesktopMonitor1
+[2025-06-25 12:49:46]   Availability: True
+[2025-06-25 12:49:46] 모니터: 일반 PnP 모니터
+[2025-06-25 12:49:46]   Device ID: DesktopMonitor2
+[2025-06-25 12:49:46]   Availability: True
+[2025-06-25 12:49:46] === 디스플레이 정보 확인 완료 ===
+[2025-06-25 12:49:46] 네임스페이스 root\WMI에서 SyncTopology 확인 중...
+[2025-06-25 12:49:46] WMI 캐시 새로고침 완료 (root\WMI)
+[2025-06-25 12:49:46] 네임스페이스 root\WMI 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:46] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:49:46] WMI 캐시 새로고침 완료 (root\CIMV2\NV)
+[2025-06-25 12:49:46] SyncTopology에서 2개의 디바이스 발견 (root\CIMV2\NV)
+[2025-06-25 12:49:46] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:49:46]   count: 0
+[2025-06-25 12:49:46]   displaySyncState: 1
+[2025-06-25 12:49:46]   id: 1001
+[2025-06-25 12:49:46]   isDisplayMasterable: True
+[2025-06-25 12:49:46]   name: 
+[2025-06-25 12:49:46]   ordinal: 1
+[2025-06-25 12:49:46]   uname: invalid
+[2025-06-25 12:49:46]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:46] invalid이지만 Masterable한 디바이스 발견 (매트릭스 모니터일 수 있음): ID=1001, State=1
+[2025-06-25 12:49:46] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:49:46]   count: 0
+[2025-06-25 12:49:46]   displaySyncState: 2
+[2025-06-25 12:49:46]   id: 1002
+[2025-06-25 12:49:46]   isDisplayMasterable: True
+[2025-06-25 12:49:46]   name: 
+[2025-06-25 12:49:46]   ordinal: 1
+[2025-06-25 12:49:46]   uname: invalid
+[2025-06-25 12:49:46]   ver: System.Management.ManagementBaseObject
+[2025-06-25 12:49:46] 대상 디바이스: invalid, State=1, Masterable=True
+[2025-06-25 12:49:46] isGPUSynced() 결과: False
+[2025-06-25 12:49:46] 네임스페이스 root\CIMV2\NV에서 Sync 상태를 확인할 수 없습니다
+[2025-06-25 12:49:46] 네임스페이스 root\CIMV2에서 SyncTopology 확인 중...
+[2025-06-25 12:49:46] WMI 캐시 새로고침 완료 (root\CIMV2)
+[2025-06-25 12:49:46] 네임스페이스 root\CIMV2 확인 중 오류: 잘못된 클래스입니다. 
+[2025-06-25 12:49:46] 모든 네임스페이스에서 SyncTopology를 찾을 수 없습니다
+[2025-06-25 12:54:39] === SyncChecker 초기화 시작 (WMI 전용) ===
+[2025-06-25 12:54:39] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 12:54:39] === SyncChecker 초기화 완료 ===
+[2025-06-25 12:54:39] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:39] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:39] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:39] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:39] isGPUSynced() 결과: False
+[2025-06-25 12:54:39] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:39] isGPUSynced() 결과: False
+[2025-06-25 12:54:39] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[2025-06-25 12:54:40] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:40] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:41] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:41] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:41] isGPUSynced() 결과: False
+[2025-06-25 12:54:41] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:41] isGPUSynced() 결과: False
+[2025-06-25 12:54:41] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[2025-06-25 12:54:42] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:42] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:42] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:42] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:42] isGPUSynced() 결과: False
+[2025-06-25 12:54:42] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:43] isGPUSynced() 결과: False
+[2025-06-25 12:54:43] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[2025-06-25 12:54:44] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:44] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:44] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:44] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:44] isGPUSynced() 결과: False
+[2025-06-25 12:54:44] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:44] isGPUSynced() 결과: False
+[2025-06-25 12:54:44] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[2025-06-25 12:54:45] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:45] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:46] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:46] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:46] isGPUSynced() 결과: False
+[2025-06-25 12:54:46] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:46] isGPUSynced() 결과: False
+[2025-06-25 12:54:46] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[2025-06-25 12:54:47] === Sync 상태 확인 시작 ===
+[2025-06-25 12:54:47] 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[2025-06-25 12:54:47] SyncTopology에서 2개의 디바이스 발견
+[2025-06-25 12:54:47] Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[2025-06-25 12:54:47] isGPUSynced() 결과: False
+[2025-06-25 12:54:47] Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[2025-06-25 12:54:48] isGPUSynced() 결과: False
+[2025-06-25 12:54:48] Sync 상태: Unlocked (모든 디바이스 확인 완료)
+[SyncChecker] 2025-06-25 14:59:27.601 - === SyncChecker 초기화 시작 (WMI + NVAPI 병행) ===
+[NVAPI] 2025-06-25 14:59:27.611 - === NVAPI 초기화 시작 ===
+[NVAPI] 2025-06-25 14:59:27.613 - nvapi64.dll 로드 성공
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_Initialize 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_Unload 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_GSync_EnumSyncDevices 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_GSync_GetTopology 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 NvAPI_GSync_GetStatusParameters 찾을 수 없음
+[NVAPI] 2025-06-25 14:59:27.614 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 14:59:27.614 - NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 14:59:27.644 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 14:59:27.644 - === SyncChecker 초기화 완료 ===
+[NVAPI] 2025-06-25 14:59:27.644 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:27.644 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:27.645 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:27.645 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:28.127 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:28.130 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:28.141 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:28.141 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:28.584 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:28.585 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:29.025 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:29.025 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 14:59:29.028 - Sync 상태 변경 (WMI): Locked
+[NVAPI] 2025-06-25 14:59:30.032 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:30.032 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:30.032 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:30.032 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:30.452 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:30.453 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:30.456 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:30.456 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:30.876 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:30.876 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:31.285 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:31.285 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 14:59:32.298 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:32.298 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:32.298 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:32.298 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:32.715 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:32.716 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:32.719 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:32.720 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:33.134 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:33.135 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:33.555 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:33.555 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 14:59:34.566 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:34.566 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:34.566 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:34.566 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:34.981 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:34.982 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:34.985 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:34.985 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:35.400 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:35.400 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:35.820 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:35.820 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 14:59:36.835 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:36.835 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:36.835 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:36.836 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:37.248 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:37.248 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:37.251 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:37.252 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:37.664 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:37.664 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:38.081 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:38.081 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 14:59:39.086 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 14:59:39.086 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 14:59:39.086 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 14:59:39.086 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 14:59:39.505 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 14:59:39.505 - Sync 디바이스: ID=1001, State=1, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:39.508 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:39.508 - Sync 디바이스: ID=1002, State=2, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 14:59:39.924 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:39.925 - Sync 디바이스: ID=1003, State=0, Name=EX2341, Masterable=True
+[SyncChecker] 2025-06-25 14:59:40.337 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 14:59:40.338 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 14:59:40.338 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 14:59:40.339 - NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:00:50.413 - === SyncChecker 초기화 시작 (WMI + NVAPI 병행) ===
+[NVAPI] 2025-06-25 15:00:50.413 - === NVAPI 초기화 시작 ===
+[NVAPI] 2025-06-25 15:00:50.414 - nvapi64.dll 로드 성공
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_Initialize 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_Unload 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_GSync_EnumSyncDevices 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_GSync_GetTopology 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 NvAPI_GSync_GetStatusParameters 찾을 수 없음
+[NVAPI] 2025-06-25 15:00:50.414 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:00:50.414 - NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:00:50.419 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:00:50.419 - === SyncChecker 초기화 완료 ===
+[NVAPI] 2025-06-25 15:00:55.414 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:00:55.414 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:00:55.414 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:00:55.414 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:00:55.783 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:00:55.784 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:00:55.787 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:00:55.787 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 15:00:55.787 - Sync 상태 변경 (WMI): Locked
+[NVAPI] 2025-06-25 15:01:00.425 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:00.425 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:00.425 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:00.425 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:00.793 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:00.794 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:00.797 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:00.797 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:05.420 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:05.421 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:05.421 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:05.421 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:05.808 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:05.809 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:05.813 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:05.813 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:10.416 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:10.416 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:10.416 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:10.416 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:10.815 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:10.816 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:10.820 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:10.820 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:15.424 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:15.424 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:15.424 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:15.424 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:15.808 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:15.809 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:15.812 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:15.812 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:20.412 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:20.413 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:20.413 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:20.413 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:20.798 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:20.799 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:20.803 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:20.803 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:25.426 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:25.426 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:25.426 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:25.426 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:25.841 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:25.841 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:25.845 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:25.845 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:30.424 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:30.424 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:30.424 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:30.424 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:30.825 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:30.826 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:30.829 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:30.829 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:01:35.415 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:01:35.415 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:01:35.415 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:01:35.415 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:01:35.825 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:01:35.826 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:01:35.829 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:01:35.829 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 15:02:08.996 - === SyncChecker 초기화 시작 (WMI + NVAPI 병행) ===
+[NVAPI] 2025-06-25 15:02:09.005 - === NVAPI 초기화 시작 ===
+[NVAPI] 2025-06-25 15:02:09.007 - nvapi64.dll 로드 성공
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_Initialize 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_Unload 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_GSync_EnumSyncDevices 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_GSync_GetTopology 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 NvAPI_GSync_GetStatusParameters 찾을 수 없음
+[NVAPI] 2025-06-25 15:02:09.008 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:02:09.008 - NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:02:09.035 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:02:09.035 - === SyncChecker 초기화 완료 ===
+[NVAPI] 2025-06-25 15:02:09.035 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:09.035 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:09.036 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:09.036 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:09.481 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:09.483 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:09.493 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:09.493 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 15:02:09.495 - Sync 상태 변경 (WMI): Locked
+[NVAPI] 2025-06-25 15:02:10.511 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:10.511 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:10.511 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:10.511 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:10.903 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:10.903 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:10.907 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:10.907 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:02:11.909 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:11.909 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:11.909 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:11.909 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:12.296 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:12.296 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:12.299 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:12.299 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:02:13.308 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:13.308 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:13.308 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:13.308 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:13.722 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:13.723 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:13.726 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:13.726 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:02:14.731 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:14.732 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:14.732 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:14.732 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:15.124 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:15.125 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:15.128 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:15.128 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[NVAPI] 2025-06-25 15:02:16.129 - NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:02:16.129 - NVAPI 실패, WMI로 대체
+[SyncChecker] 2025-06-25 15:02:16.129 - === WMI로 Sync 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:02:16.129 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:02:16.525 - SyncTopology에서 3개의 디바이스 발견
+[SyncChecker] 2025-06-25 15:02:16.526 - Sync 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:02:16.529 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:02:16.529 - Sync 상태: Locked (displaySyncState=0, Masterable=true)
+[SyncChecker] 2025-06-25 15:02:16.529 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:02:16.530 - NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:45:47.020 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:45:47.030 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:45:47.032 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:45:47.033 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:45:47.033 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:45:47.061 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:45:47.062 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:45:47.063 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:47.063 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:47.519 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:47.521 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:47.532 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:47.532 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:47.533 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:47.535 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:47.535 - Sync 상태 변경: Locked
+[SyncChecker] 2025-06-25 15:45:48.542 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:48.542 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:48.924 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:48.925 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:48.928 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:48.928 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:48.928 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:48.928 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:49.943 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:49.943 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:50.342 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:50.343 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:50.346 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:50.346 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:50.346 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:50.347 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:51.355 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:51.356 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:51.740 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:51.741 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:51.744 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:51.744 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:51.744 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:51.744 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:52.758 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:52.759 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:53.144 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:53.145 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:53.148 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:53.148 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:53.148 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:53.148 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:54.160 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:45:54.160 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:45:54.527 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:45:54.528 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:45:54.531 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:45:54.531 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:45:54.531 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:45:54.531 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:45:54.531 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:45:54.532 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:47:27.608 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:47:27.617 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:47:27.619 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:27.620 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:47:27.620 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:47:27.647 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:47:27.647 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:47:27.648 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:27.648 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:28.087 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:28.090 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:28.101 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:28.101 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:28.101 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:28.103 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:28.103 - Sync 상태 변경: Locked
+[SyncChecker] 2025-06-25 15:47:29.108 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:29.109 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:29.526 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:29.527 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:29.530 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:29.530 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:29.530 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:29.530 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:30.532 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:30.532 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:30.921 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:30.922 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:30.925 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:30.925 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:30.926 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:30.926 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:31.929 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:31.929 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:32.343 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:32.344 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:32.348 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:32.348 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:32.348 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:32.349 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:33.351 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:33.351 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:33.756 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:33.757 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:33.760 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:33.760 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:33.760 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:33.760 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:34.769 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:34.769 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:35.162 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:35.162 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:35.165 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:35.165 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:35.166 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:35.166 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:35.166 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:47:35.167 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:47:58.694 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:47:58.704 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:47:58.706 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:47:58.707 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:47:58.707 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:47:58.734 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:47:58.734 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:47:58.736 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:47:58.736 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:47:59.187 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:47:59.190 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:47:59.200 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:47:59.200 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:47:59.201 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:47:59.203 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:47:59.203 - Sync 상태 변경: Locked
+[SyncChecker] 2025-06-25 15:48:00.206 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:48:00.206 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:48:00.616 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:48:00.616 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:48:00.620 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:48:00.620 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:48:00.620 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:48:00.620 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:48:01.625 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:48:01.625 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:48:02.010 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:48:02.011 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:48:02.014 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:48:02.014 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:48:02.014 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:48:02.014 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:48:03.025 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:48:03.025 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:48:03.416 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:48:03.417 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:48:03.420 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:48:03.420 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:48:03.420 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:48:03.421 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:48:04.427 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:48:04.428 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:48:04.815 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:48:04.816 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:48:04.819 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:48:04.820 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:48:04.820 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:48:04.820 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:48:05.830 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:48:05.831 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:48:06.208 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:48:06.209 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:48:06.212 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:48:06.212 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:48:06.212 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:48:06.212 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:48:06.213 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:48:06.213 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:51:02.740 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:51:02.740 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:51:02.742 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:02.742 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:51:02.742 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:51:02.746 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:51:02.746 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:51:07.765 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:07.766 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:08.138 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:08.139 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:51:08.142 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:51:08.142 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:51:08.143 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:08.143 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:08.143 - Sync 상태 변경: Locked
+[SyncChecker] 2025-06-25 15:51:12.781 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:12.782 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:13.150 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:13.151 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:51:13.153 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:51:13.154 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:51:13.154 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:13.154 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:17.782 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:17.782 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:18.142 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:18.143 - Quadro Sync II 디바이스: ID=1001, State=0, Name=invalid, Masterable=True
+[SyncChecker] 2025-06-25 15:51:18.146 - isGPUSynced() 결과: False
+[SyncChecker] 2025-06-25 15:51:18.146 - Quadro Sync II 상태: Locked (displaySyncState=0, Masterable=true)
+[QuadroSyncII] 2025-06-25 15:51:18.146 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:18.146 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:19.639 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:51:19.639 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:51:51.960 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:51:51.970 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:51:51.972 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:51:51.973 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:51:51.973 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:51:52.000 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:51:52.000 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:51:52.001 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:52.001 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:52.439 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:52.442 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:52.442 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:52.442 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:52.443 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:52.443 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:52.446 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:52.446 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:51:53.458 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:53.459 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:53.463 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:53.464 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:53.464 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:53.465 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:53.465 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:53.465 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:53.465 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:54.469 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:54.469 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:54.863 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:54.863 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:54.864 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:54.864 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:54.864 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:54.864 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:54.864 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:55.866 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:55.867 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:55.871 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:55.872 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:55.872 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:55.872 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:55.872 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:55.872 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:55.872 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:56.884 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:56.885 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:57.273 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:57.274 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:57.274 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:57.274 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:57.274 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:57.274 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:57.274 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:58.285 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:51:58.285 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:51:58.289 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:51:58.290 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:58.290 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:58.290 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:51:58.290 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:51:58.290 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:51:58.290 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:51:58.291 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:51:58.291 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:52:03.345 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:52:03.346 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:52:03.347 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:52:03.347 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:52:03.347 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:52:03.350 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:52:03.350 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:52:08.359 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:08.359 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:08.750 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:08.751 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:08.751 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:08.751 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:08.751 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:08.751 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:08.752 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:08.752 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:52:13.351 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:13.351 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:13.739 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:13.740 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:13.740 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:13.740 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:13.740 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:13.740 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:13.740 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:18.362 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:18.362 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:18.758 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:18.758 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:18.759 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:18.759 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:18.759 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:18.759 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:18.759 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:23.355 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:23.355 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:23.745 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:23.745 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:23.746 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:23.746 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:23.746 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:23.746 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:23.746 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:28.357 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:28.357 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:28.743 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:28.744 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:28.744 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:28.744 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:28.744 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:28.744 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:28.744 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:33.366 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:33.367 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:33.740 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:33.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:33.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:33.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:33.742 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:33.742 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:33.742 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:38.388 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:38.388 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:38.765 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:38.765 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:38.766 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:38.766 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:38.766 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:38.766 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:38.766 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:43.386 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:43.386 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:43.756 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:43.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:43.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:43.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:43.758 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:43.758 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:43.758 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:48.387 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:48.387 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:48.758 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:48.759 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:48.759 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:48.759 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:48.759 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:48.759 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:48.759 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:53.385 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:52:53.385 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:52:53.756 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:52:53.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:53.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:53.757 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:52:53.758 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:52:53.758 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:52:53.758 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:52:54.578 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:52:54.579 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:53:10.957 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:53:10.966 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:53:10.968 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:10.968 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:53:10.968 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:53:10.995 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:53:10.995 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:53:10.996 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:10.996 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:11.441 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:11.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:11.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:11.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:11.446 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:11.446 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:11.448 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:11.448 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:53:12.454 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:12.454 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:12.459 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:12.459 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:12.459 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:12.460 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:12.460 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:12.460 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:12.460 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:13.470 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:13.471 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:13.862 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:13.863 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:13.863 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:13.864 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:13.864 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:13.864 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:13.864 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:14.872 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:14.872 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:14.877 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:14.877 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:14.878 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:14.878 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:14.878 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:14.878 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:14.878 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:15.890 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:15.891 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:16.295 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:16.295 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:16.296 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:16.296 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:16.296 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:16.296 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:16.296 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:17.305 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:17.305 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:17.311 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:17.312 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:17.312 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:17.312 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:17.313 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:17.313 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:17.313 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:17.313 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:53:17.314 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:53:19.843 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:53:19.844 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:53:19.845 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:19.845 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:53:19.845 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:53:19.848 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:53:19.848 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:53:24.849 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:24.849 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:25.243 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:25.244 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:25.244 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:25.244 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:25.245 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:25.245 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:25.245 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:25.245 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:53:27.447 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:53:27.447 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:53:51.398 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:53:51.407 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:53:51.409 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:53:51.409 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:51.410 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:53:51.410 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:53:51.436 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:53:51.436 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:53:51.437 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:51.437 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:51.870 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:51.873 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:51.873 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:51.873 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:51.874 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:51.874 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:51.877 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:51.877 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:53:52.882 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:52.882 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:52.887 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:52.887 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:52.888 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:52.888 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:52.888 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:52.888 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:52.888 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:53.896 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:53.896 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:54.290 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:54.290 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:54.291 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:54.291 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:54.291 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:54.291 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:54.291 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:55.292 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:55.292 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:55.297 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:55.297 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:55.298 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:55.298 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:55.298 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:55.298 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:55.298 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:56.312 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:56.312 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:56.317 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:56.318 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:56.318 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:56.318 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:56.318 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:56.318 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:56.318 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:57.328 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:53:57.328 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:53:57.725 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:53:57.726 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:57.726 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:57.726 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:53:57.727 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:53:57.727 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:53:57.727 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:53:57.727 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:53:57.728 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:53:59.551 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:53:59.551 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:53:59.552 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:53:59.552 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.552 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:53:59.553 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:53:59.553 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:53:59.555 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:53:59.556 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:54:04.556 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:04.556 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:04.937 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:04.938 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:04.938 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:04.938 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:04.939 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:04.939 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:04.939 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:04.939 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:54:07.897 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:54:07.898 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:54:19.270 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:54:19.280 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:54:19.281 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:19.282 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:54:19.282 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:54:19.309 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:54:19.309 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:54:19.310 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:19.310 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:19.738 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:19.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:19.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:19.741 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:19.742 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:19.742 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:19.744 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:19.744 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:54:20.759 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:20.759 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:20.764 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:20.765 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:20.765 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:20.765 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:20.766 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:20.766 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:20.766 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:21.780 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:21.780 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:22.173 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:22.174 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:22.174 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:22.175 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:22.175 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:22.175 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:22.175 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:23.188 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:23.188 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:23.192 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:23.193 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:23.193 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:23.193 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:23.193 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:23.193 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:23.193 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:24.201 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:24.202 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:24.206 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:24.207 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:24.207 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:24.207 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:24.207 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:24.207 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:24.207 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:25.216 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:25.216 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:25.607 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:25.607 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:25.608 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:25.608 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:25.608 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:25.608 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:25.608 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:25.608 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:54:25.609 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:54:27.192 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:54:27.192 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:54:27.193 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:54:27.193 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:54:27.193 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:54:27.196 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:54:27.196 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:54:32.199 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:54:32.199 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:54:32.587 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:54:32.588 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:32.588 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:32.588 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:54:32.588 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:54:32.588 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:54:32.588 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:54:32.588 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:54:33.272 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:54:33.272 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:55:14.929 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:55:14.938 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:55:14.940 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:55:14.940 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.940 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.940 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.940 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.941 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.941 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.941 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:14.941 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:55:14.941 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:55:14.967 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:55:14.967 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:55:14.968 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:14.968 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:15.443 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:15.446 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:15.446 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:15.447 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:15.447 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:15.447 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:15.450 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:15.450 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:55:16.457 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:16.457 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:16.462 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:16.463 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:16.463 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:16.463 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:16.463 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:16.463 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:16.463 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:17.479 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:17.479 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:17.909 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:17.910 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:17.910 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:17.911 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:17.911 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:17.911 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:17.911 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:18.927 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:18.927 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:18.931 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:18.932 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:18.932 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:18.932 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:18.932 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:18.933 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:18.933 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:19.941 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:19.941 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:20.369 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:20.370 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:20.370 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:20.370 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:20.370 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:20.370 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:20.370 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:21.385 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:21.385 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:21.390 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:21.391 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:21.391 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:21.391 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:21.391 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:21.391 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:21.391 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:21.391 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:55:21.392 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:55:24.023 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:55:24.023 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:55:24.025 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:55:24.025 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:55:24.025 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:55:24.028 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:55:24.028 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:55:29.044 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:29.044 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:29.444 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:29.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:29.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:29.445 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:29.446 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:29.446 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:29.446 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:29.446 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:55:33.060 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:33.061 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:33.471 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:33.472 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:33.473 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:33.473 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:33.473 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:33.473 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:33.473 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:34.066 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:55:34.066 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:55:34.071 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:55:34.071 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:34.072 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:34.072 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:55:34.072 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:55:34.072 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:55:34.072 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:55:37.834 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:55:37.835 - Quadro Sync II NVAPI 래퍼 해제됨
+[SyncChecker] 2025-06-25 15:56:15.968 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:56:15.977 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:56:15.979 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:56:15.980 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:56:15.980 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:56:16.010 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:56:16.010 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:56:16.011 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:56:16.011 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:56:16.475 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:56:16.479 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:16.479 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:16.479 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:16.480 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:56:16.480 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:56:16.482 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:56:16.482 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:56:17.483 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:56:17.483 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:56:17.488 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:56:17.488 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:17.488 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:17.489 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:17.489 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:56:17.489 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:56:17.489 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:56:18.500 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:56:18.500 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:56:18.950 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:56:18.950 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:18.951 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:18.951 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:18.951 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:56:18.951 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:56:18.951 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:56:19.963 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:56:19.963 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:56:19.968 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:56:19.968 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:19.968 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:19.969 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:56:19.969 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:56:19.969 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:56:19.969 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:13.178 - === SyncChecker 초기화 시작 (WMI + Quadro Sync II NVAPI 병행) ===
+[QuadroSyncII] 2025-06-25 15:59:13.187 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 15:59:13.189 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 15:59:13.190 - 함수 포인터 바인딩 실패
+[SyncChecker] 2025-06-25 15:59:13.190 - Quadro Sync II NVAPI 래퍼 초기화 완료
+[SyncChecker] 2025-06-25 15:59:13.219 - WMI 이벤트 모니터링 시작 실패: 0x80042002
+[SyncChecker] 2025-06-25 15:59:13.219 - === SyncChecker 초기화 완료 ===
+[SyncChecker] 2025-06-25 15:59:13.220 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:13.220 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:13.704 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:13.708 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:13.708 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:13.708 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:13.709 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:13.709 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:13.711 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:13.712 - Sync 상태 변경: Unlocked
+[SyncChecker] 2025-06-25 15:59:14.727 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:14.727 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:14.732 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:14.733 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:14.733 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:14.733 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:14.733 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:14.733 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:14.733 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:15.743 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:15.743 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:16.156 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:16.157 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:16.157 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:16.157 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:16.158 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:16.158 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:16.158 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:17.173 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:17.173 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:17.179 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:17.179 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:17.180 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:17.180 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:17.180 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:17.181 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:17.181 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:18.193 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:18.193 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:18.199 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:18.199 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:18.200 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:18.200 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:18.200 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:18.201 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:18.201 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:19.216 - === WMI로 Quadro Sync II 상태 확인 시작 ===
+[SyncChecker] 2025-06-25 15:59:19.217 - 네임스페이스 root\CIMV2\NV에서 SyncTopology 확인 중...
+[SyncChecker] 2025-06-25 15:59:19.653 - SyncTopology에서 3개의 Quadro Sync II 디바이스 발견
+[SyncChecker] 2025-06-25 15:59:19.653 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:19.654 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:19.654 - [WMI] 디바이스 정보 읽기 중 오류: 찾을 수 없습니다. 
+[SyncChecker] 2025-06-25 15:59:19.654 - Quadro Sync II 상태: Unlocked (모든 확인 완료)
+[QuadroSyncII] 2025-06-25 15:59:19.654 - Quadro Sync II NVAPI가 초기화되지 않음
+[SyncChecker] 2025-06-25 15:59:19.654 - NVAPI 보조 정보: Error
+[SyncChecker] 2025-06-25 15:59:19.654 - WMI 이벤트 모니터링 중지됨
+[SyncChecker] 2025-06-25 15:59:19.655 - Quadro Sync II NVAPI 래퍼 해제됨
+[2025-06-25 16:19:19.830] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:19:19.840 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:19:19.842 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:19:19.842 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.842 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.842 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.843 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.843 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.843 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.843 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:19.843 - 함수 포인터 바인딩 실패
+[2025-06-25 16:19:19.843] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:19:19.872] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 16:19:19.872] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:19:19.874] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:20.328] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:20.331] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:20.332] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:20.333] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:19:20.334] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:20.339] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:20.340] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:20.341] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:20.341] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:20.342 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:20.344] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:20.344] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:19:21.351] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:21.356] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:21.357] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:21.357] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:21.357] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:21.358 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:21.358] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:22.366] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:22.371] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:22.372] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:22.372] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:22.372] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:22.372 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:22.372] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:23.385] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:23.777] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:23.778] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:23.778] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:23.778] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:23.778 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:23.779] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:24.781] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:24.787] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:24.787] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:24.787] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:24.788] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:24.788 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:24.788] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:25.804] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:26.193] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:26.194] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:26.194] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:26.194] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:26.195 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:26.195] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:26.195] === SyncChecker 정리 시작 ===
+[2025-06-25 16:19:26.195] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:19:26.196] NVAPI 래퍼 정리됨
+[2025-06-25 16:19:26.196] === SyncChecker 정리 완료 ===
+[2025-06-25 16:19:32.678] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:19:32.679 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:19:32.680 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:19:32.680 - 함수 포인터 바인딩 실패
+[2025-06-25 16:19:32.681] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:19:32.683] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 16:19:32.683] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:19:37.697] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:38.068] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:38.069] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:38.069] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:38.070] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:38.070 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:38.070] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:38.070] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:19:42.711] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:43.092] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:43.094] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:43.094] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:43.094] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:43.095 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:43.095] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:47.713] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:48.095] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:48.096] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:48.099] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:48.100] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:48.100 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:48.100] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:52.718] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:53.091] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:53.092] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:53.092] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:53.096] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:53.096 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:53.096] NVAPI 보조 정보: Unknown
+[2025-06-25 16:19:57.721] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:19:58.571] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:19:58.572] === SyncTopology 속성 분석 ===
+[2025-06-25 16:19:58.576] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:19:58.577] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:19:58.579 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:19:58.579] NVAPI 보조 정보: Unknown
+[2025-06-25 16:20:02.711] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:20:03.087] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:20:03.088] === SyncTopology 속성 분석 ===
+[2025-06-25 16:20:03.088] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:20:03.089] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:20:03.089 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:20:03.089] NVAPI 보조 정보: Unknown
+[2025-06-25 16:20:07.725] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:20:08.098] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:20:08.098] === SyncTopology 속성 분석 ===
+[2025-06-25 16:20:08.098] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:20:08.099] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:20:08.099 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:20:08.099] NVAPI 보조 정보: Unknown
+[2025-06-25 16:20:12.733] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:20:13.143] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:20:13.144] === SyncTopology 속성 분석 ===
+[2025-06-25 16:20:13.144] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:20:13.144] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:20:13.145 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:20:13.145] NVAPI 보조 정보: Unknown
+[2025-06-25 16:20:17.744] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:20:18.115] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:20:18.116] === SyncTopology 속성 분석 ===
+[2025-06-25 16:20:18.116] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:20:18.117] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:20:18.117 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:20:18.117] NVAPI 보조 정보: Unknown
+[2025-06-25 16:20:21.917] === SyncChecker 정리 시작 ===
+[2025-06-25 16:20:21.917] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:20:21.918] NVAPI 래퍼 정리됨
+[2025-06-25 16:20:21.919] === SyncChecker 정리 완료 ===
+[2025-06-25 16:21:37.499] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:21:37.509 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:21:37.511 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:21:37.511 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.511 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.511 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.511 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.511 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.512 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.512 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:21:37.512 - 함수 포인터 바인딩 실패
+[2025-06-25 16:21:37.512] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:21:37.539] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 16:21:37.539] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:21:37.541] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:37.985] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:37.988] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:37.988] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:37.990] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:21:37.991] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:37.995] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:37.996] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:37.996] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:37.997] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:37.997 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:37.999] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:37.999] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:21:39.015] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:39.020] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:39.021] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:39.021] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:39.022] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:39.022 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:39.022] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:40.029] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:40.423] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:40.424] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:40.424] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:40.425] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:40.425 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:40.425] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:41.429] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:41.433] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:41.434] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:41.434] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:41.435] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:41.435 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:41.435] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:42.443] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:42.845] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:42.846] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:42.846] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:42.846] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:42.847 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:42.847] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:43.856] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:21:43.860] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:21:43.861] === SyncTopology 속성 분석 ===
+[2025-06-25 16:21:43.861] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:21:43.862] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:21:43.862 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:21:43.862] NVAPI 보조 정보: Unknown
+[2025-06-25 16:21:43.862] === SyncChecker 정리 시작 ===
+[2025-06-25 16:21:43.863] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:21:43.863] NVAPI 래퍼 정리됨
+[2025-06-25 16:21:43.864] === SyncChecker 정리 완료 ===
+[2025-06-25 16:23:07.463] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:23:07.472 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:23:07.475 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:07.475 - 함수 포인터 바인딩 실패
+[2025-06-25 16:23:07.475] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:23:07.503] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 16:23:07.503] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:23:07.504] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:07.959] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:07.962] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:07.962] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:07.963] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:23:07.964] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:07.969] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:07.969] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:07.969] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:07.970] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:07.970 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:07.972] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:07.973] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:23:08.978] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:08.983] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:08.983] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:08.984] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:08.984] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:08.984 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:08.985] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:09.998] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:10.416] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:10.417] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:10.417] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:10.418] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:10.418 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:10.418] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:11.422] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:11.426] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:11.427] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:11.427] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:11.428] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:11.428 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:11.428] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:12.437] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:12.857] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:12.858] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:12.858] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:12.859] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:12.859 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:12.859] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:13.865] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:13.870] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:13.871] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:13.871] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:13.871] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:13.871 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:13.871] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:13.872] === SyncChecker 정리 시작 ===
+[2025-06-25 16:23:13.872] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:23:13.873] NVAPI 래퍼 정리됨
+[2025-06-25 16:23:13.873] === SyncChecker 정리 완료 ===
+[2025-06-25 16:23:46.597] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:23:46.598 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:23:46.600 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:23:46.600 - 함수 포인터 바인딩 실패
+[2025-06-25 16:23:46.600] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:23:46.603] WMI 이벤트 모니터링 시작 실패: 0x80042002
+[2025-06-25 16:23:46.603] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:23:51.621] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:52.029] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:52.030] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:52.030] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:52.031] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:52.031 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:52.031] NVAPI 보조 정보: Unknown
+[2025-06-25 16:23:52.032] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:23:56.639] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:23:57.048] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:23:57.049] === SyncTopology 속성 분석 ===
+[2025-06-25 16:23:57.049] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:23:57.050] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:23:57.050 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:23:57.050] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:16.399] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:28:16.409 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:28:16.411 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:16.412 - 함수 포인터 바인딩 실패
+[2025-06-25 16:28:16.412] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:28:16.438] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 16:28:16.438] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 16:28:16.438] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:28:16.439] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:16.883] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:16.886] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:16.886] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:16.887] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:28:16.888] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:16.894] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:16.895] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:16.895] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:16.896] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:16.896 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:16.898] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:16.899] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:28:17.904] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:17.910] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:17.910] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:17.911] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:17.911] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:17.911 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:17.911] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:18.920] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:19.317] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:19.318] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:19.319] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:19.319] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:19.319 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:19.319] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:20.332] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:20.602] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:20.971] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:20.971] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:20.972] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:20.972 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:20.972] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:44.921] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:28:44.930 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:28:44.933 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:28:44.933 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.933 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.933 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.934 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.934 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.934 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.934 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:44.934 - 함수 포인터 바인딩 실패
+[2025-06-25 16:28:44.934] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:28:44.958] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 16:28:44.958] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 16:28:44.958] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:28:44.959] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:45.370] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:45.373] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:45.373] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:45.374] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:28:45.375] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:45.380] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:45.380] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:45.381] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:45.381] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:45.382 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:45.384] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:45.384] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:28:46.400] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:46.405] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:46.406] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:46.406] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:46.407] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:46.407 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:46.407] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:47.412] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:47.800] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:47.801] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:47.801] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:47.802] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:47.802 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:47.802] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:48.810] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:49.947] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:49.948] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:49.948] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:49.949] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:49.949 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:49.949] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:50.956] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:50.961] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:50.961] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:50.962] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:50.962] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:50.962 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:50.962] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:51.971] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:52.372] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:52.373] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:52.373] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:52.373] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:28:52.373 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:28:52.374] NVAPI 보조 정보: Unknown
+[2025-06-25 16:28:52.375] === 수동 리프레시 시작 ===
+[2025-06-25 16:28:52.376] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:52.380] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:52.380] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:52.381] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:52.381] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:28:52.381] 리프레시 후 Sync 상태 유지: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:28:52.382] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:28:52.386] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:28:52.386] === SyncTopology 속성 분석 ===
+[2025-06-25 16:28:52.386] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:28:52.387] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:28:52.388] === SyncChecker 정리 시작 ===
+[2025-06-25 16:28:52.389] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:28:52.389] NVAPI 래퍼 정리됨
+[2025-06-25 16:28:52.390] === SyncChecker 정리 완료 ===
+[2025-06-25 16:28:58.363] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:28:58.364 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:28:58.365 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:28:58.365 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.365 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.365 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.366 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.366 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.366 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.366 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:28:58.366 - 함수 포인터 바인딩 실패
+[2025-06-25 16:28:58.366] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:28:58.368] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 16:28:58.369] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 16:28:58.369] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:29:03.391] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:03.769] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:03.770] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:03.770] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:03.770] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:03.770 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:03.771] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:03.771] Sync 상태 변경: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:29:05.913] === 수동 리프레시 시작 ===
+[2025-06-25 16:29:05.916] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:06.302] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:06.303] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:06.303] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:06.304] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:29:06.304] 리프레시 후 Sync 상태 유지: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:29:06.304] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:06.309] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:06.310] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:06.310] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:06.311] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:06.311 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:06.311] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:08.394] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:08.782] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:08.783] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:08.783] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:08.784] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:08.784 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:08.784] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:13.400] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:13.797] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:13.798] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:13.798] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:13.798] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:13.799 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:13.799] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:18.396] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:19.260] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:19.262] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:19.263] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:19.264] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:19.266 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:19.266] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:23.413] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:23.818] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:23.819] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:23.819] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:23.819] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:23.819 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:23.819] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:26.257] === 수동 리프레시 시작 ===
+[2025-06-25 16:29:26.260] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:26.666] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:26.667] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:26.667] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:26.668] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[2025-06-25 16:29:26.668] 리프레시 후 Sync 상태 유지: Free (WMI 오류: 찾을 수 없습니다. )
+[2025-06-25 16:29:26.668] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:26.672] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:26.673] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:26.673] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:26.674] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:26.674 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:26.674] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:28.416] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:28.853] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:28.854] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:28.854] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:28.854] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:28.855 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:28.855] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:33.425] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:33.858] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:33.859] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:33.859] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:33.859] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:33.860 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:33.860] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:38.424] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:38.840] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:38.840] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:38.840] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:38.841] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:38.841 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:38.841] NVAPI 보조 정보: Unknown
+[2025-06-25 16:29:43.417] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:29:43.836] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:29:43.837] === SyncTopology 속성 분석 ===
+[2025-06-25 16:29:43.837] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:29:43.838] 진단 오류: WMI 오류: 찾을 수 없습니다. 
+[QuadroSyncII] 2025-06-25 16:29:43.838 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:29:43.838] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:14.597] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:33:14.606 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:33:14.608 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:14.609 - 함수 포인터 바인딩 실패
+[2025-06-25 16:33:14.609] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:33:14.636] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 16:33:14.636] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 16:33:14.637] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:33:14.638] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:15.072] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:15.075] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:15.075] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:15.076] displaySyncState: 0
+[2025-06-25 16:33:15.076] 진단 결과: displaySyncState=0: 동기화되지 않음
+[2025-06-25 16:33:15.078] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:15.084] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:15.085] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:15.085] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:15.086] displaySyncState: 0
+[2025-06-25 16:33:15.086] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:15.087 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:15.090] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:15.090] Sync 상태 변경: Free (displaySyncState=0: 동기화되지 않음)
+[2025-06-25 16:33:16.095] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:16.100] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:16.101] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:16.101] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:16.102] displaySyncState: 0
+[2025-06-25 16:33:16.102] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:16.102 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:16.102] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:17.113] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:17.117] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:17.118] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:17.118] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:17.119] displaySyncState: 0
+[2025-06-25 16:33:17.119] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:17.119 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:17.119] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:18.126] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:18.523] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:18.524] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:18.524] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:18.524] displaySyncState: 0
+[2025-06-25 16:33:18.525] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:18.525 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:18.525] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:19.540] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:19.545] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:19.545] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:19.545] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:19.546] displaySyncState: 0
+[2025-06-25 16:33:19.546] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:19.547 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:19.547] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:20.555] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:20.952] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:20.953] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:20.953] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:20.954] displaySyncState: 0
+[2025-06-25 16:33:20.954] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:20.954 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:20.954] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:20.955] === 수동 리프레시 시작 ===
+[2025-06-25 16:33:20.957] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:20.961] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:20.961] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:20.961] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:20.962] displaySyncState: 0
+[2025-06-25 16:33:20.962] 진단 결과: displaySyncState=0: 동기화되지 않음
+[2025-06-25 16:33:20.962] 리프레시 후 Sync 상태 유지: Free (displaySyncState=0: 동기화되지 않음)
+[2025-06-25 16:33:20.963] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:20.966] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:20.967] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:20.967] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:20.968] displaySyncState: 0
+[2025-06-25 16:33:20.968] 진단 결과: displaySyncState=0: 동기화되지 않음
+[2025-06-25 16:33:20.971] === SyncChecker 정리 시작 ===
+[2025-06-25 16:33:20.971] WMI 이벤트 모니터링 중지됨
+[2025-06-25 16:33:20.972] NVAPI 래퍼 정리됨
+[2025-06-25 16:33:20.972] === SyncChecker 정리 완료 ===
+[2025-06-25 16:33:23.002] === SyncChecker 초기화 시작 (새로운 진단 로직) ===
+[QuadroSyncII] 2025-06-25 16:33:23.003 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 16:33:23.004 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 16:33:23.005 - 함수 포인터 바인딩 실패
+[2025-06-25 16:33:23.005] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 16:33:23.007] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 16:33:23.007] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 16:33:23.008] === SyncChecker 초기화 완료 ===
+[2025-06-25 16:33:28.020] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:28.410] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:28.411] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:28.412] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:28.412] displaySyncState: 0
+[2025-06-25 16:33:28.412] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:28.413 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:28.413] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:28.413] Sync 상태 변경: Free (displaySyncState=0: 동기화되지 않음)
+[2025-06-25 16:33:33.017] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:33.516] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:33.517] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:33.517] count: 0
+displaySyncState: 0
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:33.517] displaySyncState: 0
+[2025-06-25 16:33:33.518] 진단 결과: displaySyncState=0: 동기화되지 않음
+[QuadroSyncII] 2025-06-25 16:33:33.518 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:33.518] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:38.017] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:38.405] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:38.406] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:38.406] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:38.406] displaySyncState: 1
+[2025-06-25 16:33:38.407] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:38.407] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:38.407 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:38.407] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:38.408] Sync 상태 변경: Synced (displaySyncState=1: 동기화됨)
+[2025-06-25 16:33:43.020] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:43.412] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:43.413] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:43.413] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:43.414] displaySyncState: 1
+[2025-06-25 16:33:43.414] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:43.414] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:43.415 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:43.415] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:45.712] === 수동 리프레시 시작 ===
+[2025-06-25 16:33:45.715] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:46.105] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:46.106] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:46.106] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:46.107] displaySyncState: 1
+[2025-06-25 16:33:46.107] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:46.107] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 16:33:46.108] 리프레시 후 Sync 상태 유지: Synced (displaySyncState=1: 동기화됨)
+[2025-06-25 16:33:46.108] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:46.112] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:46.113] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:46.113] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:46.113] displaySyncState: 1
+[2025-06-25 16:33:46.114] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:46.114] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:46.115 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:46.115] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:48.015] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:48.020] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:48.021] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:48.021] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:48.021] displaySyncState: 1
+[2025-06-25 16:33:48.021] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:48.022] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:48.022 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:48.022] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:53.032] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:53.508] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:53.509] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:53.509] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:53.509] displaySyncState: 1
+[2025-06-25 16:33:53.510] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:53.510] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:53.510 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:53.510] NVAPI 보조 정보: Unknown
+[2025-06-25 16:33:58.050] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:33:58.449] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:33:58.450] === SyncTopology 속성 분석 ===
+[2025-06-25 16:33:58.450] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:33:58.450] displaySyncState: 1
+[2025-06-25 16:33:58.451] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:33:58.451] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:33:58.451 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:33:58.451] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:03.046] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:03.958] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:03.960] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:03.961] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:03.962] displaySyncState: 1
+[2025-06-25 16:34:03.964] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:03.964] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:03.964 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:03.964] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:08.050] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:08.442] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:08.443] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:08.443] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:08.444] displaySyncState: 1
+[2025-06-25 16:34:08.444] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:08.444] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:08.445 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:08.445] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:11.752] === 수동 리프레시 시작 ===
+[2025-06-25 16:34:11.754] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:12.168] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:12.168] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:12.168] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:12.169] displaySyncState: 1
+[2025-06-25 16:34:12.169] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:12.169] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 16:34:12.170] 리프레시 후 Sync 상태 유지: Synced (displaySyncState=1: 동기화됨)
+[2025-06-25 16:34:12.170] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:12.174] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:12.175] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:12.175] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:12.176] displaySyncState: 1
+[2025-06-25 16:34:12.176] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:12.176] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:12.177 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:12.177] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:13.043] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:13.048] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:13.049] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:13.049] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:13.049] displaySyncState: 1
+[2025-06-25 16:34:13.050] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:13.050] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:13.050 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:13.050] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:18.049] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:19.301] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:19.302] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:19.302] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:19.302] displaySyncState: 1
+[2025-06-25 16:34:19.303] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:19.303] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:19.303 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:19.303] NVAPI 보조 정보: Unknown
+[2025-06-25 16:34:23.053] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 16:34:23.470] SyncTopology 인스턴스 3개 발견
+[2025-06-25 16:34:23.470] === SyncTopology 속성 분석 ===
+[2025-06-25 16:34:23.470] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 16:34:23.471] displaySyncState: 1
+[2025-06-25 16:34:23.471] 진단 결과: displaySyncState=1: 동기화됨
+[2025-06-25 16:34:23.471] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 16:34:23.472 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 16:34:23.472] NVAPI 보조 정보: Unknown

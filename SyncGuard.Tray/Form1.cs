@@ -28,6 +28,10 @@ namespace SyncGuard.Tray
                 // SyncChecker 초기화 시도
                 Console.WriteLine("SyncChecker 초기화 시작...");
                 syncChecker = new SyncChecker();
+                
+                // Sync 상태 변경 이벤트 구독
+                syncChecker.SyncStatusChanged += OnSyncStatusChanged;
+                
                 Console.WriteLine("SyncChecker 초기화 성공!");
                 
                 InitializeSyncTimer();
@@ -63,6 +67,7 @@ namespace SyncGuard.Tray
             // 컨텍스트 메뉴 생성
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.Add("Sync 상태 확인", null, OnCheckSyncStatus);
+            contextMenu.Items.Add("리프레시", null, OnRefreshSyncStatus);
             contextMenu.Items.Add("-"); // 구분선
             contextMenu.Items.Add("종료", null, OnExit);
             
@@ -83,7 +88,7 @@ namespace SyncGuard.Tray
             if (syncChecker == null)
             {
                 // SyncChecker가 없으면 기본 상태 표시
-                UpdateTrayIcon(SyncChecker.SyncStatus.Error);
+                UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
                 return;
             }
 
@@ -103,7 +108,7 @@ namespace SyncGuard.Tray
             catch (Exception ex)
             {
                 Console.WriteLine($"Sync 체크 중 오류: {ex.Message}");
-                UpdateTrayIcon(SyncChecker.SyncStatus.Error);
+                UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
             }
         }
 
@@ -112,9 +117,9 @@ namespace SyncGuard.Tray
             // 상태에 따른 아이콘 색상 변경
             Color iconColor = status switch
             {
-                SyncChecker.SyncStatus.Locked => Color.Green,
-                SyncChecker.SyncStatus.Unlocked => Color.Red,
-                SyncChecker.SyncStatus.Error => Color.Yellow,
+                SyncChecker.SyncStatus.Synced => Color.Green,
+                SyncChecker.SyncStatus.Free => Color.Red,
+                SyncChecker.SyncStatus.Unknown => Color.Yellow,
                 _ => Color.Gray
             };
 
@@ -134,9 +139,9 @@ namespace SyncGuard.Tray
         {
             return status switch
             {
-                SyncChecker.SyncStatus.Locked => "Sync Locked (동기화됨)",
-                SyncChecker.SyncStatus.Unlocked => "Sync Unlocked (동기화 안됨)",
-                SyncChecker.SyncStatus.Error => "Sync Error (오류)",
+                SyncChecker.SyncStatus.Synced => "Sync Synced (동기화됨)",
+                SyncChecker.SyncStatus.Free => "Sync Free (동기화 안됨)",
+                SyncChecker.SyncStatus.Unknown => "Sync Unknown (알 수 없음)",
                 _ => "Sync Unknown (알 수 없음)"
             };
         }
@@ -212,6 +217,45 @@ namespace SyncGuard.Tray
                 notifyIcon?.Dispose();
             }
             base.OnFormClosing(e);
+        }
+
+        private void OnSyncStatusChanged(object sender, SyncChecker.SyncStatus newStatus)
+        {
+            // 실시간 상태 변경 처리
+            UpdateTrayIcon(newStatus);
+            string message = GetStatusMessage(newStatus);
+            ShowToastNotification("Sync 상태 변경", message);
+        }
+
+        private void OnRefreshSyncStatus(object sender, EventArgs e)
+        {
+            if (syncChecker == null)
+            {
+                MessageBox.Show("NVAPI 초기화 실패로 Sync 상태를 새로고침할 수 없습니다.", "오류", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Console.WriteLine("=== 수동 리프레시 실행 ===");
+                syncChecker.RefreshSyncStatus();
+                
+                // 리프레시 후 상태 확인
+                var status = syncChecker.GetSyncStatus();
+                string message = GetStatusMessage(status);
+                
+                // 사용자에게 알림
+                ShowToastNotification("Sync 상태 새로고침 완료", message);
+                
+                Console.WriteLine($"리프레시 후 상태: {status}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"리프레시 중 오류: {ex.Message}");
+                MessageBox.Show($"Sync 상태 새로고침 중 오류: {ex.Message}", "오류", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

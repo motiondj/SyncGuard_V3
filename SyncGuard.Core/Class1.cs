@@ -2,6 +2,11 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Management;
+using System.Runtime.InteropServices;
+using System.Linq;
+using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SyncGuard.Core
 {
@@ -10,28 +15,220 @@ namespace SyncGuard.Core
         public enum SyncStatus
         {
             Unknown,
-            Locked,
-            Unlocked,
-            Error
+            Synced,    // Locked - 타이밍 서버 지정됨
+            Free       // Unlocked - 타이밍 서버 미지정
+        }
+
+        // 디스플레이 동기화 진단 결과
+        public class DisplaySyncDiagnosis
+        {
+            public bool IsSynced { get; set; } = false;
+            public string TimingServer { get; set; } = "";
+            public string SelectedDisplay { get; set; } = "";
+            public string DiagnosisMessage { get; set; } = "";
+            public string RawData { get; set; } = "";
         }
         
         private SyncStatus lastStatus = SyncStatus.Unknown;
         private readonly object lockObject = new object();
-        private bool useWmiMethod = true; // WMI 방법 우선 사용
+        private ManagementEventWatcher? eventWatcher;
+        private NvApiWrapper? nvApiWrapper;
+        private bool isDisposed = false;
+        
+        // 이벤트: Sync 상태 변경 시 발생
+        public event EventHandler<SyncStatus>? SyncStatusChanged;
         
         public SyncChecker()
         {
-            // WMI 방법이 사용 가능한지 확인
-            if (!IsWmiMethodAvailable())
+            WriteLogAndConsole("=== SyncChecker 초기화 시작 (새로운 진단 로직) ===");
+            
+            // Quadro Sync II NVAPI 래퍼 초기화
+            try
             {
-                useWmiMethod = false;
-                Console.WriteLine("WMI 방법을 사용할 수 없습니다. nvidia-smi 방법으로 대체합니다.");
+                nvApiWrapper = new NvApiWrapper();
+                WriteLogAndConsole("Quadro Sync II NVAPI 래퍼 초기화 완료");
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"Quadro Sync II NVAPI 래퍼 초기화 실패: {ex.Message}");
+                nvApiWrapper = null;
             }
             
-            // nvidia-smi가 사용 가능한지 확인 (백업용)
-            if (!IsNvidiaSmiAvailable())
+            // WMI 이벤트 모니터링 시작
+            StartWmiEventMonitoring();
+            
+            WriteLogAndConsole("=== SyncChecker 초기화 완료 ===");
+        }
+
+        // 새로운 진단 로직: 타이밍 서버와 디스플레이 선택 상태 확인
+        public DisplaySyncDiagnosis DiagnoseDisplaySync()
+        {
+            var diagnosis = new DisplaySyncDiagnosis();
+            
+            try
             {
-                throw new InvalidOperationException("nvidia-smi를 찾을 수 없습니다. NVIDIA 드라이버가 설치되어 있는지 확인하세요.");
+                WriteLogAndConsole("=== 디스플레이 동기화 진단 시작 ===");
+                
+                string nvidiaNamespace = "root\\CIMV2\\NV";
+                var scope = new ManagementScope(nvidiaNamespace);
+                scope.Connect();
+                var query = new SelectQuery("SELECT * FROM SyncTopology");
+                
+                using (var searcher = new ManagementObjectSearcher(scope, query))
+                {
+                    var collection = searcher.Get();
+                    
+                    if (collection.Count == 0)
+                    {
+                        diagnosis.DiagnosisMessage = "SyncTopology에서 정보를 찾을 수 없습니다.";
+                        diagnosis.RawData = "SyncTopology 인스턴스 없음";
+                        WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                        return diagnosis;
+                    }
+
+                    WriteLogAndConsole($"SyncTopology 인스턴스 {collection.Count}개 발견");
+                    
+                    foreach (ManagementObject obj in collection)
+                    {
+                        // 모든 속성 정보 수집 (디버깅용)
+                        var allProperties = new System.Text.StringBuilder();
+                        foreach (PropertyData prop in obj.Properties)
+                        {
+                            allProperties.AppendLine($"{prop.Name}: {prop.Value}");
+                        }
+                        diagnosis.RawData = allProperties.ToString();
+                        
+                        WriteLogAndConsole("=== SyncTopology 속성 분석 ===");
+                        WriteLogAndConsole(diagnosis.RawData);
+                        
+                        // 1. displaySyncState를 우선 확인 (가장 신뢰할 수 있는 지표)
+                        int displaySyncState = 0;
+                        try
+                        {
+                            displaySyncState = Convert.ToInt32(obj["displaySyncState"]);
+                        }
+                        catch { }
+                        
+                        WriteLogAndConsole($"displaySyncState: {displaySyncState}");
+                        
+                        // displaySyncState가 1이면 동기화됨, 0이면 동기화 안됨
+                        if (displaySyncState == 1)
+                        {
+                            diagnosis.IsSynced = true;
+                            diagnosis.DiagnosisMessage = "displaySyncState=1: 동기화됨";
+                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                            WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
+                            return diagnosis;
+                        }
+                        else if (displaySyncState == 0)
+                        {
+                            diagnosis.DiagnosisMessage = "displaySyncState=0: 동기화되지 않음";
+                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                            return diagnosis;
+                        }
+                        
+                        // 2. displaySyncState가 예상값이 아닌 경우, 기존 로직으로 fallback
+                        // 타이밍 서버 확인
+                        string? timingServer = obj["timingServer"]?.ToString();
+                        diagnosis.TimingServer = timingServer ?? "미지정";
+                        
+                        WriteLogAndConsole($"타이밍 서버: {diagnosis.TimingServer}");
+                        
+                        if (string.IsNullOrEmpty(timingServer))
+                        {
+                            diagnosis.DiagnosisMessage = "타이밍 서버가 지정되지 않았습니다.";
+                            WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                            return diagnosis;
+                        }
+                        
+                        // 2. 디스플레이 선택 상태 확인
+                        var displayList = obj["displayList"];
+                        string selectedDisplayInfo = "";
+                        
+                        if (displayList != null)
+                        {
+                            var displays = displayList as System.Collections.IEnumerable;
+                            if (displays != null)
+                            {
+                                bool hasSelectedDisplay = false;
+                                var displayDetails = new System.Text.StringBuilder();
+                                
+                                foreach (var disp in displays)
+                                {
+                                    var dispObj = disp as ManagementBaseObject;
+                                    if (dispObj == null) continue;
+                                    
+                                    string name = dispObj["name"]?.ToString() ?? "unknown";
+                                    bool isActive = false;
+                                    bool isSelected = false;
+                                    
+                                    try
+                                    {
+                                        isActive = Convert.ToBoolean(dispObj["active"]);
+                                        isSelected = Convert.ToBoolean(dispObj["selected"]);
+                                    }
+                                    catch { }
+                                    
+                                    string freq = dispObj["refreshRate"]?.ToString() ?? "?";
+                                    string res = dispObj["resolution"]?.ToString() ?? "?";
+                                    
+                                    displayDetails.AppendLine($"  - {name}: 활성={isActive}, 선택={isSelected}, 주사율={freq}, 해상도={res}");
+                                    
+                                    if (isSelected)
+                                    {
+                                        hasSelectedDisplay = true;
+                                        selectedDisplayInfo = name;
+                                    }
+                                }
+                                
+                                diagnosis.SelectedDisplay = selectedDisplayInfo;
+                                WriteLogAndConsole("=== 디스플레이 정보 ===");
+                                WriteLogAndConsole(displayDetails.ToString());
+                                
+                                if (!hasSelectedDisplay)
+                                {
+                                    diagnosis.DiagnosisMessage = "타이밍 서버는 지정되었지만, 선택된 디스플레이가 없습니다.";
+                                    WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                    return diagnosis;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // displayList가 없는 경우, 다른 속성에서 디스플레이 정보 찾기
+                            var selectedDisplay = obj["selectedDisplay"]?.ToString();
+                            diagnosis.SelectedDisplay = selectedDisplay ?? "미지정";
+                            
+                            WriteLogAndConsole($"선택된 디스플레이: {diagnosis.SelectedDisplay}");
+                            
+                            if (string.IsNullOrEmpty(selectedDisplay))
+                            {
+                                diagnosis.DiagnosisMessage = "타이밍 서버는 지정되었지만, 선택된 디스플레이 정보가 없습니다.";
+                                WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                                return diagnosis;
+                            }
+                        }
+                        
+                        // 3. 모든 조건이 만족되면 Synced 상태
+                        diagnosis.IsSynced = true;
+                        diagnosis.DiagnosisMessage = $"동기화 설정 완료 - 타이밍 서버: {diagnosis.TimingServer}, 선택된 디스플레이: {diagnosis.SelectedDisplay}";
+                        
+                        WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                        WriteLogAndConsole("=== 디스플레이 동기화 진단 완료 ===");
+                        
+                        return diagnosis;
+                    }
+                }
+                
+                diagnosis.DiagnosisMessage = "SyncTopology 정보 파싱 실패";
+                WriteLogAndConsole($"진단 결과: {diagnosis.DiagnosisMessage}");
+                return diagnosis;
+            }
+            catch (Exception ex)
+            {
+                diagnosis.DiagnosisMessage = $"WMI 오류: {ex.Message}";
+                WriteLogAndConsole($"진단 오류: {diagnosis.DiagnosisMessage}");
+                return diagnosis;
             }
         }
         
@@ -39,25 +236,25 @@ namespace SyncGuard.Core
         {
             try
             {
-                SyncStatus newStatus;
+                // 새로운 진단 로직으로 상태 확인
+                var diagnosis = DiagnoseDisplaySync();
                 
-                if (useWmiMethod)
+                SyncStatus currentStatus = diagnosis.IsSynced ? SyncStatus.Synced : SyncStatus.Free;
+                
+                // NVAPI 보조 정보 (GPU/드라이버 정보)
+                if (nvApiWrapper != null)
                 {
-                    // WMI 방법으로 Sync 상태 확인 (우선순위 1)
-                    newStatus = GetSyncStatusFromWmi();
-                }
-                else
-                {
-                    // nvidia-smi 방법으로 Sync 상태 확인 (우선순위 2)
-                    newStatus = GetSyncStatusFromNvidiaSmi();
+                    var nvApiStatus = nvApiWrapper.GetSyncStatus();
+                    WriteLogAndConsole($"NVAPI 보조 정보: {nvApiStatus}");
                 }
                 
                 lock (lockObject)
                 {
-                    // 상태 변경 시에만 업데이트
-                    if (newStatus != lastStatus)
+                    if (currentStatus != lastStatus)
                     {
-                        lastStatus = newStatus;
+                        lastStatus = currentStatus;
+                        WriteLogAndConsole($"Sync 상태 변경: {currentStatus} ({diagnosis.DiagnosisMessage})");
+                        SyncStatusChanged?.Invoke(this, currentStatus);
                     }
                     
                     return lastStatus;
@@ -65,251 +262,160 @@ namespace SyncGuard.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Sync 상태 확인 중 오류: {ex.Message}");
-                return SyncStatus.Error;
+                WriteLogAndConsole($"Sync 상태 확인 중 오류: {ex.Message}");
+                return SyncStatus.Unknown;
             }
         }
         
-        private bool IsWmiMethodAvailable()
+        [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "Windows WMI API 사용")]
+        private void StartWmiEventMonitoring()
         {
             try
             {
-                using (var searcher = new ManagementObjectSearcher("root\\CIMV2\\NV", "SELECT * FROM SyncTopology"))
-                {
-                    var collection = searcher.Get();
-                    return collection.Count > 0;
-                }
+                // 다른 이벤트 쿼리 방식 시도
+                var query = new WqlEventQuery(
+                    "SELECT * FROM __InstanceModificationEvent " +
+                    "WHERE TargetInstance ISA 'SyncTopology' AND " +
+                    "TargetInstance.Namespace = 'root\\CIMV2\\NV'"
+                );
+                
+                var scope = new ManagementScope("root\\CIMV2\\NV");
+                scope.Options.EnablePrivileges = true; // 권한 추가
+                eventWatcher = new ManagementEventWatcher(scope, query);
+                eventWatcher.EventArrived += OnSyncTopologyChanged;
+                eventWatcher.Start();
+                
+                WriteLogAndConsole("WMI 이벤트 모니터링이 시작되었습니다.");
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                WriteLogAndConsole($"WMI 이벤트 모니터링 시작 실패: {ex.Message}");
+                // 이벤트 모니터링 실패 시 폴링 방식으로 대체
+                StartPollingMode();
             }
         }
         
-        private SyncStatus GetSyncStatusFromWmi()
+        // 폴링 방식으로 대체 (이벤트 모니터링 실패 시)
+        private void StartPollingMode()
         {
+            WriteLogAndConsole("폴링 방식으로 Sync 상태 모니터링을 시작합니다.");
+            // 폴링은 GetSyncStatus() 호출 시 자동으로 처리됨
+        }
+        
+        // 수동 리프레시 기능
+        public void RefreshSyncStatus()
+        {
+            WriteLogAndConsole("=== 수동 리프레시 시작 ===");
+            
             try
             {
-                using (var searcher = new ManagementObjectSearcher("root\\CIMV2\\NV", "SELECT * FROM SyncTopology"))
+                // WMI Scope 재연결
+                var scope = new ManagementScope("root\\CIMV2\\NV");
+                scope.Connect();
+                
+                // SyncTopology 다시 조회
+                var diagnosis = DiagnoseDisplaySync();
+                var newStatus = diagnosis.IsSynced ? SyncStatus.Synced : SyncStatus.Free;
+                
+                lock (lockObject)
                 {
-                    var collection = searcher.Get();
-                    
-                    if (collection.Count == 0)
+                    if (newStatus != lastStatus)
                     {
-                        Console.WriteLine("SyncTopology WMI 클래스에서 Sync 디바이스를 찾을 수 없습니다.");
-                        return SyncStatus.Unlocked;
-                    }
-                    
-                    bool hasValidSyncDevice = false;
-                    bool isActuallySynced = false;
-                    
-                    foreach (ManagementObject obj in collection)
-                    {
-                        try
-                        {
-                            // Sync 디바이스 정보 추출
-                            int displaySyncState = Convert.ToInt32(obj["displaySyncState"]);
-                            string uname = obj["uname"]?.ToString() ?? "";
-                            bool isDisplayMasterable = Convert.ToBoolean(obj["isDisplayMasterable"]);
-                            
-                            Console.WriteLine($"Sync 디바이스: ID={obj["id"]}, State={displaySyncState}, Name={uname}, Masterable={isDisplayMasterable}");
-                            
-                            // 유효한 Sync 디바이스인지 확인
-                            if (!string.IsNullOrEmpty(uname) && uname != "invalid")
-                            {
-                                hasValidSyncDevice = true;
-                                
-                                // isGPUSynced() 메서드로 실제 Sync 상태 확인
-                                try
-                                {
-                                    var result = obj.InvokeMethod("isGPUSynced", null);
-                                    bool isSynced = Convert.ToBoolean(((ManagementBaseObject)result)["ReturnValue"]);
-                                    Console.WriteLine($"isGPUSynced() 결과: {isSynced}");
-                                    
-                                    if (isSynced)
-                                    {
-                                        isActuallySynced = true;
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine($"isGPUSynced() 호출 중 오류: {ex.Message}");
-                                    // isGPUSynced() 호출 실패 시 동기화 안됨으로 처리
-                                    // displaySyncState는 Sync 디바이스 인식 여부만 나타내므로 동기화 상태 판단에 사용하지 않음
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Sync 디바이스 정보 추출 중 오류: {ex.Message}");
-                        }
-                    }
-                    
-                    // Sync 상태 판단
-                    if (!hasValidSyncDevice)
-                    {
-                        return SyncStatus.Unlocked; // 유효한 Sync 디바이스 없음
-                    }
-                    else if (isActuallySynced)
-                    {
-                        return SyncStatus.Locked; // 실제로 Sync 활성화됨
+                        lastStatus = newStatus;
+                        WriteLogAndConsole($"리프레시 후 Sync 상태 변경: {newStatus} ({diagnosis.DiagnosisMessage})");
+                        SyncStatusChanged?.Invoke(this, newStatus);
                     }
                     else
                     {
-                        return SyncStatus.Unlocked; // Sync 디바이스는 있지만 동기화 안됨
+                        WriteLogAndConsole($"리프레시 후 Sync 상태 유지: {newStatus} ({diagnosis.DiagnosisMessage})");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"WMI Sync 상태 확인 중 오류: {ex.Message}");
-                return SyncStatus.Error;
+                WriteLogAndConsole($"수동 리프레시 중 오류: {ex.Message}");
             }
         }
         
-        private SyncStatus GetSyncStatusFromNvidiaSmi()
+        [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "Windows WMI API 사용")]
+        private void OnSyncTopologyChanged(object sender, EventArrivedEventArgs e)
         {
             try
             {
-                // nvidia-smi로 GPU 정보 가져오기
-                var gpuInfo = GetNvidiaSmiInfo();
+                WriteLogAndConsole("=== SyncTopology 변경 감지됨 ===");
                 
-                // Sync 관련 정보 검색
-                bool hasSyncInfo = CheckSyncInfo(gpuInfo);
-                
-                return hasSyncInfo ? SyncStatus.Locked : SyncStatus.Unlocked;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"nvidia-smi Sync 상태 확인 중 오류: {ex.Message}");
-                return SyncStatus.Error;
-            }
-        }
-        
-        private bool IsNvidiaSmiAvailable()
-        {
-            try
-            {
-                var process = new Process
+                // 변경된 인스턴스 정보 출력
+                var targetInstance = e.NewEvent["TargetInstance"] as ManagementBaseObject;
+                if (targetInstance != null)
                 {
-                    StartInfo = new ProcessStartInfo
+                    WriteLogAndConsole("변경된 SyncTopology 정보:");
+                    foreach (PropertyData prop in targetInstance.Properties)
                     {
-                        FileName = "nvidia-smi",
-                        Arguments = "--version",
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
+                        WriteLogAndConsole($"  {prop.Name}: {prop.Value}");
                     }
-                };
+                }
                 
-                process.Start();
-                process.WaitForExit(3000); // 3초 타임아웃
-                
-                return process.ExitCode == 0;
+                // 상태 재확인
+                var newStatus = GetSyncStatus();
+                WriteLogAndConsole($"변경 후 Sync 상태: {newStatus}");
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                WriteLogAndConsole($"SyncTopology 변경 처리 중 오류: {ex.Message}");
             }
         }
         
-        private string GetNvidiaSmiInfo()
-        {
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "nvidia-smi",
-                    Arguments = "-q", // 상세 정보 출력
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }
-            };
-            
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit(5000); // 5초 타임아웃
-            
-            return output;
-        }
-        
-        private bool CheckSyncInfo(string gpuInfo)
-        {
-            // 1. Quadro Sync 카드 확인
-            bool hasQuadroSync = false;
-            string[] quadroSyncKeywords = {
-                "Quadro Sync",
-                "Frame Lock",
-                "Genlock",
-                "Synchronization"
-            };
-            
-            foreach (string keyword in quadroSyncKeywords)
-            {
-                if (gpuInfo.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                {
-                    hasQuadroSync = true;
-                    break;
-                }
-            }
-            
-            // Quadro Sync 카드가 없으면 Unlocked
-            if (!hasQuadroSync)
-            {
-                return false;
-            }
-            
-            // 2. 실제 Sync Lock 상태 확인
-            // nvidia-smi에서 더 구체적인 Sync 정보 찾기
-            string[] syncLockKeywords = {
-                "Frame Lock: Enabled",
-                "Sync: Active",
-                "Lock: Enabled",
-                "Synchronization: Active"
-            };
-            
-            foreach (string keyword in syncLockKeywords)
-            {
-                if (gpuInfo.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true; // Sync Locked
-                }
-            }
-            
-            // 3. Master/Slave 상태 확인
-            string[] masterSlaveKeywords = {
-                "Master",
-                "Slave",
-                "Sync Master",
-                "Sync Slave"
-            };
-            
-            foreach (string keyword in masterSlaveKeywords)
-            {
-                if (gpuInfo.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Master/Slave 정보가 있으면 Sync 가능한 상태로 간주
-                    return true;
-                }
-            }
-            
-            // 4. Quadro GPU 확인 (마지막 수단)
-            if (gpuInfo.Contains("Quadro", StringComparison.OrdinalIgnoreCase))
-            {
-                // Quadro GPU가 있지만 Sync 정보가 불분명한 경우
-                // 실제 Sync 상태를 알 수 없으므로 Unknown으로 처리
-                return false; // Unlocked로 처리
-            }
-            
-            return false; // Sync 정보 없음
-        }
-        
+        [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "Windows WMI API 사용")]
         public void Dispose()
         {
-            // nvidia-smi는 별도 정리 작업이 필요 없음
+            if (isDisposed) return;
+            
+            try
+            {
+                WriteLogAndConsole("=== SyncChecker 정리 시작 ===");
+                
+                if (eventWatcher != null)
+                {
+                    eventWatcher.Stop();
+                    eventWatcher.Dispose();
+                    eventWatcher = null;
+                    WriteLogAndConsole("WMI 이벤트 모니터링 중지됨");
+                }
+                
+                if (nvApiWrapper != null)
+                {
+                    nvApiWrapper.Dispose();
+                    nvApiWrapper = null;
+                    WriteLogAndConsole("NVAPI 래퍼 정리됨");
+                }
+                
+                WriteLogAndConsole("=== SyncChecker 정리 완료 ===");
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"SyncChecker 정리 중 오류: {ex.Message}");
+            }
+            finally
+            {
+                isDisposed = true;
+            }
+        }
+        
+        private void WriteLogAndConsole(string message)
+        {
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            string logMessage = $"[{timestamp}] {message}";
+            
+            Console.WriteLine(logMessage);
+            
+            try
+            {
+                File.AppendAllText("syncguard_log.txt", logMessage + Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"로그 파일 쓰기 실패: {ex.Message}");
+            }
         }
     }
 }
