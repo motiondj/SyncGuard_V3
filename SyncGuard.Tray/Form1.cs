@@ -72,6 +72,7 @@ namespace SyncGuard.Tray
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.Add("Sync 상태 확인", null, OnCheckSyncStatus);
             contextMenu.Items.Add("리프레시", null, OnRefreshSyncStatus);
+            contextMenu.Items.Add("WMI 클래스 탐색", null, OnExploreWmiClasses);
             contextMenu.Items.Add("-"); // 구분선
             
             // Master/Slave 설정 메뉴
@@ -320,25 +321,27 @@ namespace SyncGuard.Tray
         
         private void OnSetSlave(object sender, EventArgs e)
         {
-            if (syncChecker == null)
-            {
-                MessageBox.Show("NVAPI 초기화 실패로 역할을 설정할 수 없습니다.", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
+            if (syncChecker != null)
             {
                 syncChecker.SetUserRole(SyncGuard.Core.SyncChecker.SyncRole.Slave);
-                UpdateRoleMenuCheckmarks(); // 체크 표시 업데이트
+                UpdateRoleMenuCheckmarks();
                 ShowToastNotification("역할 설정", "Slave로 설정되었습니다.");
-                Console.WriteLine("역할을 Slave로 설정했습니다.");
             }
-            catch (Exception ex)
+        }
+        
+        private void OnExploreWmiClasses(object sender, EventArgs e)
+        {
+            if (syncChecker != null)
             {
-                Console.WriteLine($"Slave 설정 중 오류: {ex.Message}");
-                MessageBox.Show($"Slave 설정 중 오류: {ex.Message}", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    syncChecker.ExploreNvidiaWmiClasses();
+                    ShowToastNotification("WMI 탐색", "NVIDIA WMI 클래스 탐색이 완료되었습니다. 로그를 확인하세요.");
+                }
+                catch (Exception ex)
+                {
+                    ShowToastNotification("WMI 탐색 실패", $"오류: {ex.Message}");
+                }
             }
         }
     }

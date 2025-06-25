@@ -29653,3 +29653,2378 @@ ver: System.Management.ManagementBaseObject
 [2025-06-25 18:53:21.574] === 디스플레이 동기화 진단 완료 ===
 [QuadroSyncII] 2025-06-25 18:53:21.575 - Quadro Sync II NVAPI가 초기화되지 않음
 [2025-06-25 18:53:21.575] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:02.811] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 18:55:02.820] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 18:55:02.822] 사용자 설정 저장: Slave
+[2025-06-25 18:55:02.823] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 18:55:02.827] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 18:55:02.828 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 18:55:02.830 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:02.831 - 함수 포인터 바인딩 실패
+[2025-06-25 18:55:02.831] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 18:55:02.859] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 18:55:02.859] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 18:55:02.859] === SyncChecker 초기화 완료 ===
+[2025-06-25 18:55:02.861] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:03.313] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:03.316] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:03.317] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:03.317] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:03.317] 속성: count = 0
+[2025-06-25 18:55:03.317] 속성: displaySyncState = 1
+[2025-06-25 18:55:03.318] 속성: id = 1001
+[2025-06-25 18:55:03.318] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:03.318] 속성: name = 
+[2025-06-25 18:55:03.320] 속성: ordinal = 1
+[2025-06-25 18:55:03.322] 속성: uname = invalid
+[2025-06-25 18:55:03.323] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:03.324] === 속성 확인 완료 ===
+[2025-06-25 18:55:03.326] === 상세 속성 분석 ===
+[2025-06-25 18:55:03.327] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:03.328] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:03.330] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:03.331] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:03.333]   ver.orderedValue = 16777216
+[2025-06-25 18:55:03.335]   ver.strValue = 1.0.0
+[2025-06-25 18:55:03.336]   ver.value = 16777216
+[2025-06-25 18:55:03.338] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:03.339] displaySyncState: 1
+[2025-06-25 18:55:03.340] 사용자 설정 역할: Slave
+[2025-06-25 18:55:03.341] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:03.343] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:03.344] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:03.346] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:03.347] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:55:03.357] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:03.365] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:03.365] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:03.366] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:03.368] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:03.369] 속성: count = 0
+[2025-06-25 18:55:03.371] 속성: displaySyncState = 1
+[2025-06-25 18:55:03.371] 속성: id = 1001
+[2025-06-25 18:55:03.372] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:03.373] 속성: name = 
+[2025-06-25 18:55:03.374] 속성: ordinal = 1
+[2025-06-25 18:55:03.374] 속성: uname = invalid
+[2025-06-25 18:55:03.375] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:03.376] === 속성 확인 완료 ===
+[2025-06-25 18:55:03.376] === 상세 속성 분석 ===
+[2025-06-25 18:55:03.377] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:03.378] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:03.379] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:03.379] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:03.380]   ver.orderedValue = 16777216
+[2025-06-25 18:55:03.383]   ver.strValue = 1.0.0
+[2025-06-25 18:55:03.384]   ver.value = 16777216
+[2025-06-25 18:55:03.386] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:03.386] displaySyncState: 1
+[2025-06-25 18:55:03.387] 사용자 설정 역할: Slave
+[2025-06-25 18:55:03.388] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:03.390] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:03.390] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:03.391] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:03.393] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:03.394 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:03.395] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:03.395] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:55:04.400] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:04.406] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:04.407] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:04.408] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:04.408] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:04.408] 속성: count = 0
+[2025-06-25 18:55:04.409] 속성: displaySyncState = 1
+[2025-06-25 18:55:04.409] 속성: id = 1001
+[2025-06-25 18:55:04.409] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:04.410] 속성: name = 
+[2025-06-25 18:55:04.410] 속성: ordinal = 1
+[2025-06-25 18:55:04.410] 속성: uname = invalid
+[2025-06-25 18:55:04.411] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:04.411] === 속성 확인 완료 ===
+[2025-06-25 18:55:04.411] === 상세 속성 분석 ===
+[2025-06-25 18:55:04.412] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:04.412] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:04.412] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:04.413] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:04.413]   ver.orderedValue = 16777216
+[2025-06-25 18:55:04.413]   ver.strValue = 1.0.0
+[2025-06-25 18:55:04.414]   ver.value = 16777216
+[2025-06-25 18:55:04.414] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:04.414] displaySyncState: 1
+[2025-06-25 18:55:04.415] 사용자 설정 역할: Slave
+[2025-06-25 18:55:04.415] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:04.415] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:04.416] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:04.416] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:04.418] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:04.419 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:04.419] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:05.420] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:05.834] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:05.835] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:05.835] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:05.835] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:05.836] 속성: count = 0
+[2025-06-25 18:55:05.836] 속성: displaySyncState = 1
+[2025-06-25 18:55:05.836] 속성: id = 1001
+[2025-06-25 18:55:05.837] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:05.837] 속성: name = 
+[2025-06-25 18:55:05.837] 속성: ordinal = 1
+[2025-06-25 18:55:05.838] 속성: uname = invalid
+[2025-06-25 18:55:05.838] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:05.838] === 속성 확인 완료 ===
+[2025-06-25 18:55:05.838] === 상세 속성 분석 ===
+[2025-06-25 18:55:05.839] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:05.839] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:05.839] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:05.840] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:05.840]   ver.orderedValue = 16777216
+[2025-06-25 18:55:05.840]   ver.strValue = 1.0.0
+[2025-06-25 18:55:05.840]   ver.value = 16777216
+[2025-06-25 18:55:05.841] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:05.841] displaySyncState: 1
+[2025-06-25 18:55:05.841] 사용자 설정 역할: Slave
+[2025-06-25 18:55:05.842] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:05.842] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:05.842] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:05.842] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:05.843] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:05.843 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:05.843] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:06.858] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:06.864] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:06.864] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:06.865] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:06.865] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:06.865] 속성: count = 0
+[2025-06-25 18:55:06.866] 속성: displaySyncState = 1
+[2025-06-25 18:55:06.866] 속성: id = 1001
+[2025-06-25 18:55:06.866] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:06.866] 속성: name = 
+[2025-06-25 18:55:06.867] 속성: ordinal = 1
+[2025-06-25 18:55:06.867] 속성: uname = invalid
+[2025-06-25 18:55:06.867] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:06.868] === 속성 확인 완료 ===
+[2025-06-25 18:55:06.868] === 상세 속성 분석 ===
+[2025-06-25 18:55:06.868] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:06.868] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:06.869] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:06.869] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:06.869]   ver.orderedValue = 16777216
+[2025-06-25 18:55:06.869]   ver.strValue = 1.0.0
+[2025-06-25 18:55:06.870]   ver.value = 16777216
+[2025-06-25 18:55:06.870] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:06.870] displaySyncState: 1
+[2025-06-25 18:55:06.871] 사용자 설정 역할: Slave
+[2025-06-25 18:55:06.871] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:06.871] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:06.872] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:06.872] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:06.872] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:06.873 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:06.873] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:07.880] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:08.287] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:08.288] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:08.288] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:08.288] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:08.289] 속성: count = 0
+[2025-06-25 18:55:08.289] 속성: displaySyncState = 1
+[2025-06-25 18:55:08.289] 속성: id = 1001
+[2025-06-25 18:55:08.289] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:08.290] 속성: name = 
+[2025-06-25 18:55:08.290] 속성: ordinal = 1
+[2025-06-25 18:55:08.290] 속성: uname = invalid
+[2025-06-25 18:55:08.291] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:08.291] === 속성 확인 완료 ===
+[2025-06-25 18:55:08.291] === 상세 속성 분석 ===
+[2025-06-25 18:55:08.291] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:08.292] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:08.292] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:08.292] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:08.293]   ver.orderedValue = 16777216
+[2025-06-25 18:55:08.293]   ver.strValue = 1.0.0
+[2025-06-25 18:55:08.293]   ver.value = 16777216
+[2025-06-25 18:55:08.294] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:08.294] displaySyncState: 1
+[2025-06-25 18:55:08.294] 사용자 설정 역할: Slave
+[2025-06-25 18:55:08.294] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:08.295] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:08.295] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:08.295] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:08.295] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:08.296 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:08.296] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:09.312] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:09.317] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:09.318] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:09.318] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:09.318] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:09.319] 속성: count = 0
+[2025-06-25 18:55:09.319] 속성: displaySyncState = 1
+[2025-06-25 18:55:09.319] 속성: id = 1001
+[2025-06-25 18:55:09.319] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:09.320] 속성: name = 
+[2025-06-25 18:55:09.320] 속성: ordinal = 1
+[2025-06-25 18:55:09.320] 속성: uname = invalid
+[2025-06-25 18:55:09.321] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:09.321] === 속성 확인 완료 ===
+[2025-06-25 18:55:09.321] === 상세 속성 분석 ===
+[2025-06-25 18:55:09.322] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:09.322] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:09.322] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:09.322] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:09.323]   ver.orderedValue = 16777216
+[2025-06-25 18:55:09.323]   ver.strValue = 1.0.0
+[2025-06-25 18:55:09.323]   ver.value = 16777216
+[2025-06-25 18:55:09.323] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:09.324] displaySyncState: 1
+[2025-06-25 18:55:09.324] 사용자 설정 역할: Slave
+[2025-06-25 18:55:09.324] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:09.325] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:09.325] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:09.325] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:09.325] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:09.326 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:09.326] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:09.327] === 수동 리프레시 시작 ===
+[2025-06-25 18:55:09.328] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:09.333] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:09.334] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:09.334] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:09.335] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:09.335] 속성: count = 0
+[2025-06-25 18:55:09.335] 속성: displaySyncState = 1
+[2025-06-25 18:55:09.335] 속성: id = 1001
+[2025-06-25 18:55:09.336] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:09.336] 속성: name = 
+[2025-06-25 18:55:09.336] 속성: ordinal = 1
+[2025-06-25 18:55:09.337] 속성: uname = invalid
+[2025-06-25 18:55:09.337] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:09.337] === 속성 확인 완료 ===
+[2025-06-25 18:55:09.337] === 상세 속성 분석 ===
+[2025-06-25 18:55:09.338] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:09.338] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:09.338] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:09.338] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:09.339]   ver.orderedValue = 16777216
+[2025-06-25 18:55:09.339]   ver.strValue = 1.0.0
+[2025-06-25 18:55:09.339]   ver.value = 16777216
+[2025-06-25 18:55:09.340] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:09.340] displaySyncState: 1
+[2025-06-25 18:55:09.340] 사용자 설정 역할: Slave
+[2025-06-25 18:55:09.340] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:09.341] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:09.341] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:09.341] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:09.342] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:55:09.342] 리프레시 후 Sync 상태 변경: Free (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:55:09.342] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:09.347] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:09.347] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:09.347] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:09.348] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:09.348] 속성: count = 0
+[2025-06-25 18:55:09.348] 속성: displaySyncState = 1
+[2025-06-25 18:55:09.349] 속성: id = 1001
+[2025-06-25 18:55:09.349] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:09.349] 속성: name = 
+[2025-06-25 18:55:09.350] 속성: ordinal = 1
+[2025-06-25 18:55:09.350] 속성: uname = invalid
+[2025-06-25 18:55:09.350] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:09.350] === 속성 확인 완료 ===
+[2025-06-25 18:55:09.351] === 상세 속성 분석 ===
+[2025-06-25 18:55:09.351] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:09.351] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:09.352] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:09.352] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:09.352]   ver.orderedValue = 16777216
+[2025-06-25 18:55:09.352]   ver.strValue = 1.0.0
+[2025-06-25 18:55:09.353]   ver.value = 16777216
+[2025-06-25 18:55:09.353] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:09.353] displaySyncState: 1
+[2025-06-25 18:55:09.353] 사용자 설정 역할: Slave
+[2025-06-25 18:55:09.354] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:09.354] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:09.354] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:09.354] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:09.355] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:55:09.357] === SyncChecker 정리 시작 ===
+[2025-06-25 18:55:09.357] WMI 이벤트 모니터링 중지됨
+[2025-06-25 18:55:09.358] NVAPI 래퍼 정리됨
+[2025-06-25 18:55:09.358] === SyncChecker 정리 완료 ===
+[2025-06-25 18:55:12.621] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 18:55:12.622] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 18:55:12.622] 사용자 설정 저장: Slave
+[2025-06-25 18:55:12.622] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 18:55:12.623] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 18:55:12.623 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 18:55:12.624 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.624 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.625 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:55:12.625 - 함수 포인터 바인딩 실패
+[2025-06-25 18:55:12.625] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 18:55:12.628] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 18:55:12.628] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 18:55:12.628] === SyncChecker 초기화 완료 ===
+[2025-06-25 18:55:17.619] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:18.007] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:18.009] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:18.009] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:18.009] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:18.010] 속성: count = 0
+[2025-06-25 18:55:18.010] 속성: displaySyncState = 1
+[2025-06-25 18:55:18.010] 속성: id = 1001
+[2025-06-25 18:55:18.011] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:18.011] 속성: name = 
+[2025-06-25 18:55:18.011] 속성: ordinal = 1
+[2025-06-25 18:55:18.011] 속성: uname = invalid
+[2025-06-25 18:55:18.012] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:18.012] === 속성 확인 완료 ===
+[2025-06-25 18:55:18.012] === 상세 속성 분석 ===
+[2025-06-25 18:55:18.012] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:18.013] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:18.013] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:18.013] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:18.014]   ver.orderedValue = 16777216
+[2025-06-25 18:55:18.014]   ver.strValue = 1.0.0
+[2025-06-25 18:55:18.014]   ver.value = 16777216
+[2025-06-25 18:55:18.014] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:18.015] displaySyncState: 1
+[2025-06-25 18:55:18.015] 사용자 설정 역할: Slave
+[2025-06-25 18:55:18.015] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:18.015] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:18.016] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:18.016] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:18.016] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:18.017 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:18.017] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:18.017] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:55:22.633] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:23.022] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:23.023] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:23.023] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:23.024] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:23.024] 속성: count = 0
+[2025-06-25 18:55:23.024] 속성: displaySyncState = 1
+[2025-06-25 18:55:23.025] 속성: id = 1001
+[2025-06-25 18:55:23.025] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:23.025] 속성: name = 
+[2025-06-25 18:55:23.026] 속성: ordinal = 1
+[2025-06-25 18:55:23.026] 속성: uname = invalid
+[2025-06-25 18:55:23.026] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:23.027] === 속성 확인 완료 ===
+[2025-06-25 18:55:23.027] === 상세 속성 분석 ===
+[2025-06-25 18:55:23.027] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:23.028] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:23.028] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:23.028] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:23.029]   ver.orderedValue = 16777216
+[2025-06-25 18:55:23.029]   ver.strValue = 1.0.0
+[2025-06-25 18:55:23.029]   ver.value = 16777216
+[2025-06-25 18:55:23.030] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:23.030] displaySyncState: 1
+[2025-06-25 18:55:23.030] 사용자 설정 역할: Slave
+[2025-06-25 18:55:23.031] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:23.031] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:23.031] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:23.032] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:23.032] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:23.032 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:23.032] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:27.639] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:28.039] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:28.040] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:28.040] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:28.041] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:28.041] 속성: count = 0
+[2025-06-25 18:55:28.041] 속성: displaySyncState = 1
+[2025-06-25 18:55:28.042] 속성: id = 1001
+[2025-06-25 18:55:28.042] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:28.042] 속성: name = 
+[2025-06-25 18:55:28.042] 속성: ordinal = 1
+[2025-06-25 18:55:28.043] 속성: uname = invalid
+[2025-06-25 18:55:28.043] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:28.043] === 속성 확인 완료 ===
+[2025-06-25 18:55:28.043] === 상세 속성 분석 ===
+[2025-06-25 18:55:28.044] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:28.044] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:28.044] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:28.044] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:28.045]   ver.orderedValue = 16777216
+[2025-06-25 18:55:28.045]   ver.strValue = 1.0.0
+[2025-06-25 18:55:28.045]   ver.value = 16777216
+[2025-06-25 18:55:28.046] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:28.046] displaySyncState: 1
+[2025-06-25 18:55:28.046] 사용자 설정 역할: Slave
+[2025-06-25 18:55:28.047] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:28.047] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:28.047] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:28.047] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:28.048] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:28.048 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:28.048] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:32.632] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:33.240] 진단 결과: SyncTopology에서 정보를 찾을 수 없습니다.
+[QuadroSyncII] 2025-06-25 18:55:33.241 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:33.241] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:33.241] Sync 상태 변경: Free (SyncTopology에서 정보를 찾을 수 없습니다.)
+[2025-06-25 18:55:37.642] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:55:38.035] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:55:38.036] === SyncTopology 속성 분석 ===
+[2025-06-25 18:55:38.037] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:55:38.037] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:55:38.037] 속성: count = 0
+[2025-06-25 18:55:38.038] 속성: displaySyncState = 1
+[2025-06-25 18:55:38.038] 속성: id = 1001
+[2025-06-25 18:55:38.038] 속성: isDisplayMasterable = True
+[2025-06-25 18:55:38.039] 속성: name = 
+[2025-06-25 18:55:38.039] 속성: ordinal = 1
+[2025-06-25 18:55:38.039] 속성: uname = invalid
+[2025-06-25 18:55:38.039] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:55:38.040] === 속성 확인 완료 ===
+[2025-06-25 18:55:38.040] === 상세 속성 분석 ===
+[2025-06-25 18:55:38.040] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:55:38.040] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:55:38.041] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:55:38.041] === ver 객체 내부 속성 ===
+[2025-06-25 18:55:38.041]   ver.orderedValue = 16777216
+[2025-06-25 18:55:38.042]   ver.strValue = 1.0.0
+[2025-06-25 18:55:38.042]   ver.value = 16777216
+[2025-06-25 18:55:38.042] === 상세 속성 분석 완료 ===
+[2025-06-25 18:55:38.042] displaySyncState: 1
+[2025-06-25 18:55:38.043] 사용자 설정 역할: Slave
+[2025-06-25 18:55:38.043] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:55:38.043] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:55:38.043] 타이밍 서버: ThisSystem
+[2025-06-25 18:55:38.044] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:55:38.044] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:55:38.044 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:55:38.045] NVAPI 보조 정보: Unknown
+[2025-06-25 18:55:38.045] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:56:26.794] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 18:56:26.803] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 18:56:26.806] 사용자 설정 저장: Slave
+[2025-06-25 18:56:26.806] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 18:56:26.809] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 18:56:26.810 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 18:56:26.812 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:26.813 - 함수 포인터 바인딩 실패
+[2025-06-25 18:56:26.813] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 18:56:26.838] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 18:56:26.838] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 18:56:26.838] === SyncChecker 초기화 완료 ===
+[2025-06-25 18:56:26.839] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:27.322] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:27.325] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:27.325] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:27.326] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:27.326] 속성: count = 0
+[2025-06-25 18:56:27.326] 속성: displaySyncState = 1
+[2025-06-25 18:56:27.326] 속성: id = 1001
+[2025-06-25 18:56:27.326] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:27.326] 속성: name = 
+[2025-06-25 18:56:27.327] 속성: ordinal = 1
+[2025-06-25 18:56:27.327] 속성: uname = invalid
+[2025-06-25 18:56:27.327] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:27.328] === 속성 확인 완료 ===
+[2025-06-25 18:56:27.328] === 상세 속성 분석 ===
+[2025-06-25 18:56:27.328] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:27.328] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:27.329] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:27.329] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:27.329]   ver.orderedValue = 16777216
+[2025-06-25 18:56:27.330]   ver.strValue = 1.0.0
+[2025-06-25 18:56:27.330]   ver.value = 16777216
+[2025-06-25 18:56:27.330] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:27.331] displaySyncState: 1
+[2025-06-25 18:56:27.331] 사용자 설정 역할: Slave
+[2025-06-25 18:56:27.331] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:27.331] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:27.332] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:27.332] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:27.332] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:56:27.336] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:27.342] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:27.343] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:27.343] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:27.343] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:27.344] 속성: count = 0
+[2025-06-25 18:56:27.344] 속성: displaySyncState = 1
+[2025-06-25 18:56:27.344] 속성: id = 1001
+[2025-06-25 18:56:27.345] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:27.345] 속성: name = 
+[2025-06-25 18:56:27.345] 속성: ordinal = 1
+[2025-06-25 18:56:27.345] 속성: uname = invalid
+[2025-06-25 18:56:27.346] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:27.346] === 속성 확인 완료 ===
+[2025-06-25 18:56:27.346] === 상세 속성 분석 ===
+[2025-06-25 18:56:27.347] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:27.347] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:27.347] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:27.348] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:27.348]   ver.orderedValue = 16777216
+[2025-06-25 18:56:27.348]   ver.strValue = 1.0.0
+[2025-06-25 18:56:27.348]   ver.value = 16777216
+[2025-06-25 18:56:27.349] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:27.349] displaySyncState: 1
+[2025-06-25 18:56:27.350] 사용자 설정 역할: Slave
+[2025-06-25 18:56:27.350] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:27.351] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:27.351] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:27.351] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:27.352] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:27.353 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:27.353] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:27.353] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:56:28.360] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:28.365] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:28.366] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:28.366] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:28.367] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:28.367] 속성: count = 0
+[2025-06-25 18:56:28.367] 속성: displaySyncState = 1
+[2025-06-25 18:56:28.367] 속성: id = 1001
+[2025-06-25 18:56:28.368] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:28.368] 속성: name = 
+[2025-06-25 18:56:28.368] 속성: ordinal = 1
+[2025-06-25 18:56:28.369] 속성: uname = invalid
+[2025-06-25 18:56:28.369] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:28.369] === 속성 확인 완료 ===
+[2025-06-25 18:56:28.370] === 상세 속성 분석 ===
+[2025-06-25 18:56:28.370] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:28.370] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:28.371] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:28.371] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:28.371]   ver.orderedValue = 16777216
+[2025-06-25 18:56:28.371]   ver.strValue = 1.0.0
+[2025-06-25 18:56:28.372]   ver.value = 16777216
+[2025-06-25 18:56:28.372] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:28.372] displaySyncState: 1
+[2025-06-25 18:56:28.373] 사용자 설정 역할: Slave
+[2025-06-25 18:56:28.373] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:28.373] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:28.373] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:28.374] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:28.374] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:28.375 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:28.375] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:29.388] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:29.835] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:29.836] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:29.836] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:29.837] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:29.837] 속성: count = 0
+[2025-06-25 18:56:29.838] 속성: displaySyncState = 1
+[2025-06-25 18:56:29.838] 속성: id = 1001
+[2025-06-25 18:56:29.838] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:29.839] 속성: name = 
+[2025-06-25 18:56:29.839] 속성: ordinal = 1
+[2025-06-25 18:56:29.839] 속성: uname = invalid
+[2025-06-25 18:56:29.839] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:29.840] === 속성 확인 완료 ===
+[2025-06-25 18:56:29.840] === 상세 속성 분석 ===
+[2025-06-25 18:56:29.840] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:29.841] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:29.841] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:29.841] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:29.842]   ver.orderedValue = 16777216
+[2025-06-25 18:56:29.842]   ver.strValue = 1.0.0
+[2025-06-25 18:56:29.842]   ver.value = 16777216
+[2025-06-25 18:56:29.842] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:29.843] displaySyncState: 1
+[2025-06-25 18:56:29.843] 사용자 설정 역할: Slave
+[2025-06-25 18:56:29.844] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:29.844] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:29.844] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:29.844] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:29.845] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:29.845 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:29.845] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:30.849] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:30.854] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:30.855] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:30.855] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:30.855] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:30.856] 속성: count = 0
+[2025-06-25 18:56:30.856] 속성: displaySyncState = 1
+[2025-06-25 18:56:30.856] 속성: id = 1001
+[2025-06-25 18:56:30.857] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:30.857] 속성: name = 
+[2025-06-25 18:56:30.857] 속성: ordinal = 1
+[2025-06-25 18:56:30.857] 속성: uname = invalid
+[2025-06-25 18:56:30.858] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:30.858] === 속성 확인 완료 ===
+[2025-06-25 18:56:30.858] === 상세 속성 분석 ===
+[2025-06-25 18:56:30.859] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:30.859] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:30.859] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:30.860] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:30.860]   ver.orderedValue = 16777216
+[2025-06-25 18:56:30.860]   ver.strValue = 1.0.0
+[2025-06-25 18:56:30.861]   ver.value = 16777216
+[2025-06-25 18:56:30.861] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:30.861] displaySyncState: 1
+[2025-06-25 18:56:30.862] 사용자 설정 역할: Slave
+[2025-06-25 18:56:30.862] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:30.862] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:30.863] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:30.863] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:30.864] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:30.864 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:30.864] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:31.866] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:32.334] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:32.335] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:32.335] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:32.336] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:32.336] 속성: count = 0
+[2025-06-25 18:56:32.336] 속성: displaySyncState = 1
+[2025-06-25 18:56:32.336] 속성: id = 1001
+[2025-06-25 18:56:32.337] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:32.337] 속성: name = 
+[2025-06-25 18:56:32.337] 속성: ordinal = 1
+[2025-06-25 18:56:32.337] 속성: uname = invalid
+[2025-06-25 18:56:32.338] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:32.338] === 속성 확인 완료 ===
+[2025-06-25 18:56:32.338] === 상세 속성 분석 ===
+[2025-06-25 18:56:32.339] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:32.339] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:32.339] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:32.340] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:32.340]   ver.orderedValue = 16777216
+[2025-06-25 18:56:32.340]   ver.strValue = 1.0.0
+[2025-06-25 18:56:32.341]   ver.value = 16777216
+[2025-06-25 18:56:32.341] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:32.341] displaySyncState: 1
+[2025-06-25 18:56:32.342] 사용자 설정 역할: Slave
+[2025-06-25 18:56:32.342] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:32.342] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:32.343] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:32.343] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:32.343] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:32.344 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:32.344] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:33.346] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:33.351] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:33.352] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:33.352] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:33.352] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:33.352] 속성: count = 0
+[2025-06-25 18:56:33.353] 속성: displaySyncState = 1
+[2025-06-25 18:56:33.353] 속성: id = 1001
+[2025-06-25 18:56:33.353] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:33.354] 속성: name = 
+[2025-06-25 18:56:33.354] 속성: ordinal = 1
+[2025-06-25 18:56:33.354] 속성: uname = invalid
+[2025-06-25 18:56:33.354] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:33.355] === 속성 확인 완료 ===
+[2025-06-25 18:56:33.355] === 상세 속성 분석 ===
+[2025-06-25 18:56:33.355] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:33.355] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:33.356] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:33.356] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:33.356]   ver.orderedValue = 16777216
+[2025-06-25 18:56:33.357]   ver.strValue = 1.0.0
+[2025-06-25 18:56:33.357]   ver.value = 16777216
+[2025-06-25 18:56:33.357] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:33.357] displaySyncState: 1
+[2025-06-25 18:56:33.358] 사용자 설정 역할: Slave
+[2025-06-25 18:56:33.358] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:33.358] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:33.359] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:33.359] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:33.359] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:33.360 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:33.360] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:33.361] === 수동 리프레시 시작 ===
+[2025-06-25 18:56:33.362] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:33.366] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:33.367] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:33.367] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:33.367] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:33.368] 속성: count = 0
+[2025-06-25 18:56:33.368] 속성: displaySyncState = 1
+[2025-06-25 18:56:33.368] 속성: id = 1001
+[2025-06-25 18:56:33.368] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:33.369] 속성: name = 
+[2025-06-25 18:56:33.369] 속성: ordinal = 1
+[2025-06-25 18:56:33.369] 속성: uname = invalid
+[2025-06-25 18:56:33.370] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:33.370] === 속성 확인 완료 ===
+[2025-06-25 18:56:33.370] === 상세 속성 분석 ===
+[2025-06-25 18:56:33.370] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:33.371] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:33.371] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:33.371] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:33.371]   ver.orderedValue = 16777216
+[2025-06-25 18:56:33.372]   ver.strValue = 1.0.0
+[2025-06-25 18:56:33.372]   ver.value = 16777216
+[2025-06-25 18:56:33.372] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:33.373] displaySyncState: 1
+[2025-06-25 18:56:33.373] 사용자 설정 역할: Slave
+[2025-06-25 18:56:33.373] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:33.373] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:33.374] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:33.374] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:33.374] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:56:33.375] 리프레시 후 Sync 상태 변경: Free (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:56:33.375] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:33.379] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:33.379] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:33.380] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:33.380] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:33.380] 속성: count = 0
+[2025-06-25 18:56:33.381] 속성: displaySyncState = 1
+[2025-06-25 18:56:33.381] 속성: id = 1001
+[2025-06-25 18:56:33.381] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:33.381] 속성: name = 
+[2025-06-25 18:56:33.382] 속성: ordinal = 1
+[2025-06-25 18:56:33.382] 속성: uname = invalid
+[2025-06-25 18:56:33.382] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:33.382] === 속성 확인 완료 ===
+[2025-06-25 18:56:33.383] === 상세 속성 분석 ===
+[2025-06-25 18:56:33.383] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:33.383] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:33.383] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:33.384] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:33.384]   ver.orderedValue = 16777216
+[2025-06-25 18:56:33.384]   ver.strValue = 1.0.0
+[2025-06-25 18:56:33.384]   ver.value = 16777216
+[2025-06-25 18:56:33.385] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:33.385] displaySyncState: 1
+[2025-06-25 18:56:33.385] 사용자 설정 역할: Slave
+[2025-06-25 18:56:33.386] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:33.386] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:33.386] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:33.386] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:33.387] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:56:33.388] === SyncChecker 정리 시작 ===
+[2025-06-25 18:56:33.388] WMI 이벤트 모니터링 중지됨
+[2025-06-25 18:56:33.389] NVAPI 래퍼 정리됨
+[2025-06-25 18:56:33.389] === SyncChecker 정리 완료 ===
+[2025-06-25 18:56:35.876] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 18:56:35.877] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 18:56:35.877] 사용자 설정 저장: Slave
+[2025-06-25 18:56:35.877] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 18:56:35.878] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 18:56:35.878 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 18:56:35.879 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 18:56:35.879 - 함수 포인터 바인딩 실패
+[2025-06-25 18:56:35.879] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 18:56:35.882] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 18:56:35.882] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 18:56:35.882] === SyncChecker 초기화 완료 ===
+[2025-06-25 18:56:40.889] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:41.289] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:41.290] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:41.290] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:41.291] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:41.291] 속성: count = 0
+[2025-06-25 18:56:41.291] 속성: displaySyncState = 1
+[2025-06-25 18:56:41.291] 속성: id = 1001
+[2025-06-25 18:56:41.292] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:41.292] 속성: name = 
+[2025-06-25 18:56:41.292] 속성: ordinal = 1
+[2025-06-25 18:56:41.293] 속성: uname = invalid
+[2025-06-25 18:56:41.293] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:41.293] === 속성 확인 완료 ===
+[2025-06-25 18:56:41.293] === 상세 속성 분석 ===
+[2025-06-25 18:56:41.294] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:41.294] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:41.294] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:41.295] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:41.295]   ver.orderedValue = 16777216
+[2025-06-25 18:56:41.295]   ver.strValue = 1.0.0
+[2025-06-25 18:56:41.295]   ver.value = 16777216
+[2025-06-25 18:56:41.296] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:41.296] displaySyncState: 1
+[2025-06-25 18:56:41.296] 사용자 설정 역할: Slave
+[2025-06-25 18:56:41.297] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:41.297] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:41.297] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:41.297] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:56:41.298] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:41.298 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:41.298] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:41.298] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:56:45.383] 사용자 설정 저장: Master
+[2025-06-25 18:56:45.383] 사용자 역할 설정: Master
+[2025-06-25 18:56:45.384] === 수동 리프레시 시작 ===
+[2025-06-25 18:56:45.386] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:45.801] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:45.802] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:45.803] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:45.803] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:45.803] 속성: count = 0
+[2025-06-25 18:56:45.804] 속성: displaySyncState = 1
+[2025-06-25 18:56:45.804] 속성: id = 1001
+[2025-06-25 18:56:45.804] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:45.805] 속성: name = 
+[2025-06-25 18:56:45.805] 속성: ordinal = 1
+[2025-06-25 18:56:45.805] 속성: uname = invalid
+[2025-06-25 18:56:45.805] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:45.806] === 속성 확인 완료 ===
+[2025-06-25 18:56:45.806] === 상세 속성 분석 ===
+[2025-06-25 18:56:45.807] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:45.807] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:45.807] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:45.808] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:45.808]   ver.orderedValue = 16777216
+[2025-06-25 18:56:45.808]   ver.strValue = 1.0.0
+[2025-06-25 18:56:45.808]   ver.value = 16777216
+[2025-06-25 18:56:45.809] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:45.809] displaySyncState: 1
+[2025-06-25 18:56:45.809] 사용자 설정 역할: Master
+[2025-06-25 18:56:45.810] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:45.810] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:45.810] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:45.810] 진단 결과: 설정: Master, 실제: Master → 동기화됨
+[2025-06-25 18:56:45.811] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:56:45.811] 리프레시 후 Sync 상태 변경: Synced (설정: Master, 실제: Master → 동기화됨)
+[2025-06-25 18:56:45.893] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:45.898] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:45.898] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:45.899] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:45.899] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:45.899] 속성: count = 0
+[2025-06-25 18:56:45.900] 속성: displaySyncState = 1
+[2025-06-25 18:56:45.900] 속성: id = 1001
+[2025-06-25 18:56:45.900] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:45.901] 속성: name = 
+[2025-06-25 18:56:45.901] 속성: ordinal = 1
+[2025-06-25 18:56:45.901] 속성: uname = invalid
+[2025-06-25 18:56:45.901] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:45.902] === 속성 확인 완료 ===
+[2025-06-25 18:56:45.902] === 상세 속성 분석 ===
+[2025-06-25 18:56:45.902] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:45.902] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:45.903] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:45.903] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:45.903]   ver.orderedValue = 16777216
+[2025-06-25 18:56:45.903]   ver.strValue = 1.0.0
+[2025-06-25 18:56:45.904]   ver.value = 16777216
+[2025-06-25 18:56:45.904] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:45.904] displaySyncState: 1
+[2025-06-25 18:56:45.905] 사용자 설정 역할: Master
+[2025-06-25 18:56:45.905] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:45.905] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:45.905] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:45.906] 진단 결과: 설정: Master, 실제: Master → 동기화됨
+[2025-06-25 18:56:45.906] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:45.906 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:45.907] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:50.882] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:51.281] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:51.282] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:51.282] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:51.283] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:51.283] 속성: count = 0
+[2025-06-25 18:56:51.283] 속성: displaySyncState = 1
+[2025-06-25 18:56:51.284] 속성: id = 1001
+[2025-06-25 18:56:51.284] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:51.284] 속성: name = 
+[2025-06-25 18:56:51.284] 속성: ordinal = 1
+[2025-06-25 18:56:51.285] 속성: uname = invalid
+[2025-06-25 18:56:51.285] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:51.285] === 속성 확인 완료 ===
+[2025-06-25 18:56:51.285] === 상세 속성 분석 ===
+[2025-06-25 18:56:51.285] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:51.286] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:51.286] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:51.286] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:51.287]   ver.orderedValue = 16777216
+[2025-06-25 18:56:51.287]   ver.strValue = 1.0.0
+[2025-06-25 18:56:51.287]   ver.value = 16777216
+[2025-06-25 18:56:51.287] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:51.287] displaySyncState: 1
+[2025-06-25 18:56:51.288] 사용자 설정 역할: Master
+[2025-06-25 18:56:51.288] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:51.288] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:51.289] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:51.289] 진단 결과: 설정: Master, 실제: Master → 동기화됨
+[2025-06-25 18:56:51.289] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:51.290 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:51.290] NVAPI 보조 정보: Unknown
+[2025-06-25 18:56:55.892] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:56:56.841] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:56:56.843] === SyncTopology 속성 분석 ===
+[2025-06-25 18:56:56.843] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:56:56.846] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:56:56.846] 속성: count = 0
+[2025-06-25 18:56:56.849] 속성: displaySyncState = 1
+[2025-06-25 18:56:56.849] 속성: id = 1001
+[2025-06-25 18:56:56.850] 속성: isDisplayMasterable = True
+[2025-06-25 18:56:56.850] 속성: name = 
+[2025-06-25 18:56:56.850] 속성: ordinal = 1
+[2025-06-25 18:56:56.850] 속성: uname = invalid
+[2025-06-25 18:56:56.851] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:56:56.851] === 속성 확인 완료 ===
+[2025-06-25 18:56:56.851] === 상세 속성 분석 ===
+[2025-06-25 18:56:56.851] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:56:56.852] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:56:56.856] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:56:56.859] === ver 객체 내부 속성 ===
+[2025-06-25 18:56:56.860]   ver.orderedValue = 16777216
+[2025-06-25 18:56:56.862]   ver.strValue = 1.0.0
+[2025-06-25 18:56:56.863]   ver.value = 16777216
+[2025-06-25 18:56:56.865] === 상세 속성 분석 완료 ===
+[2025-06-25 18:56:56.869] displaySyncState: 1
+[2025-06-25 18:56:56.870] 사용자 설정 역할: Master
+[2025-06-25 18:56:56.872] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:56:56.873] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:56:56.874] 타이밍 서버: ThisSystem
+[2025-06-25 18:56:56.874] 진단 결과: 설정: Master, 실제: Master → 동기화됨
+[2025-06-25 18:56:56.876] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:56:56.877 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:56:56.877] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:00.908] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:01.296] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:01.297] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:01.297] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:01.297] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:01.298] 속성: count = 0
+[2025-06-25 18:57:01.298] 속성: displaySyncState = 1
+[2025-06-25 18:57:01.298] 속성: id = 1001
+[2025-06-25 18:57:01.299] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:01.299] 속성: name = 
+[2025-06-25 18:57:01.299] 속성: ordinal = 1
+[2025-06-25 18:57:01.299] 속성: uname = invalid
+[2025-06-25 18:57:01.300] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:01.300] === 속성 확인 완료 ===
+[2025-06-25 18:57:01.300] === 상세 속성 분석 ===
+[2025-06-25 18:57:01.301] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:01.301] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:01.301] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:01.301] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:01.302]   ver.orderedValue = 16777216
+[2025-06-25 18:57:01.302]   ver.strValue = 1.0.0
+[2025-06-25 18:57:01.302]   ver.value = 16777216
+[2025-06-25 18:57:01.303] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:01.303] displaySyncState: 1
+[2025-06-25 18:57:01.303] 사용자 설정 역할: Master
+[2025-06-25 18:57:01.303] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:01.304] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:01.304] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:01.304] 진단 결과: 설정: Master, 실제: Master → 동기화됨
+[2025-06-25 18:57:01.304] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:01.305 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:01.305] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:04.289] 사용자 설정 저장: Slave
+[2025-06-25 18:57:04.290] 사용자 역할 설정: Slave
+[2025-06-25 18:57:04.290] === 수동 리프레시 시작 ===
+[2025-06-25 18:57:04.292] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:04.687] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:04.688] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:04.688] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:04.688] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:04.689] 속성: count = 0
+[2025-06-25 18:57:04.689] 속성: displaySyncState = 1
+[2025-06-25 18:57:04.689] 속성: id = 1001
+[2025-06-25 18:57:04.690] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:04.690] 속성: name = 
+[2025-06-25 18:57:04.690] 속성: ordinal = 1
+[2025-06-25 18:57:04.690] 속성: uname = invalid
+[2025-06-25 18:57:04.691] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:04.691] === 속성 확인 완료 ===
+[2025-06-25 18:57:04.691] === 상세 속성 분석 ===
+[2025-06-25 18:57:04.692] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:04.692] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:04.692] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:04.692] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:04.693]   ver.orderedValue = 16777216
+[2025-06-25 18:57:04.693]   ver.strValue = 1.0.0
+[2025-06-25 18:57:04.694]   ver.value = 16777216
+[2025-06-25 18:57:04.694] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:04.694] displaySyncState: 1
+[2025-06-25 18:57:04.694] 사용자 설정 역할: Slave
+[2025-06-25 18:57:04.695] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:04.695] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:04.695] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:04.696] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:04.696] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 18:57:04.696] 리프레시 후 Sync 상태 변경: Free (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:57:05.922] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:05.926] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:05.927] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:05.927] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:05.928] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:05.928] 속성: count = 0
+[2025-06-25 18:57:05.928] 속성: displaySyncState = 1
+[2025-06-25 18:57:05.929] 속성: id = 1001
+[2025-06-25 18:57:05.929] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:05.929] 속성: name = 
+[2025-06-25 18:57:05.930] 속성: ordinal = 1
+[2025-06-25 18:57:05.930] 속성: uname = invalid
+[2025-06-25 18:57:05.930] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:05.930] === 속성 확인 완료 ===
+[2025-06-25 18:57:05.931] === 상세 속성 분석 ===
+[2025-06-25 18:57:05.931] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:05.931] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:05.931] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:05.932] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:05.932]   ver.orderedValue = 16777216
+[2025-06-25 18:57:05.932]   ver.strValue = 1.0.0
+[2025-06-25 18:57:05.933]   ver.value = 16777216
+[2025-06-25 18:57:05.933] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:05.933] displaySyncState: 1
+[2025-06-25 18:57:05.933] 사용자 설정 역할: Slave
+[2025-06-25 18:57:05.934] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:05.934] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:05.934] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:05.934] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:05.935] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:05.935 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:05.935] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:05.935] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 18:57:10.940] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:11.333] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:11.334] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:11.334] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:11.334] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:11.335] 속성: count = 0
+[2025-06-25 18:57:11.335] 속성: displaySyncState = 1
+[2025-06-25 18:57:11.335] 속성: id = 1001
+[2025-06-25 18:57:11.335] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:11.336] 속성: name = 
+[2025-06-25 18:57:11.336] 속성: ordinal = 1
+[2025-06-25 18:57:11.336] 속성: uname = invalid
+[2025-06-25 18:57:11.337] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:11.337] === 속성 확인 완료 ===
+[2025-06-25 18:57:11.337] === 상세 속성 분석 ===
+[2025-06-25 18:57:11.338] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:11.338] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:11.338] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:11.338] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:11.339]   ver.orderedValue = 16777216
+[2025-06-25 18:57:11.339]   ver.strValue = 1.0.0
+[2025-06-25 18:57:11.339]   ver.value = 16777216
+[2025-06-25 18:57:11.340] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:11.340] displaySyncState: 1
+[2025-06-25 18:57:11.340] 사용자 설정 역할: Slave
+[2025-06-25 18:57:11.340] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:11.341] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:11.341] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:11.341] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:11.342] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:11.342 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:11.342] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:15.940] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:16.317] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:16.318] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:16.318] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:16.319] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:16.319] 속성: count = 0
+[2025-06-25 18:57:16.319] 속성: displaySyncState = 1
+[2025-06-25 18:57:16.320] 속성: id = 1001
+[2025-06-25 18:57:16.320] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:16.320] 속성: name = 
+[2025-06-25 18:57:16.321] 속성: ordinal = 1
+[2025-06-25 18:57:16.321] 속성: uname = invalid
+[2025-06-25 18:57:16.321] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:16.321] === 속성 확인 완료 ===
+[2025-06-25 18:57:16.322] === 상세 속성 분석 ===
+[2025-06-25 18:57:16.322] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:16.322] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:16.323] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:16.323] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:16.323]   ver.orderedValue = 16777216
+[2025-06-25 18:57:16.324]   ver.strValue = 1.0.0
+[2025-06-25 18:57:16.324]   ver.value = 16777216
+[2025-06-25 18:57:16.324] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:16.324] displaySyncState: 1
+[2025-06-25 18:57:16.325] 사용자 설정 역할: Slave
+[2025-06-25 18:57:16.325] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:16.325] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:16.326] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:16.326] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:16.326] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:16.327 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:16.327] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:20.939] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:21.320] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:21.321] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:21.321] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:21.321] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:21.322] 속성: count = 0
+[2025-06-25 18:57:21.322] 속성: displaySyncState = 1
+[2025-06-25 18:57:21.322] 속성: id = 1001
+[2025-06-25 18:57:21.323] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:21.323] 속성: name = 
+[2025-06-25 18:57:21.323] 속성: ordinal = 1
+[2025-06-25 18:57:21.323] 속성: uname = invalid
+[2025-06-25 18:57:21.324] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:21.324] === 속성 확인 완료 ===
+[2025-06-25 18:57:21.324] === 상세 속성 분석 ===
+[2025-06-25 18:57:21.324] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:21.325] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:21.325] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:21.325] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:21.326]   ver.orderedValue = 16777216
+[2025-06-25 18:57:21.326]   ver.strValue = 1.0.0
+[2025-06-25 18:57:21.326]   ver.value = 16777216
+[2025-06-25 18:57:21.326] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:21.327] displaySyncState: 1
+[2025-06-25 18:57:21.327] 사용자 설정 역할: Slave
+[2025-06-25 18:57:21.327] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:21.327] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:21.328] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:21.328] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:21.328] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:21.329 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:21.329] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:25.931] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:26.324] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:26.324] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:26.324] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:26.325] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:26.325] 속성: count = 0
+[2025-06-25 18:57:26.325] 속성: displaySyncState = 1
+[2025-06-25 18:57:26.326] 속성: id = 1001
+[2025-06-25 18:57:26.326] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:26.326] 속성: name = 
+[2025-06-25 18:57:26.326] 속성: ordinal = 1
+[2025-06-25 18:57:26.327] 속성: uname = invalid
+[2025-06-25 18:57:26.327] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:26.327] === 속성 확인 완료 ===
+[2025-06-25 18:57:26.328] === 상세 속성 분석 ===
+[2025-06-25 18:57:26.328] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:26.328] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:26.329] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:26.329] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:26.329]   ver.orderedValue = 16777216
+[2025-06-25 18:57:26.330]   ver.strValue = 1.0.0
+[2025-06-25 18:57:26.330]   ver.value = 16777216
+[2025-06-25 18:57:26.330] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:26.330] displaySyncState: 1
+[2025-06-25 18:57:26.331] 사용자 설정 역할: Slave
+[2025-06-25 18:57:26.331] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:26.331] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:26.332] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:26.332] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:26.332] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:26.332 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:26.333] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:30.944] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:31.342] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:31.343] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:31.344] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:31.344] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:31.345] 속성: count = 0
+[2025-06-25 18:57:31.345] 속성: displaySyncState = 1
+[2025-06-25 18:57:31.345] 속성: id = 1001
+[2025-06-25 18:57:31.345] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:31.346] 속성: name = 
+[2025-06-25 18:57:31.346] 속성: ordinal = 1
+[2025-06-25 18:57:31.346] 속성: uname = invalid
+[2025-06-25 18:57:31.347] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:31.347] === 속성 확인 완료 ===
+[2025-06-25 18:57:31.347] === 상세 속성 분석 ===
+[2025-06-25 18:57:31.347] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:31.348] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:31.348] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:31.348] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:31.349]   ver.orderedValue = 16777216
+[2025-06-25 18:57:31.349]   ver.strValue = 1.0.0
+[2025-06-25 18:57:31.349]   ver.value = 16777216
+[2025-06-25 18:57:31.350] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:31.350] displaySyncState: 1
+[2025-06-25 18:57:31.350] 사용자 설정 역할: Slave
+[2025-06-25 18:57:31.351] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:31.351] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:31.351] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:31.352] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:31.352] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:31.352 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:31.352] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:35.963] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:36.348] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:36.348] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:36.349] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:36.349] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:36.349] 속성: count = 0
+[2025-06-25 18:57:36.350] 속성: displaySyncState = 1
+[2025-06-25 18:57:36.350] 속성: id = 1001
+[2025-06-25 18:57:36.350] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:36.350] 속성: name = 
+[2025-06-25 18:57:36.351] 속성: ordinal = 1
+[2025-06-25 18:57:36.351] 속성: uname = invalid
+[2025-06-25 18:57:36.351] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:36.351] === 속성 확인 완료 ===
+[2025-06-25 18:57:36.352] === 상세 속성 분석 ===
+[2025-06-25 18:57:36.352] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:36.352] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:36.352] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:36.353] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:36.353]   ver.orderedValue = 16777216
+[2025-06-25 18:57:36.353]   ver.strValue = 1.0.0
+[2025-06-25 18:57:36.354]   ver.value = 16777216
+[2025-06-25 18:57:36.354] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:36.354] displaySyncState: 1
+[2025-06-25 18:57:36.354] 사용자 설정 역할: Slave
+[2025-06-25 18:57:36.355] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:36.355] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:36.355] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:36.355] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:36.356] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:36.356 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:36.356] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:40.974] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:41.366] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:41.367] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:41.367] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:41.367] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:41.368] 속성: count = 0
+[2025-06-25 18:57:41.368] 속성: displaySyncState = 1
+[2025-06-25 18:57:41.368] 속성: id = 1001
+[2025-06-25 18:57:41.369] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:41.369] 속성: name = 
+[2025-06-25 18:57:41.369] 속성: ordinal = 1
+[2025-06-25 18:57:41.369] 속성: uname = invalid
+[2025-06-25 18:57:41.370] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:41.370] === 속성 확인 완료 ===
+[2025-06-25 18:57:41.370] === 상세 속성 분석 ===
+[2025-06-25 18:57:41.370] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:41.371] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:41.371] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:41.371] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:41.372]   ver.orderedValue = 16777216
+[2025-06-25 18:57:41.372]   ver.strValue = 1.0.0
+[2025-06-25 18:57:41.372]   ver.value = 16777216
+[2025-06-25 18:57:41.372] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:41.373] displaySyncState: 1
+[2025-06-25 18:57:41.373] 사용자 설정 역할: Slave
+[2025-06-25 18:57:41.373] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:41.373] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:41.374] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:41.374] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:41.374] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:41.375 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:41.375] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:45.968] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:46.354] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:46.354] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:46.355] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:46.355] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:46.355] 속성: count = 0
+[2025-06-25 18:57:46.356] 속성: displaySyncState = 1
+[2025-06-25 18:57:46.356] 속성: id = 1001
+[2025-06-25 18:57:46.356] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:46.356] 속성: name = 
+[2025-06-25 18:57:46.357] 속성: ordinal = 1
+[2025-06-25 18:57:46.357] 속성: uname = invalid
+[2025-06-25 18:57:46.357] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:46.357] === 속성 확인 완료 ===
+[2025-06-25 18:57:46.358] === 상세 속성 분석 ===
+[2025-06-25 18:57:46.358] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:46.358] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:46.358] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:46.359] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:46.359]   ver.orderedValue = 16777216
+[2025-06-25 18:57:46.359]   ver.strValue = 1.0.0
+[2025-06-25 18:57:46.360]   ver.value = 16777216
+[2025-06-25 18:57:46.360] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:46.360] displaySyncState: 1
+[2025-06-25 18:57:46.360] 사용자 설정 역할: Slave
+[2025-06-25 18:57:46.361] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:46.361] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:46.361] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:46.361] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:46.362] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:46.362 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:46.362] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:50.985] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:51.377] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:51.378] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:51.378] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:51.378] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:51.379] 속성: count = 0
+[2025-06-25 18:57:51.379] 속성: displaySyncState = 1
+[2025-06-25 18:57:51.379] 속성: id = 1001
+[2025-06-25 18:57:51.379] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:51.380] 속성: name = 
+[2025-06-25 18:57:51.380] 속성: ordinal = 1
+[2025-06-25 18:57:51.380] 속성: uname = invalid
+[2025-06-25 18:57:51.380] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:51.381] === 속성 확인 완료 ===
+[2025-06-25 18:57:51.381] === 상세 속성 분석 ===
+[2025-06-25 18:57:51.381] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:51.382] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:51.382] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:51.382] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:51.383]   ver.orderedValue = 16777216
+[2025-06-25 18:57:51.383]   ver.strValue = 1.0.0
+[2025-06-25 18:57:51.383]   ver.value = 16777216
+[2025-06-25 18:57:51.383] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:51.384] displaySyncState: 1
+[2025-06-25 18:57:51.384] 사용자 설정 역할: Slave
+[2025-06-25 18:57:51.384] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:51.385] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:51.385] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:51.385] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:51.386] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:51.386 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:51.386] NVAPI 보조 정보: Unknown
+[2025-06-25 18:57:55.990] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 18:57:56.382] SyncTopology 인스턴스 3개 발견
+[2025-06-25 18:57:56.383] === SyncTopology 속성 분석 ===
+[2025-06-25 18:57:56.383] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 18:57:56.384] === 사용 가능한 모든 속성 ===
+[2025-06-25 18:57:56.384] 속성: count = 0
+[2025-06-25 18:57:56.384] 속성: displaySyncState = 1
+[2025-06-25 18:57:56.385] 속성: id = 1001
+[2025-06-25 18:57:56.385] 속성: isDisplayMasterable = True
+[2025-06-25 18:57:56.385] 속성: name = 
+[2025-06-25 18:57:56.385] 속성: ordinal = 1
+[2025-06-25 18:57:56.386] 속성: uname = invalid
+[2025-06-25 18:57:56.386] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 18:57:56.386] === 속성 확인 완료 ===
+[2025-06-25 18:57:56.386] === 상세 속성 분석 ===
+[2025-06-25 18:57:56.387] name 속성 타입: System.String, 값: ''
+[2025-06-25 18:57:56.387] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 18:57:56.387] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 18:57:56.388] === ver 객체 내부 속성 ===
+[2025-06-25 18:57:56.388]   ver.orderedValue = 16777216
+[2025-06-25 18:57:56.388]   ver.strValue = 1.0.0
+[2025-06-25 18:57:56.388]   ver.value = 16777216
+[2025-06-25 18:57:56.389] === 상세 속성 분석 완료 ===
+[2025-06-25 18:57:56.389] displaySyncState: 1
+[2025-06-25 18:57:56.389] 사용자 설정 역할: Slave
+[2025-06-25 18:57:56.389] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 18:57:56.390] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 18:57:56.390] 타이밍 서버: ThisSystem
+[2025-06-25 18:57:56.390] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 18:57:56.391] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 18:57:56.391 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 18:57:56.391] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:02.727] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 20:13:02.736] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 20:13:02.739] 사용자 설정 저장: Slave
+[2025-06-25 20:13:02.739] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 20:13:02.742] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 20:13:02.743 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 20:13:02.745 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:13:02.746 - 함수 포인터 바인딩 실패
+[2025-06-25 20:13:02.747] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 20:13:02.771] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 20:13:02.771] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 20:13:02.771] === SyncChecker 초기화 완료 ===
+[2025-06-25 20:13:02.773] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:03.165] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:03.167] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:03.168] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:03.168] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:03.168] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:03.168] 속성: count = 0
+[2025-06-25 20:13:03.169] 속성: displaySyncState = 1
+[2025-06-25 20:13:03.169] 속성: id = 1001
+[2025-06-25 20:13:03.169] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:03.169] 속성: name = 
+[2025-06-25 20:13:03.170] 속성: ordinal = 1
+[2025-06-25 20:13:03.170] 속성: uname = invalid
+[2025-06-25 20:13:03.170] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:03.170] === 속성 확인 완료 ===
+[2025-06-25 20:13:03.171] === 상세 속성 분석 ===
+[2025-06-25 20:13:03.171] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:03.171] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:03.172] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:03.172] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:03.172]   ver.orderedValue = 16777216
+[2025-06-25 20:13:03.173]   ver.strValue = 1.0.0
+[2025-06-25 20:13:03.173]   ver.value = 16777216
+[2025-06-25 20:13:03.173] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:03.174] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:03.174] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:03.174] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:03.174] displaySyncState: 1
+[2025-06-25 20:13:03.175] 사용자 설정 역할: Slave
+[2025-06-25 20:13:03.175] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:03.175] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:03.176] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:03.176] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:03.177] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:03.177] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:03.177] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 20:13:03.181] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:03.186] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:03.186] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:03.187] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:03.187] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:03.187] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:03.188] 속성: count = 0
+[2025-06-25 20:13:03.188] 속성: displaySyncState = 1
+[2025-06-25 20:13:03.188] 속성: id = 1001
+[2025-06-25 20:13:03.188] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:03.189] 속성: name = 
+[2025-06-25 20:13:03.189] 속성: ordinal = 1
+[2025-06-25 20:13:03.189] 속성: uname = invalid
+[2025-06-25 20:13:03.190] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:03.190] === 속성 확인 완료 ===
+[2025-06-25 20:13:03.190] === 상세 속성 분석 ===
+[2025-06-25 20:13:03.191] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:03.191] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:03.191] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:03.192] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:03.192]   ver.orderedValue = 16777216
+[2025-06-25 20:13:03.192]   ver.strValue = 1.0.0
+[2025-06-25 20:13:03.193]   ver.value = 16777216
+[2025-06-25 20:13:03.193] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:03.193] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:03.194] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:03.194] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:03.194] displaySyncState: 1
+[2025-06-25 20:13:03.194] 사용자 설정 역할: Slave
+[2025-06-25 20:13:03.195] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:03.196] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:03.196] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:03.197] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:03.197] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:03.197] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:03.198] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:03.198 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:03.199] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:03.199] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 20:13:04.201] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:04.206] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:04.206] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:04.206] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:04.207] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:04.207] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:04.207] 속성: count = 0
+[2025-06-25 20:13:04.208] 속성: displaySyncState = 1
+[2025-06-25 20:13:04.208] 속성: id = 1001
+[2025-06-25 20:13:04.208] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:04.208] 속성: name = 
+[2025-06-25 20:13:04.209] 속성: ordinal = 1
+[2025-06-25 20:13:04.209] 속성: uname = invalid
+[2025-06-25 20:13:04.209] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:04.210] === 속성 확인 완료 ===
+[2025-06-25 20:13:04.210] === 상세 속성 분석 ===
+[2025-06-25 20:13:04.210] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:04.211] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:04.211] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:04.211] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:04.212]   ver.orderedValue = 16777216
+[2025-06-25 20:13:04.212]   ver.strValue = 1.0.0
+[2025-06-25 20:13:04.212]   ver.value = 16777216
+[2025-06-25 20:13:04.212] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:04.213] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:04.213] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:04.213] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:04.214] displaySyncState: 1
+[2025-06-25 20:13:04.214] 사용자 설정 역할: Slave
+[2025-06-25 20:13:04.214] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:04.214] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:04.215] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:04.215] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:04.215] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:04.215] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:04.216] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:04.216 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:04.216] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:05.220] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:05.604] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:05.605] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:05.605] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:05.605] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:05.606] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:05.606] 속성: count = 0
+[2025-06-25 20:13:05.606] 속성: displaySyncState = 1
+[2025-06-25 20:13:05.606] 속성: id = 1001
+[2025-06-25 20:13:05.607] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:05.607] 속성: name = 
+[2025-06-25 20:13:05.607] 속성: ordinal = 1
+[2025-06-25 20:13:05.607] 속성: uname = invalid
+[2025-06-25 20:13:05.608] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:05.608] === 속성 확인 완료 ===
+[2025-06-25 20:13:05.608] === 상세 속성 분석 ===
+[2025-06-25 20:13:05.608] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:05.609] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:05.609] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:05.609] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:05.610]   ver.orderedValue = 16777216
+[2025-06-25 20:13:05.610]   ver.strValue = 1.0.0
+[2025-06-25 20:13:05.610]   ver.value = 16777216
+[2025-06-25 20:13:05.610] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:05.611] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:05.611] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:05.611] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:05.612] displaySyncState: 1
+[2025-06-25 20:13:05.612] 사용자 설정 역할: Slave
+[2025-06-25 20:13:05.612] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:05.612] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:05.613] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:05.613] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:05.613] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:05.614] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:05.614] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:05.614 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:05.614] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:06.625] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:06.631] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:06.632] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:06.632] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:06.633] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:06.633] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:06.634] 속성: count = 0
+[2025-06-25 20:13:06.634] 속성: displaySyncState = 1
+[2025-06-25 20:13:06.635] 속성: id = 1001
+[2025-06-25 20:13:06.635] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:06.635] 속성: name = 
+[2025-06-25 20:13:06.636] 속성: ordinal = 1
+[2025-06-25 20:13:06.636] 속성: uname = invalid
+[2025-06-25 20:13:06.636] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:06.636] === 속성 확인 완료 ===
+[2025-06-25 20:13:06.637] === 상세 속성 분석 ===
+[2025-06-25 20:13:06.637] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:06.637] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:06.638] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:06.638] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:06.638]   ver.orderedValue = 16777216
+[2025-06-25 20:13:06.639]   ver.strValue = 1.0.0
+[2025-06-25 20:13:06.639]   ver.value = 16777216
+[2025-06-25 20:13:06.639] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:06.640] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:06.640] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:06.640] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:06.641] displaySyncState: 1
+[2025-06-25 20:13:06.642] 사용자 설정 역할: Slave
+[2025-06-25 20:13:06.642] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:06.643] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:06.643] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:06.643] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:06.644] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:06.644] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:06.644] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:06.645 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:06.645] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:07.653] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:08.044] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:08.044] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:08.045] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:08.045] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:08.045] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:08.046] 속성: count = 0
+[2025-06-25 20:13:08.046] 속성: displaySyncState = 1
+[2025-06-25 20:13:08.046] 속성: id = 1001
+[2025-06-25 20:13:08.047] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:08.047] 속성: name = 
+[2025-06-25 20:13:08.047] 속성: ordinal = 1
+[2025-06-25 20:13:08.047] 속성: uname = invalid
+[2025-06-25 20:13:08.048] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:08.048] === 속성 확인 완료 ===
+[2025-06-25 20:13:08.049] === 상세 속성 분석 ===
+[2025-06-25 20:13:08.049] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:08.049] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:08.050] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:08.050] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:08.050]   ver.orderedValue = 16777216
+[2025-06-25 20:13:08.050]   ver.strValue = 1.0.0
+[2025-06-25 20:13:08.051]   ver.value = 16777216
+[2025-06-25 20:13:08.051] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:08.051] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:08.052] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:08.052] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:08.052] displaySyncState: 1
+[2025-06-25 20:13:08.053] 사용자 설정 역할: Slave
+[2025-06-25 20:13:08.053] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:08.053] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:08.053] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:08.054] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:08.054] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:08.054] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:08.055] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:08.055 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:08.055] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:09.066] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:09.070] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:09.071] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:09.071] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:09.071] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:09.071] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:09.072] 속성: count = 0
+[2025-06-25 20:13:09.072] 속성: displaySyncState = 1
+[2025-06-25 20:13:09.072] 속성: id = 1001
+[2025-06-25 20:13:09.072] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:09.073] 속성: name = 
+[2025-06-25 20:13:09.073] 속성: ordinal = 1
+[2025-06-25 20:13:09.073] 속성: uname = invalid
+[2025-06-25 20:13:09.074] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:09.074] === 속성 확인 완료 ===
+[2025-06-25 20:13:09.074] === 상세 속성 분석 ===
+[2025-06-25 20:13:09.074] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:09.075] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:09.075] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:09.075] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:09.075]   ver.orderedValue = 16777216
+[2025-06-25 20:13:09.076]   ver.strValue = 1.0.0
+[2025-06-25 20:13:09.076]   ver.value = 16777216
+[2025-06-25 20:13:09.076] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:09.077] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:09.077] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:09.077] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:09.077] displaySyncState: 1
+[2025-06-25 20:13:09.078] 사용자 설정 역할: Slave
+[2025-06-25 20:13:09.078] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:09.078] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:09.078] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:09.079] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:09.079] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:09.079] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:09.079] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:13:09.080 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:13:09.080] NVAPI 보조 정보: Unknown
+[2025-06-25 20:13:09.081] === 수동 리프레시 시작 ===
+[2025-06-25 20:13:09.082] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:09.086] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:09.087] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:09.087] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:09.087] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:09.087] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:09.088] 속성: count = 0
+[2025-06-25 20:13:09.088] 속성: displaySyncState = 1
+[2025-06-25 20:13:09.088] 속성: id = 1001
+[2025-06-25 20:13:09.089] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:09.089] 속성: name = 
+[2025-06-25 20:13:09.089] 속성: ordinal = 1
+[2025-06-25 20:13:09.089] 속성: uname = invalid
+[2025-06-25 20:13:09.090] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:09.090] === 속성 확인 완료 ===
+[2025-06-25 20:13:09.090] === 상세 속성 분석 ===
+[2025-06-25 20:13:09.090] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:09.091] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:09.091] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:09.091] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:09.091]   ver.orderedValue = 16777216
+[2025-06-25 20:13:09.092]   ver.strValue = 1.0.0
+[2025-06-25 20:13:09.092]   ver.value = 16777216
+[2025-06-25 20:13:09.092] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:09.093] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:09.093] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:09.093] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:09.093] displaySyncState: 1
+[2025-06-25 20:13:09.094] 사용자 설정 역할: Slave
+[2025-06-25 20:13:09.094] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:09.094] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:09.095] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:09.095] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:09.095] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:09.095] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:09.096] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 20:13:09.096] 리프레시 후 Sync 상태 변경: Free (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 20:13:09.096] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:13:09.101] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:13:09.101] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:13:09.101] === SyncTopology 속성 분석 ===
+[2025-06-25 20:13:09.101] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:13:09.102] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:13:09.102] 속성: count = 0
+[2025-06-25 20:13:09.102] 속성: displaySyncState = 1
+[2025-06-25 20:13:09.103] 속성: id = 1001
+[2025-06-25 20:13:09.103] 속성: isDisplayMasterable = True
+[2025-06-25 20:13:09.103] 속성: name = 
+[2025-06-25 20:13:09.104] 속성: ordinal = 1
+[2025-06-25 20:13:09.104] 속성: uname = invalid
+[2025-06-25 20:13:09.104] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:13:09.104] === 속성 확인 완료 ===
+[2025-06-25 20:13:09.105] === 상세 속성 분석 ===
+[2025-06-25 20:13:09.105] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:13:09.105] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:13:09.105] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:13:09.106] === ver 객체 내부 속성 ===
+[2025-06-25 20:13:09.106]   ver.orderedValue = 16777216
+[2025-06-25 20:13:09.106]   ver.strValue = 1.0.0
+[2025-06-25 20:13:09.106]   ver.value = 16777216
+[2025-06-25 20:13:09.107] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:13:09.107] orderedValue 숫자값: 16777216
+[2025-06-25 20:13:09.107] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:13:09.108] === 상세 속성 분석 완료 ===
+[2025-06-25 20:13:09.108] displaySyncState: 1
+[2025-06-25 20:13:09.108] 사용자 설정 역할: Slave
+[2025-06-25 20:13:09.108] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:13:09.109] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:13:09.109] 최종 Master/Slave 판단: Master
+[2025-06-25 20:13:09.109] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:13:09.109] 타이밍 서버: ThisSystem
+[2025-06-25 20:13:09.110] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:13:09.110] === 디스플레이 동기화 진단 완료 ===
+[2025-06-25 20:13:09.112] === SyncChecker 정리 시작 ===
+[2025-06-25 20:13:09.112] WMI 이벤트 모니터링 중지됨
+[2025-06-25 20:13:09.113] NVAPI 래퍼 정리됨
+[2025-06-25 20:13:09.113] === SyncChecker 정리 완료 ===
+[2025-06-25 20:14:00.092] === SyncChecker 초기화 시작 (Master/Slave 설정 기능 추가) ===
+[2025-06-25 20:14:00.093] 프로그램 시작 시 기존 설정 파일 삭제됨
+[2025-06-25 20:14:00.093] 사용자 설정 저장: Slave
+[2025-06-25 20:14:00.093] 프로그램 시작 시 설정을 Slave로 리셋
+[2025-06-25 20:14:00.094] 사용자 설정 로드: Slave
+[QuadroSyncII] 2025-06-25 20:14:00.094 - === Quadro Sync II NVAPI 초기화 시작 ===
+[QuadroSyncII] 2025-06-25 20:14:00.095 - nvapi64.dll 로드 성공
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_Initialize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_Unload 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_GetErrorMessage 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_SYS_GetDriverAndBranchVersion 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_GPU_GetPhysicalFrameBufferSize 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_EnumPhysicalGPUs 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.095 - 함수 NvAPI_GPU_GetFullName 찾을 수 없음
+[QuadroSyncII] 2025-06-25 20:14:00.096 - 함수 포인터 바인딩 실패
+[2025-06-25 20:14:00.096] Quadro Sync II NVAPI 래퍼 초기화 완료
+[2025-06-25 20:14:00.099] WMI 이벤트 모니터링 시작 실패: 구문 분석할 수 없는 쿼리입니다. 
+[2025-06-25 20:14:00.099] 폴링 방식으로 Sync 상태 모니터링을 시작합니다.
+[2025-06-25 20:14:00.099] === SyncChecker 초기화 완료 ===
+[2025-06-25 20:14:05.127] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:14:05.519] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:14:05.520] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:14:05.520] === SyncTopology 속성 분석 ===
+[2025-06-25 20:14:05.521] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:14:05.521] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:14:05.521] 속성: count = 0
+[2025-06-25 20:14:05.522] 속성: displaySyncState = 1
+[2025-06-25 20:14:05.522] 속성: id = 1001
+[2025-06-25 20:14:05.522] 속성: isDisplayMasterable = True
+[2025-06-25 20:14:05.522] 속성: name = 
+[2025-06-25 20:14:05.523] 속성: ordinal = 1
+[2025-06-25 20:14:05.523] 속성: uname = invalid
+[2025-06-25 20:14:05.523] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:14:05.523] === 속성 확인 완료 ===
+[2025-06-25 20:14:05.524] === 상세 속성 분석 ===
+[2025-06-25 20:14:05.524] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:14:05.524] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:14:05.525] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:14:05.525] === ver 객체 내부 속성 ===
+[2025-06-25 20:14:05.525]   ver.orderedValue = 16777216
+[2025-06-25 20:14:05.525]   ver.strValue = 1.0.0
+[2025-06-25 20:14:05.526]   ver.value = 16777216
+[2025-06-25 20:14:05.526] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:14:05.526] orderedValue 숫자값: 16777216
+[2025-06-25 20:14:05.526] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:14:05.527] === 상세 속성 분석 완료 ===
+[2025-06-25 20:14:05.527] displaySyncState: 1
+[2025-06-25 20:14:05.527] 사용자 설정 역할: Slave
+[2025-06-25 20:14:05.527] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:14:05.528] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:14:05.528] 최종 Master/Slave 판단: Master
+[2025-06-25 20:14:05.528] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:14:05.529] 타이밍 서버: ThisSystem
+[2025-06-25 20:14:05.529] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:14:05.529] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:14:05.529 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:14:05.529] NVAPI 보조 정보: Unknown
+[2025-06-25 20:14:05.530] Sync 상태 변경: ConfigConflict (설정: Slave, 실제: Master → 설정 충돌)
+[2025-06-25 20:14:10.118] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:14:10.499] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:14:10.500] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:14:10.500] === SyncTopology 속성 분석 ===
+[2025-06-25 20:14:10.501] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:14:10.501] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:14:10.501] 속성: count = 0
+[2025-06-25 20:14:10.502] 속성: displaySyncState = 1
+[2025-06-25 20:14:10.502] 속성: id = 1001
+[2025-06-25 20:14:10.502] 속성: isDisplayMasterable = True
+[2025-06-25 20:14:10.502] 속성: name = 
+[2025-06-25 20:14:10.503] 속성: ordinal = 1
+[2025-06-25 20:14:10.503] 속성: uname = invalid
+[2025-06-25 20:14:10.503] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:14:10.503] === 속성 확인 완료 ===
+[2025-06-25 20:14:10.504] === 상세 속성 분석 ===
+[2025-06-25 20:14:10.504] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:14:10.504] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:14:10.504] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:14:10.505] === ver 객체 내부 속성 ===
+[2025-06-25 20:14:10.505]   ver.orderedValue = 16777216
+[2025-06-25 20:14:10.505]   ver.strValue = 1.0.0
+[2025-06-25 20:14:10.506]   ver.value = 16777216
+[2025-06-25 20:14:10.506] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:14:10.506] orderedValue 숫자값: 16777216
+[2025-06-25 20:14:10.507] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:14:10.507] === 상세 속성 분석 완료 ===
+[2025-06-25 20:14:10.507] displaySyncState: 1
+[2025-06-25 20:14:10.507] 사용자 설정 역할: Slave
+[2025-06-25 20:14:10.508] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:14:10.508] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:14:10.508] 최종 Master/Slave 판단: Master
+[2025-06-25 20:14:10.509] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:14:10.509] 타이밍 서버: ThisSystem
+[2025-06-25 20:14:10.509] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:14:10.509] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:14:10.510 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:14:10.510] NVAPI 보조 정보: Unknown
+[2025-06-25 20:14:15.121] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:14:15.483] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:14:15.484] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:14:15.484] === SyncTopology 속성 분석 ===
+[2025-06-25 20:14:15.484] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:14:15.484] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:14:15.485] 속성: count = 0
+[2025-06-25 20:14:15.485] 속성: displaySyncState = 1
+[2025-06-25 20:14:15.485] 속성: id = 1001
+[2025-06-25 20:14:15.485] 속성: isDisplayMasterable = True
+[2025-06-25 20:14:15.486] 속성: name = 
+[2025-06-25 20:14:15.486] 속성: ordinal = 1
+[2025-06-25 20:14:15.486] 속성: uname = invalid
+[2025-06-25 20:14:15.487] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:14:15.487] === 속성 확인 완료 ===
+[2025-06-25 20:14:15.487] === 상세 속성 분석 ===
+[2025-06-25 20:14:15.488] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:14:15.488] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:14:15.488] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:14:15.488] === ver 객체 내부 속성 ===
+[2025-06-25 20:14:15.489]   ver.orderedValue = 16777216
+[2025-06-25 20:14:15.489]   ver.strValue = 1.0.0
+[2025-06-25 20:14:15.489]   ver.value = 16777216
+[2025-06-25 20:14:15.490] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:14:15.490] orderedValue 숫자값: 16777216
+[2025-06-25 20:14:15.490] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:14:15.490] === 상세 속성 분석 완료 ===
+[2025-06-25 20:14:15.491] displaySyncState: 1
+[2025-06-25 20:14:15.491] 사용자 설정 역할: Slave
+[2025-06-25 20:14:15.491] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:14:15.491] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:14:15.492] 최종 Master/Slave 판단: Master
+[2025-06-25 20:14:15.492] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:14:15.492] 타이밍 서버: ThisSystem
+[2025-06-25 20:14:15.492] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:14:15.493] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:14:15.493 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:14:15.493] NVAPI 보조 정보: Unknown
+[2025-06-25 20:14:20.132] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:14:20.510] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:14:20.511] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:14:20.511] === SyncTopology 속성 분석 ===
+[2025-06-25 20:14:20.512] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:14:20.512] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:14:20.512] 속성: count = 0
+[2025-06-25 20:14:20.513] 속성: displaySyncState = 1
+[2025-06-25 20:14:20.513] 속성: id = 1001
+[2025-06-25 20:14:20.513] 속성: isDisplayMasterable = True
+[2025-06-25 20:14:20.513] 속성: name = 
+[2025-06-25 20:14:20.514] 속성: ordinal = 1
+[2025-06-25 20:14:20.514] 속성: uname = invalid
+[2025-06-25 20:14:20.514] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:14:20.514] === 속성 확인 완료 ===
+[2025-06-25 20:14:20.515] === 상세 속성 분석 ===
+[2025-06-25 20:14:20.515] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:14:20.515] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:14:20.515] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:14:20.516] === ver 객체 내부 속성 ===
+[2025-06-25 20:14:20.516]   ver.orderedValue = 16777216
+[2025-06-25 20:14:20.516]   ver.strValue = 1.0.0
+[2025-06-25 20:14:20.517]   ver.value = 16777216
+[2025-06-25 20:14:20.517] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:14:20.517] orderedValue 숫자값: 16777216
+[2025-06-25 20:14:20.518] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:14:20.518] === 상세 속성 분석 완료 ===
+[2025-06-25 20:14:20.518] displaySyncState: 1
+[2025-06-25 20:14:20.518] 사용자 설정 역할: Slave
+[2025-06-25 20:14:20.519] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:14:20.519] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:14:20.519] 최종 Master/Slave 판단: Master
+[2025-06-25 20:14:20.519] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:14:20.520] 타이밍 서버: ThisSystem
+[2025-06-25 20:14:20.520] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:14:20.520] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:14:20.521 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:14:20.521] NVAPI 보조 정보: Unknown
+[2025-06-25 20:14:25.150] === 디스플레이 동기화 진단 시작 ===
+[2025-06-25 20:14:25.521] SyncTopology 인스턴스 3개 발견
+[2025-06-25 20:14:25.522] === SyncTopology 인스턴스 1 분석 ===
+[2025-06-25 20:14:25.522] === SyncTopology 속성 분석 ===
+[2025-06-25 20:14:25.522] count: 0
+displaySyncState: 1
+id: 1001
+isDisplayMasterable: True
+name: 
+ordinal: 1
+uname: invalid
+ver: System.Management.ManagementBaseObject
+
+[2025-06-25 20:14:25.522] === 사용 가능한 모든 속성 ===
+[2025-06-25 20:14:25.523] 속성: count = 0
+[2025-06-25 20:14:25.523] 속성: displaySyncState = 1
+[2025-06-25 20:14:25.523] 속성: id = 1001
+[2025-06-25 20:14:25.524] 속성: isDisplayMasterable = True
+[2025-06-25 20:14:25.524] 속성: name = 
+[2025-06-25 20:14:25.524] 속성: ordinal = 1
+[2025-06-25 20:14:25.524] 속성: uname = invalid
+[2025-06-25 20:14:25.525] 속성: ver = System.Management.ManagementBaseObject
+[2025-06-25 20:14:25.525] === 속성 확인 완료 ===
+[2025-06-25 20:14:25.525] === 상세 속성 분석 ===
+[2025-06-25 20:14:25.525] name 속성 타입: System.String, 값: ''
+[2025-06-25 20:14:25.526] uname 속성 타입: System.String, 값: 'invalid'
+[2025-06-25 20:14:25.526] ver 속성 타입: System.Management.ManagementBaseObject, 값: 'System.Management.ManagementBaseObject'
+[2025-06-25 20:14:25.526] === ver 객체 내부 속성 ===
+[2025-06-25 20:14:25.526]   ver.orderedValue = 16777216
+[2025-06-25 20:14:25.527]   ver.strValue = 1.0.0
+[2025-06-25 20:14:25.527]   ver.value = 16777216
+[2025-06-25 20:14:25.527] ver.orderedValue 분석: 16777216 (타입: System.UInt32)
+[2025-06-25 20:14:25.528] orderedValue 숫자값: 16777216
+[2025-06-25 20:14:25.528] orderedValue 16777216 → 이 시스템이 Master일 가능성
+[2025-06-25 20:14:25.528] === 상세 속성 분석 완료 ===
+[2025-06-25 20:14:25.528] displaySyncState: 1
+[2025-06-25 20:14:25.529] 사용자 설정 역할: Slave
+[2025-06-25 20:14:25.529] isDisplayMasterable: True → 이 시스템이 Master입니다
+[2025-06-25 20:14:25.529] ver.orderedValue 기반 판단: 16777216 → Master
+[2025-06-25 20:14:25.530] 최종 Master/Slave 판단: Master
+[2025-06-25 20:14:25.530] Master 케이스: 디스플레이 선택 여부 확인 필요
+[2025-06-25 20:14:25.531] 타이밍 서버: ThisSystem
+[2025-06-25 20:14:25.531] 진단 결과: 설정: Slave, 실제: Master → 설정 충돌
+[2025-06-25 20:14:25.532] === 디스플레이 동기화 진단 완료 ===
+[QuadroSyncII] 2025-06-25 20:14:25.532 - Quadro Sync II NVAPI가 초기화되지 않음
+[2025-06-25 20:14:25.532] NVAPI 보조 정보: Unknown

@@ -191,8 +191,13 @@ namespace SyncGuard.Core
 
                     WriteLogAndConsole($"SyncTopology 인스턴스 {collection.Count}개 발견");
                     
+                    // 모든 인스턴스 분석
+                    int instanceIndex = 0;
                     foreach (ManagementObject obj in collection)
                     {
+                        instanceIndex++;
+                        WriteLogAndConsole($"=== SyncTopology 인스턴스 {instanceIndex} 분석 ===");
+                        
                         // 모든 속성 정보 수집 (디버깅용)
                         var allProperties = new System.Text.StringBuilder();
                         foreach (PropertyData prop in obj.Properties)
@@ -233,6 +238,35 @@ namespace SyncGuard.Core
                                 {
                                     WriteLogAndConsole($"  ver.{verProp.Name} = {verProp.Value}");
                                 }
+                                
+                                // orderedValue 분석
+                                try
+                                {
+                                    var orderedValue = verObj["orderedValue"];
+                                    WriteLogAndConsole($"ver.orderedValue 분석: {orderedValue} (타입: {orderedValue?.GetType()})");
+                                    
+                                    // orderedValue로 Master/Slave 구분 가능성 확인
+                                    if (orderedValue != null)
+                                    {
+                                        long orderVal = Convert.ToInt64(orderedValue);
+                                        WriteLogAndConsole($"orderedValue 숫자값: {orderVal}");
+                                        
+                                        // orderedValue가 Master/Slave 구분에 사용될 수 있는지 확인
+                                        // 일반적으로 낮은 값이 Master일 가능성
+                                        if (orderVal == 16777216)
+                                        {
+                                            WriteLogAndConsole("orderedValue 16777216 → 이 시스템이 Master일 가능성");
+                                        }
+                                        else
+                                        {
+                                            WriteLogAndConsole($"orderedValue {orderVal} → 이 시스템이 Slave일 가능성");
+                                        }
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    WriteLogAndConsole($"orderedValue 분석 중 오류: {ex.Message}");
+                                }
                             }
                         }
                         catch (Exception ex)
@@ -252,7 +286,7 @@ namespace SyncGuard.Core
                         WriteLogAndConsole($"displaySyncState: {displaySyncState}");
                         WriteLogAndConsole($"사용자 설정 역할: {userRole}");
                         
-                        // 2. isDisplayMasterable로 실제 Master/Slave 판단
+                        // 2. isDisplayMasterable로 실제 Master/Slave 판단 (임시로 유지)
                         bool isActuallyMaster = false;
                         try
                         {
@@ -265,8 +299,39 @@ namespace SyncGuard.Core
                             isActuallyMaster = false;
                         }
                         
-                        // 3. Master 케이스 (isDisplayMasterable: True)
-                        if (isActuallyMaster)
+                        // 3. ver.orderedValue로 Master/Slave 판단 시도
+                        bool isMasterByOrderedValue = false;
+                        try
+                        {
+                            if (obj["ver"] is ManagementBaseObject verObj)
+                            {
+                                var orderedValue = verObj["orderedValue"];
+                                if (orderedValue != null)
+                                {
+                                    long orderVal = Convert.ToInt64(orderedValue);
+                                    // 16777216이 Master를 나타낸다고 가정
+                                    isMasterByOrderedValue = (orderVal == 16777216);
+                                    WriteLogAndConsole($"ver.orderedValue 기반 판단: {orderVal} → {(isMasterByOrderedValue ? "Master" : "Slave")}");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            WriteLogAndConsole($"ver.orderedValue 분석 실패: {ex.Message}");
+                        }
+                        
+                        // 4. 최종 Master/Slave 판단 (orderedValue 우선, 없으면 isDisplayMasterable 사용)
+                        bool finalIsMaster = isMasterByOrderedValue;
+                        if (!isMasterByOrderedValue) // orderedValue 분석이 실패한 경우
+                        {
+                            finalIsMaster = isActuallyMaster;
+                            WriteLogAndConsole("orderedValue 분석 실패로 isDisplayMasterable 사용");
+                        }
+                        
+                        WriteLogAndConsole($"최종 Master/Slave 판단: {(finalIsMaster ? "Master" : "Slave")}");
+                        
+                        // 5. Master 케이스 (finalIsMaster: True)
+                        if (finalIsMaster)
                         {
                             WriteLogAndConsole("Master 케이스: 디스플레이 선택 여부 확인 필요");
                             
@@ -310,7 +375,7 @@ namespace SyncGuard.Core
                             }
                         }
                         
-                        // 4. Slave 케이스 (isDisplayMasterable: False)
+                        // 6. Slave 케이스 (finalIsMaster: False)
                         else
                         {
                             WriteLogAndConsole("Slave 케이스: 디스플레이 선택 여부 확인 필요");
@@ -354,6 +419,9 @@ namespace SyncGuard.Core
                                 return diagnosis;
                             }
                         }
+                        
+                        WriteLogAndConsole($"인스턴스 {instanceIndex} 분석 완료");
+                        WriteLogAndConsole("---");
                     }
                 }
                 
@@ -565,6 +633,45 @@ namespace SyncGuard.Core
             catch (Exception ex)
             {
                 Console.WriteLine($"로그 파일 쓰기 실패: {ex.Message}");
+            }
+        }
+
+        // 다른 NVIDIA WMI 클래스 탐색
+        public void ExploreNvidiaWmiClasses()
+        {
+            try
+            {
+                WriteLogAndConsole("=== NVIDIA WMI 클래스 탐색 시작 ===");
+                
+                string nvidiaNamespace = "root\\CIMV2\\NV";
+                var scope = new ManagementScope(nvidiaNamespace);
+                scope.Connect();
+                
+                // 모든 클래스 조회
+                var query = new SelectQuery("SELECT * FROM meta_class");
+                using (var searcher = new ManagementObjectSearcher(scope, query))
+                {
+                    var collection = searcher.Get();
+                    WriteLogAndConsole($"발견된 클래스 수: {collection.Count}");
+                    
+                    foreach (ManagementClass cls in collection)
+                    {
+                        WriteLogAndConsole($"클래스: {cls.ClassPath.ClassName}");
+                        
+                        // 각 클래스의 속성 확인
+                        foreach (PropertyData prop in cls.Properties)
+                        {
+                            WriteLogAndConsole($"  속성: {prop.Name} (타입: {prop.Type})");
+                        }
+                        WriteLogAndConsole("---");
+                    }
+                }
+                
+                WriteLogAndConsole("=== NVIDIA WMI 클래스 탐색 완료 ===");
+            }
+            catch (Exception ex)
+            {
+                WriteLogAndConsole($"NVIDIA WMI 클래스 탐색 실패: {ex.Message}");
             }
         }
     }
