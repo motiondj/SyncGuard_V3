@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" 
+           Name="SyncGuard V3" 
+           Language="1033" 
+           Version="3.0.0.0" 
+           Manufacturer="SyncGuard Team" 
+           UpgradeCode="PUT-GUID-HERE">
+    
+    <Package InstallerVersion="200" 
+             Compressed="yes" 
+             InstallScope="perMachine" />
+    
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+    
+    <Feature Id="ProductFeature" 
+             Title="SyncGuard V3" 
+             Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+    
+    <!-- 시작 메뉴 바로가기 -->
+    <DirectoryRef Id="ApplicationProgramsFolder" />
+    <DirectoryRef Id="ApplicationDesktopFolder" />
+    
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="SyncGuard">
+          <!-- logs 폴더 -->
+          <Directory Id="LogsFolder" Name="logs" />
+          <!-- config 폴더 -->
+          <Directory Id="ConfigFolder" Name="config" />
+        </Directory>
+      </Directory>
+    </Directory>
+    
+    <!-- 시작 메뉴 바로가기 -->
+    <Directory Id="ApplicationProgramsFolder">
+      <Directory Id="SyncGuardMenuFolder" Name="SyncGuard">
+        <Component Id="SyncGuardShortcut" Guid="*">
+          <Shortcut Id="SyncGuardShortcut" 
+                    Name="SyncGuard V3" 
+                    Description="NVIDIA Quadro Sync 모니터링 도구" 
+                    Target="[INSTALLFOLDER]SyncGuard.Tray.exe" 
+                    WorkingDirectory="INSTALLFOLDER" />
+          <RemoveFolder Id="SyncGuardMenuFolder" On="uninstall" />
+          <RegistryValue Root="HKCU" 
+                         Key="Software\SyncGuard" 
+                         Name="installed" 
+                         Type="integer" 
+                         Value="1" 
+                         KeyPath="yes" />
+        </Component>
+      </Directory>
+    </Directory>
+    
+    <!-- 바탕화면 바로가기 -->
+    <Directory Id="ApplicationDesktopFolder">
+      <Component Id="SyncGuardDesktopShortcut" Guid="*">
+        <Shortcut Id="SyncGuardDesktopShortcut" 
+                  Name="SyncGuard V3" 
+                  Description="NVIDIA Quadro Sync 모니터링 도구" 
+                  Target="[INSTALLFOLDER]SyncGuard.Tray.exe" 
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="ApplicationDesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" 
+                       Key="Software\SyncGuard" 
+                       Name="desktop_shortcut" 
+                       Type="integer" 
+                       Value="1" 
+                       KeyPath="yes" />
+      </Component>
+    </Directory>
+    
+    <!-- 자동 시작 등록 -->
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    <Property Id="ARPCONTACT" Value="SyncGuard Team" />
+    <Property Id="ARPCOMMENTS" Value="NVIDIA Quadro Sync 상태 모니터링 도구" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/syncguard" />
+    
+    <!-- 자동 시작 등록 -->
+    <Component Id="AutoStartComponent" Guid="*" Directory="INSTALLFOLDER">
+      <RegistryValue Id="AutoStart" 
+                     Root="HKCU" 
+                     Key="Software\Microsoft\Windows\CurrentVersion\Run" 
+                     Name="SyncGuard" 
+                     Value="&quot;[INSTALLFOLDER]SyncGuard.Tray.exe&quot;" 
+                     Type="string" />
+    </Component>
+    
+  </Product>
+  
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <!-- 메인 실행 파일 -->
+      <Component Id="SyncGuardTrayExe" Guid="*">
+        <File Id="SyncGuardTrayExe" 
+              Name="SyncGuard.Tray.exe" 
+              Source="$(var.SyncGuard.Tray.TargetDir)SyncGuard.Tray.exe" 
+              KeyPath="yes" />
+      </Component>
+      
+      <!-- Core 라이브러리 -->
+      <Component Id="SyncGuardCoreDll" Guid="*">
+        <File Id="SyncGuardCoreDll" 
+              Name="SyncGuard.Core.dll" 
+              Source="$(var.SyncGuard.Core.TargetDir)SyncGuard.Core.dll" />
+      </Component>
+      
+      <!-- 의존성 라이브러리들 -->
+      <Component Id="SystemManagementDll" Guid="*">
+        <File Id="SystemManagementDll" 
+              Name="System.Management.dll" 
+              Source="$(var.SyncGuard.Tray.TargetDir)System.Management.dll" />
+      </Component>
+      
+      <!-- 설정 파일 (기본값) -->
+      <Component Id="DefaultConfig" Guid="*" Directory="ConfigFolder">
+        <File Id="DefaultConfigFile" 
+              Name="syncguard_config.txt" 
+              Source="config\syncguard_config.txt" />
+      </Component>
+      
+      <!-- README 파일 -->
+      <Component Id="ReadmeFile" Guid="*">
+        <File Id="ReadmeFile" 
+              Name="README.txt" 
+              Source="README.txt" />
+      </Component>
+      
+      <!-- 라이선스 파일 -->
+      <Component Id="LicenseFile" Guid="*">
+        <File Id="LicenseFile" 
+              Name="LICENSE.txt" 
+              Source="LICENSE.txt" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix> 

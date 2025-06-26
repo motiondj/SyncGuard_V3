@@ -1,0 +1,5 @@
+{
+  "ServerIP": "127.0.0.1",
+  "ServerPort": 8080,
+  "LastUpdated": "2024-01-01 00:00:00"
+} 

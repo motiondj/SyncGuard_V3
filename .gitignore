@@ -199,8 +199,8 @@ _pkginfo.txt
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
 
-# Unreal Engine 5.5 (용량이 너무 커서 제외)
-SampleCode/UnrealEngine-5.5/
+# Sample Code (용량이 크고 실제 프로젝트와 무관하므로 제외)
+SampleCode/
 
 # Others
 ClientBin/

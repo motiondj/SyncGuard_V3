@@ -1,11 +1,12 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncGuard.Tray", "SyncGuard.Tray\SyncGuard.Tray.csproj", "{4D02721F-AC4B-4BBE-8CA4-F0F5C36A50C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncGuard.Core", "SyncGuard.Core\SyncGuard.Core.csproj", "{5184B084-14B7-49D9-9D39-39CFA8A12ED7}"
+EndProject
+Project("{930C7802-8A8C-48F9-816C-74858CBFB989}") = "SyncGuard.Installer", "SyncGuard.Installer\SyncGuard.Installer.wixproj", "{12345678-1234-1234-1234-123456789012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +42,10 @@ Global
 		{5184B084-14B7-49D9-9D39-39CFA8A12ED7}.Release|x64.Build.0 = Release|Any CPU
 		{5184B084-14B7-49D9-9D39-39CFA8A12ED7}.Release|x86.ActiveCfg = Release|Any CPU
 		{5184B084-14B7-49D9-9D39-39CFA8A12ED7}.Release|x86.Build.0 = Release|Any CPU
+		{12345678-1234-1234-1234-123456789012}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{12345678-1234-1234-1234-123456789012}.Debug|Any CPU.Build.0 = Debug|x86
+		{12345678-1234-1234-1234-123456789012}.Release|Any CPU.ActiveCfg = Release|x86
+		{12345678-1234-1234-1234-123456789012}.Release|Any CPU.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

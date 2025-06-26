@@ -16,8 +16,6 @@ namespace SyncGuard.Tray
         private SyncChecker? syncChecker;
         private System.Windows.Forms.Timer? syncTimer;
         private SyncChecker.SyncStatus lastStatus = SyncChecker.SyncStatus.Unknown;
-        private readonly string logFilePath = "syncguard_log.txt";
-        private readonly int maxLogSizeMB = 10; // 10MB
         private bool isTcpClientEnabled = false;
         private int tcpServerPort = 8080;
         private string targetIpAddress = "127.0.0.1";
@@ -43,7 +41,7 @@ namespace SyncGuard.Tray
             try
             {
                 // SyncChecker 초기화 시도
-                LogMessage("INFO", "SyncChecker 초기화 시작...");
+                Logger.Info("SyncChecker 초기화 시작...");
                 syncChecker = new SyncChecker();
                 
                 // TCP 클라이언트 자동 시작 (저장된 설정으로)
@@ -52,7 +50,7 @@ namespace SyncGuard.Tray
                 // Sync 상태 변경 이벤트 구독
                 syncChecker.SyncStatusChanged += OnSyncStatusChanged;
                 
-                LogMessage("INFO", "SyncChecker 초기화 성공!");
+                Logger.Info("SyncChecker 초기화 성공!");
                 
                 InitializeSyncTimer();
                 ShowToastNotification("SyncGuard 시작됨", "Quadro Sync 모니터링이 시작되었습니다.");
@@ -60,9 +58,9 @@ namespace SyncGuard.Tray
             catch (Exception ex)
             {
                 // 상세한 오류 정보 로그
-                LogMessage("ERROR", $"SyncChecker 초기화 실패: {ex.GetType().Name}");
-                LogMessage("ERROR", $"오류 메시지: {ex.Message}");
-                LogMessage("ERROR", $"스택 트레이스: {ex.StackTrace}");
+                Logger.Error($"SyncChecker 초기화 실패: {ex.GetType().Name}");
+                Logger.Error($"오류 메시지: {ex.Message}");
+                Logger.Error($"스택 트레이스: {ex.StackTrace}");
                 
                 // 사용자에게 알림
                 MessageBox.Show($"SyncGuard 초기화 실패:\n\n{ex.Message}", "오류", 
@@ -78,89 +76,12 @@ namespace SyncGuard.Tray
         {
             try
             {
-                // logs 디렉터리 생성
-                var logDir = Path.GetDirectoryName(logFilePath);
-                if (!string.IsNullOrEmpty(logDir) && !Directory.Exists(logDir))
-                {
-                    Directory.CreateDirectory(logDir);
-                }
-                
-                // 로그 파일 크기 체크 및 로테이션
-                CheckAndRotateLogFile();
-                
-                LogMessage("INFO", "SyncGuard 로그 시스템 초기화 완료");
+                Logger.Info("SyncGuard 로그 시스템 초기화 완료");
             }
             catch (Exception ex)
             {
                 // 로그 초기화 실패 시 콘솔에 출력
                 Console.WriteLine($"로그 시스템 초기화 실패: {ex.Message}");
-            }
-        }
-        
-        private void LogMessage(string level, string message)
-        {
-            try
-            {
-                var logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{level}] {message}";
-                
-                // 콘솔 출력 (디버깅용)
-                Console.WriteLine(logEntry);
-                
-                // 파일 로그 (UTF-8 인코딩 사용)
-                File.AppendAllText(logFilePath, logEntry + Environment.NewLine, System.Text.Encoding.UTF8);
-                
-                // 중요한 로그는 Core Logger로도 남기기
-                if (level == "ERROR" || level == "WARNING" || message.Contains("상태 변경"))
-                {
-                    switch (level)
-                    {
-                        case "ERROR":
-                            SyncGuard.Core.Logger.Error(message);
-                            break;
-                        case "WARNING":
-                            SyncGuard.Core.Logger.Warning(message);
-                            break;
-                        default:
-                            SyncGuard.Core.Logger.Info(message);
-                            break;
-                    }
-                }
-                
-                // 로그 파일 크기 체크
-                CheckAndRotateLogFile();
-            }
-            catch
-            {
-                // 로그 기록 실패 시 무시
-            }
-        }
-        
-        private void CheckAndRotateLogFile()
-        {
-            try
-            {
-                if (File.Exists(logFilePath))
-                {
-                    var fileInfo = new FileInfo(logFilePath);
-                    var sizeInMB = fileInfo.Length / (1024 * 1024);
-                    
-                    if (sizeInMB >= maxLogSizeMB)
-                    {
-                        // 백업 파일명 생성 (날짜_시간 포함)
-                        var backupFileName = $"syncguard_log_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
-                        
-                        // 기존 로그 파일을 백업으로 이동
-                        File.Move(logFilePath, backupFileName);
-                        
-                        // 새로운 로그 파일에 로테이션 메시지 기록 (UTF-8 인코딩 사용)
-                        var rotationMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [INFO] 로그 파일 로테이션 완료: {backupFileName}";
-                        File.WriteAllText(logFilePath, rotationMessage + Environment.NewLine, System.Text.Encoding.UTF8);
-                    }
-                }
-            }
-            catch
-            {
-                // 로그 로테이션 실패 시 무시
             }
         }
 
@@ -272,7 +193,7 @@ namespace SyncGuard.Tray
                 {
                     tcpServerPort = int.Parse(txtPort.Text);
                     targetIpAddress = txtIp.Text;
-                    LogMessage("INFO", $"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}");
+                    Logger.Info($"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}");
                     
                     // 설정 파일에 저장
                     SaveConfig();
@@ -313,11 +234,11 @@ namespace SyncGuard.Tray
                     contextMenu.Items[0].Text = $"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}";
                 }
                 
-                LogMessage("DEBUG", $"트레이 메뉴 업데이트 완료");
+                Logger.Info("트레이 메뉴 업데이트 완료");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"트레이 메뉴 업데이트 실패: {ex.Message}");
+                Logger.Error($"트레이 메뉴 업데이트 실패: {ex.Message}");
             }
         }
 
@@ -341,7 +262,7 @@ namespace SyncGuard.Tray
             try
             {
                 var status = syncChecker.GetSyncStatus();
-                LogMessage("DEBUG", $"감지된 상태: {status}, 이전 상태: {lastStatus}");
+                Logger.Info($"감지된 상태: {status}, 이전 상태: {lastStatus}");
                 
                 // 항상 트레이 아이콘 업데이트
                 UpdateTrayIcon(status);
@@ -350,7 +271,7 @@ namespace SyncGuard.Tray
                 if (status != lastStatus || lastStatus == SyncChecker.SyncStatus.Unknown)
                 {
                     string message = GetStatusMessage(status);
-                    LogMessage("INFO", $"Sync 상태 변경: {lastStatus} -> {status}");
+                    Logger.Info($"Sync 상태 변경: {lastStatus} -> {status}");
                     ShowToastNotification("Sync 상태 변경", message);
                     lastStatus = status;
                 }
@@ -363,11 +284,11 @@ namespace SyncGuard.Tray
                         try
                         {
                             await syncChecker.SendStatusToServer();
-                            LogMessage("DEBUG", "주기적 TCP 전송 완료");
+                            Logger.Info("주기적 TCP 전송 완료");
                         }
                         catch (Exception ex)
                         {
-                            LogMessage("ERROR", $"주기적 TCP 전송 실패: {ex.Message}");
+                            Logger.Error($"주기적 TCP 전송 실패: {ex.Message}");
                         }
                     });
                 }
@@ -377,7 +298,7 @@ namespace SyncGuard.Tray
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"Sync 체크 중 오류: {ex.Message}");
+                Logger.Error($"Sync 체크 중 오류: {ex.Message}");
                 UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
             }
         }
@@ -387,7 +308,7 @@ namespace SyncGuard.Tray
             if (notifyIcon == null) return;
             
             // 디버깅: 상태값 로그 추가
-            LogMessage("DEBUG", $"UpdateTrayIcon 호출됨 - 상태: {status}");
+            Logger.Info($"UpdateTrayIcon 호출됨 - 상태: {status}");
             
             // 상태에 따른 아이콘 색상 변경
             Color iconColor = status switch
@@ -400,7 +321,7 @@ namespace SyncGuard.Tray
             };
 
             // 디버깅: 선택된 색상 로그 추가
-            LogMessage("DEBUG", $"선택된 색상: {iconColor.Name}");
+            Logger.Info($"선택된 색상: {iconColor.Name}");
 
             // 간단한 아이콘 생성 (실제로는 더 정교한 아이콘이 필요)
             using (var bitmap = new Bitmap(16, 16))
@@ -458,7 +379,7 @@ namespace SyncGuard.Tray
 
         private void OnExit(object? sender, EventArgs e)
         {
-            LogMessage("INFO", "SyncGuard 종료됨");
+            Logger.Info("SyncGuard 종료됨");
             syncChecker?.Dispose();
             notifyIcon?.Dispose();
             Application.Exit();
@@ -485,11 +406,11 @@ namespace SyncGuard.Tray
                 // 트레이 아이콘 정리
                 notifyIcon?.Dispose();
                 
-                LogMessage("INFO", "SyncGuard 종료됨");
+                Logger.Info("SyncGuard 종료됨");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"종료 중 오류: {ex.Message}");
+                Logger.Error($"종료 중 오류: {ex.Message}");
             }
             
             base.OnFormClosing(e);
@@ -499,7 +420,7 @@ namespace SyncGuard.Tray
         {
             try
             {
-                LogMessage("INFO", $"Sync 상태 변경: {lastStatus} → {newStatus}");
+                Logger.Info($"Sync 상태 변경: {lastStatus} → {newStatus}");
                 
                 // UI 스레드에서 실행
                 if (this.InvokeRequired)
@@ -524,11 +445,11 @@ namespace SyncGuard.Tray
                         try
                         {
                             await syncChecker.SendStatusToServer();
-                            LogMessage("INFO", "상태 변경 시 TCP 전송 완료");
+                            Logger.Info("상태 변경 시 TCP 전송 완료");
                         }
                         catch (Exception ex)
                         {
-                            LogMessage("ERROR", $"상태 변경 시 TCP 전송 실패: {ex.Message}");
+                            Logger.Error($"상태 변경 시 TCP 전송 실패: {ex.Message}");
                         }
                     });
                 }
@@ -537,11 +458,11 @@ namespace SyncGuard.Tray
                 var message = GetStatusMessage(newStatus);
                 ShowToastNotification("SyncGuard 상태 변경", message);
                 
-                LogMessage("INFO", $"상태 변경 처리 완료: {newStatus}");
+                Logger.Info($"상태 변경 처리 완료: {newStatus}");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"상태 변경 처리 중 오류: {ex.Message}");
+                Logger.Error($"상태 변경 처리 중 오류: {ex.Message}");
             }
         }
 
@@ -549,7 +470,7 @@ namespace SyncGuard.Tray
         {
             if (syncChecker == null)
             {
-                LogMessage("WARNING", "NVAPI 초기화 실패로 Sync 상태를 새로고침할 수 없습니다.");
+                Logger.Warning("NVAPI 초기화 실패로 Sync 상태를 새로고침할 수 없습니다.");
                 MessageBox.Show("NVAPI 초기화 실패로 Sync 상태를 새로고침할 수 없습니다.", "오류", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -557,7 +478,7 @@ namespace SyncGuard.Tray
 
             try
             {
-                LogMessage("INFO", "수동 리프레시 실행");
+                Logger.Info("수동 리프레시 실행");
                 syncChecker.RefreshSyncStatus();
                 
                 // 리프레시 후 상태 확인
@@ -567,11 +488,11 @@ namespace SyncGuard.Tray
                 // 사용자에게 알림
                 ShowToastNotification("Sync 상태 새로고침 완료", message);
                 
-                LogMessage("INFO", $"리프레시 후 상태: {status}");
+                Logger.Info($"리프레시 후 상태: {status}");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"리프레시 중 오류: {ex.Message}");
+                Logger.Error($"리프레시 중 오류: {ex.Message}");
                 MessageBox.Show($"Sync 상태 새로고침 중 오류: {ex.Message}", "오류", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -585,12 +506,12 @@ namespace SyncGuard.Tray
                 {
                     syncChecker.StartTcpClient(targetIpAddress, tcpServerPort);
                     isTcpClientEnabled = true;
-                    LogMessage("INFO", $"TCP 클라이언트 시작됨 - {targetIpAddress}:{tcpServerPort}");
+                    Logger.Info($"TCP 클라이언트 시작됨 - {targetIpAddress}:{tcpServerPort}");
                 }
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"TCP 클라이언트 시작 실패: {ex.Message}");
+                Logger.Error($"TCP 클라이언트 시작 실패: {ex.Message}");
                 isTcpClientEnabled = false;
             }
         }
@@ -603,12 +524,12 @@ namespace SyncGuard.Tray
                 {
                     syncChecker.StopTcpClient();
                     isTcpClientEnabled = false;
-                    LogMessage("INFO", "TCP 클라이언트 중지됨");
+                    Logger.Info("TCP 클라이언트 중지됨");
                 }
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"TCP 클라이언트 중지 실패: {ex.Message}");
+                Logger.Error($"TCP 클라이언트 중지 실패: {ex.Message}");
             }
         }
 
@@ -617,27 +538,14 @@ namespace SyncGuard.Tray
         {
             try
             {
-                if (File.Exists(configFilePath))
-                {
-                    var lines = File.ReadAllLines(configFilePath);
-                    if (lines.Length >= 2)
-                    {
-                        targetIpAddress = lines[0].Trim();
-                        if (int.TryParse(lines[1].Trim(), out int port))
-                        {
-                            tcpServerPort = port;
-                        }
-                    }
-                    LogMessage("INFO", $"설정 파일에서 불러옴: IP={targetIpAddress}, Port={tcpServerPort}");
-                }
-                else
-                {
-                    LogMessage("INFO", "설정 파일이 없어 기본값 사용: IP=127.0.0.1, Port=8080");
-                }
+                var (serverIP, serverPort) = ConfigManager.LoadConfig();
+                targetIpAddress = serverIP;
+                tcpServerPort = serverPort;
+                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"설정 파일 불러오기 실패: {ex.Message}");
+                Logger.Error($"설정 로드 실패: {ex.Message}");
             }
         }
         
@@ -646,17 +554,12 @@ namespace SyncGuard.Tray
         {
             try
             {
-                var configData = new string[]
-                {
-                    targetIpAddress,
-                    tcpServerPort.ToString()
-                };
-                File.WriteAllLines(configFilePath, configData);
-                LogMessage("INFO", $"설정 파일에 저장됨: IP={targetIpAddress}, Port={tcpServerPort}");
+                ConfigManager.SaveConfig(targetIpAddress, tcpServerPort);
+                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}");
             }
             catch (Exception ex)
             {
-                LogMessage("ERROR", $"설정 파일 저장 실패: {ex.Message}");
+                Logger.Error($"설정 저장 실패: {ex.Message}");
             }
         }
     }

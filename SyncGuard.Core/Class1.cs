@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace SyncGuard.Core
 {
@@ -464,16 +465,29 @@ namespace SyncGuard.Core
     public class Logger
     {
         private static readonly object lockObject = new object();
-        private static readonly string logDirectory = ".";
+        private static readonly string logDirectory = Path.Combine(GetApplicationDirectory(), "logs");
         private static readonly int maxFileSizeMB = 10;
         private static LogLevel currentLogLevel = LogLevel.INFO;
         
         static Logger()
         {
-            // 로그 디렉토리 생성 (루트 디렉토리 사용)
+            // 로그 디렉토리 생성
             if (!Directory.Exists(logDirectory))
             {
                 Directory.CreateDirectory(logDirectory);
+            }
+        }
+        
+        // 애플리케이션 설치 디렉토리 가져오기
+        private static string GetApplicationDirectory()
+        {
+            try
+            {
+                return Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? ".";
+            }
+            catch
+            {
+                return ".";
             }
         }
         
@@ -496,7 +510,7 @@ namespace SyncGuard.Core
                     // 콘솔 출력
                     Console.WriteLine(logEntry);
                     
-                    // 파일에 로그 저장 (루트 디렉토리)
+                    // 파일에 로그 저장 (logs 디렉토리)
                     string logFile = Path.Combine(logDirectory, "syncguard_log.txt");
                     
                     // 파일 크기 확인 및 로테이션
@@ -523,5 +537,87 @@ namespace SyncGuard.Core
         public static void Info(string message) => Log(LogLevel.INFO, message);
         public static void Warning(string message) => Log(LogLevel.WARNING, message);
         public static void Error(string message) => Log(LogLevel.ERROR, message);
+    }
+
+    public class ConfigManager
+    {
+        private static readonly string configDirectory = Path.Combine(GetApplicationDirectory(), "config");
+        private static readonly string configFile = Path.Combine(configDirectory, "syncguard_config.txt");
+        private static readonly object lockObject = new object();
+        
+        // 애플리케이션 설치 디렉토리 가져오기
+        private static string GetApplicationDirectory()
+        {
+            try
+            {
+                return Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? ".";
+            }
+            catch
+            {
+                return ".";
+            }
+        }
+        
+        static ConfigManager()
+        {
+            // 설정 디렉토리 생성
+            if (!Directory.Exists(configDirectory))
+            {
+                Directory.CreateDirectory(configDirectory);
+            }
+        }
+        
+        public static void SaveConfig(string serverIP, int serverPort)
+        {
+            lock (lockObject)
+            {
+                try
+                {
+                    var config = new
+                    {
+                        ServerIP = serverIP,
+                        ServerPort = serverPort,
+                        LastUpdated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                    };
+                    
+                    string json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(configFile, json, System.Text.Encoding.UTF8);
+                    Logger.Info($"설정 저장 완료: {serverIP}:{serverPort}");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"설정 저장 실패: {ex.Message}");
+                }
+            }
+        }
+        
+        public static (string serverIP, int serverPort) LoadConfig()
+        {
+            lock (lockObject)
+            {
+                try
+                {
+                    if (File.Exists(configFile))
+                    {
+                        string json = File.ReadAllText(configFile, System.Text.Encoding.UTF8);
+                        var config = JsonSerializer.Deserialize<dynamic>(json);
+                        
+                        string serverIP = config.GetProperty("ServerIP").GetString() ?? "127.0.0.1";
+                        int serverPort = config.GetProperty("ServerPort").GetInt32();
+                        
+                        Logger.Info($"설정 로드 완료: {serverIP}:{serverPort}");
+                        return (serverIP, serverPort);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"설정 로드 실패: {ex.Message}");
+                }
+                
+                // 기본값 반환
+                Logger.Info("기본 설정 사용: 127.0.0.1:8080");
+                return ("127.0.0.1", 8080);
+            }
+        }
     }
 }
