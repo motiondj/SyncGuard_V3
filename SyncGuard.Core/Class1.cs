@@ -57,9 +57,6 @@ namespace SyncGuard.Core
                 {
                     // WMI 방법으로 Sync 상태 확인 (우선순위 1)
                     newStatus = GetSyncStatusFromWmi();
-                    
-                    // 마스터 모니터 정보도 함께 확인
-                    CheckMasterMonitorInfo();
                 }
                 else
                 {
@@ -320,51 +317,6 @@ namespace SyncGuard.Core
             }
             
             return false; // Sync 정보 없음
-        }
-        
-        private void CheckMasterMonitorInfo()
-        {
-            try
-            {
-                // SyncTopology에서 마스터 디바이스 확인
-                using (var searcher = new ManagementObjectSearcher("root\\CIMV2\\NV", "SELECT * FROM SyncTopology WHERE displaySyncState = 2"))
-                {
-                    var collection = searcher.Get();
-                    Console.WriteLine($"마스터 Sync 디바이스 수: {collection.Count}");
-                    
-                    foreach (ManagementObject obj in collection)
-                    {
-                        int id = Convert.ToInt32(obj["id"]);
-                        string uname = obj["uname"]?.ToString() ?? "";
-                        bool isDisplayMasterable = Convert.ToBoolean(obj["isDisplayMasterable"]);
-                        
-                        Console.WriteLine($"마스터 디바이스 발견: ID={id}, Name={uname}, Masterable={isDisplayMasterable}");
-                    }
-                }
-                
-                // 일반 디스플레이 정보도 확인
-                using (var searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DesktopMonitor"))
-                {
-                    var collection = searcher.Get();
-                    Console.WriteLine($"전체 모니터 수: {collection.Count}");
-                    
-                    foreach (ManagementObject obj in collection)
-                    {
-                        string name = obj["Name"]?.ToString() ?? "";
-                        string deviceId = obj["DeviceID"]?.ToString() ?? "";
-                        bool isPrimary = Convert.ToBoolean(obj["IsPrimary"] ?? false);
-                        
-                        if (!string.IsNullOrEmpty(name))
-                        {
-                            Console.WriteLine($"모니터: {name}, DeviceID={deviceId}, IsPrimary={isPrimary}");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"마스터 모니터 정보 확인 중 오류: {ex.Message}");
-            }
         }
         
         // 진단 결과를 위한 클래스
