@@ -3,9 +3,18 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Management;
 using System.Runtime.Versioning;
+using System.IO;
 
 namespace SyncGuard.Core
 {
+    public enum LogLevel
+    {
+        DEBUG,
+        INFO,
+        WARNING,
+        ERROR
+    }
+    
     [SupportedOSPlatform("windows")]
     public class SyncChecker : IDisposable
     {
@@ -37,7 +46,7 @@ namespace SyncGuard.Core
             if (!IsWmiMethodAvailable())
             {
                 useWmiMethod = false;
-                Console.WriteLine("WMI 방법을 사용할 수 없습니다. nvidia-smi 방법으로 대체합니다.");
+                Logger.Info("WMI 방법을 사용할 수 없습니다. nvidia-smi 방법으로 대체합니다.");
             }
             
             // nvidia-smi가 사용 가능한지 확인 (백업용)
@@ -79,7 +88,7 @@ namespace SyncGuard.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Sync 상태 확인 중 오류: {ex.Message}");
+                Logger.Error($"Sync 상태 확인 중 오류: {ex.Message}");
                 return SyncStatus.Error;
             }
         }
@@ -97,7 +106,7 @@ namespace SyncGuard.Core
             lock (lockObject)
             {
                 currentRole = role;
-                Console.WriteLine($"사용자 역할이 {role}로 설정되었습니다.");
+                Logger.Info($"사용자 역할이 {role}로 설정되었습니다.");
             }
         }
         
@@ -127,7 +136,7 @@ namespace SyncGuard.Core
                     
                     if (collection.Count == 0)
                     {
-                        Console.WriteLine("SyncTopology WMI 클래스에서 Sync 디바이스를 찾을 수 없습니다.");
+                        Logger.Warning("SyncTopology WMI 클래스에서 Sync 디바이스를 찾을 수 없습니다.");
                         return SyncStatus.Unlocked;
                     }
                     
@@ -139,7 +148,7 @@ namespace SyncGuard.Core
                             int displaySyncState = Convert.ToInt32(obj["displaySyncState"]);
                             int id = Convert.ToInt32(obj["id"]);
                             
-                            Console.WriteLine($"Sync 디바이스: ID={id}, State={displaySyncState}");
+                            Logger.Debug($"Sync 디바이스: ID={id}, State={displaySyncState}");
                             
                             // displaySyncState 값으로 동기화 상태 판단
                             // 0 = UnSynced (동기화되지 않음) - 빨강
@@ -147,23 +156,23 @@ namespace SyncGuard.Core
                             // 2 = Master (마스터 모드 - 동기화됨) - 초록
                             if (displaySyncState == 2)
                             {
-                                Console.WriteLine($"디바이스 {id}가 마스터 상태입니다. (State: {displaySyncState})");
+                                Logger.Info($"디바이스 {id}가 마스터 상태입니다. (State: {displaySyncState})");
                                 return SyncStatus.Locked; // 초록색
                             }
                             else if (displaySyncState == 1)
                             {
-                                Console.WriteLine($"디바이스 {id}가 슬레이브 상태입니다. (State: {displaySyncState})");
+                                Logger.Info($"디바이스 {id}가 슬레이브 상태입니다. (State: {displaySyncState})");
                                 return SyncStatus.Unknown; // 노란색
                             }
                             else if (displaySyncState == 0)
                             {
-                                Console.WriteLine($"디바이스 {id}가 동기화되지 않은 상태입니다. (State: {displaySyncState})");
+                                Logger.Info($"디바이스 {id}가 동기화되지 않은 상태입니다. (State: {displaySyncState})");
                                 return SyncStatus.Error; // 빨간색
                             }
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Sync 디바이스 정보 추출 중 오류: {ex.Message}");
+                            Logger.Error($"Sync 디바이스 정보 추출 중 오류: {ex.Message}");
                         }
                     }
                     
@@ -173,7 +182,7 @@ namespace SyncGuard.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"WMI Sync 상태 확인 중 오류: {ex.Message}");
+                Logger.Error($"WMI Sync 상태 확인 중 오류: {ex.Message}");
                 return SyncStatus.Error; // 빨간색
             }
         }
@@ -192,7 +201,7 @@ namespace SyncGuard.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"nvidia-smi Sync 상태 확인 중 오류: {ex.Message}");
+                Logger.Error($"nvidia-smi Sync 상태 확인 중 오류: {ex.Message}");
                 return SyncStatus.Error;
             }
 
@@ -377,13 +386,13 @@ namespace SyncGuard.Core
         public void RefreshSyncStatus()
         {
             // 상태를 강제로 새로고침
-            Console.WriteLine("Sync 상태를 새로고침합니다...");
+            Logger.Info("Sync 상태를 새로고침합니다...");
             GetSyncStatus(); // 상태를 다시 확인
         }
         
         public void ExploreNvidiaWmiClasses()
         {
-            Console.WriteLine("=== NVIDIA WMI 클래스 탐색 ===");
+            Logger.Info("=== NVIDIA WMI 클래스 탐색 ===");
             
             try
             {
@@ -392,33 +401,33 @@ namespace SyncGuard.Core
                 
                 foreach (string ns in namespaces)
                 {
-                    Console.WriteLine($"\n--- {ns} 네임스페이스 ---");
+                    Logger.Info($"\n--- {ns} 네임스페이스 ---");
                     try
                     {
                         using (var searcher = new ManagementObjectSearcher(ns, "SELECT * FROM Meta_Class WHERE __Class LIKE '%Sync%' OR __Class LIKE '%Display%' OR __Class LIKE '%GPU%'"))
                         {
                             var collection = searcher.Get();
-                            Console.WriteLine($"관련 클래스 수: {collection.Count}");
+                            Logger.Info($"관련 클래스 수: {collection.Count}");
                             
                             foreach (ManagementObject obj in collection)
                             {
                                 string className = obj["__Class"]?.ToString() ?? "";
                                 if (!string.IsNullOrEmpty(className))
                                 {
-                                    Console.WriteLine($"  - {className}");
+                                    Logger.Info($"  - {className}");
                                 }
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"  오류: {ex.Message}");
+                        Logger.Error($"  오류: {ex.Message}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"WMI 클래스 탐색 중 오류: {ex.Message}");
+                Logger.Error($"WMI 클래스 탐색 중 오류: {ex.Message}");
             }
         }
         
@@ -426,5 +435,69 @@ namespace SyncGuard.Core
         {
             // nvidia-smi는 별도 정리 작업이 필요 없음
         }
+    }
+
+    public class Logger
+    {
+        private static readonly object lockObject = new object();
+        private static readonly string logDirectory = "logs";
+        private static readonly int maxFileSizeMB = 10;
+        private static LogLevel currentLogLevel = LogLevel.INFO;
+        
+        static Logger()
+        {
+            // 로그 디렉토리 생성
+            if (!Directory.Exists(logDirectory))
+            {
+                Directory.CreateDirectory(logDirectory);
+            }
+        }
+        
+        public static void SetLogLevel(LogLevel level)
+        {
+            currentLogLevel = level;
+        }
+        
+        public static void Log(LogLevel level, string message)
+        {
+            if (level < currentLogLevel) return;
+            
+            lock (lockObject)
+            {
+                try
+                {
+                    string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    string logEntry = $"[{timestamp}] [{level}] {message}";
+                    
+                    // 콘솔 출력
+                    Console.WriteLine(logEntry);
+                    
+                    // 파일에 로그 저장
+                    string logFile = Path.Combine(logDirectory, $"syncguard_{DateTime.Now:yyyy-MM-dd}.txt");
+                    
+                    // 파일 크기 확인 및 로테이션
+                    if (File.Exists(logFile))
+                    {
+                        var fileInfo = new FileInfo(logFile);
+                        if (fileInfo.Length > maxFileSizeMB * 1024 * 1024)
+                        {
+                            string backupFile = Path.Combine(logDirectory, $"syncguard_{DateTime.Now:yyyy-MM-dd}_{DateTime.Now:HHmmss}.txt");
+                            File.Move(logFile, backupFile);
+                        }
+                    }
+                    
+                    File.AppendAllText(logFile, logEntry + Environment.NewLine);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[ERROR] 로그 쓰기 실패: {ex.Message}");
+                }
+            }
+        }
+        
+        public static void Debug(string message) => Log(LogLevel.DEBUG, message);
+        public static void Info(string message) => Log(LogLevel.INFO, message);
+        public static void Warning(string message) => Log(LogLevel.WARNING, message);
+        public static void Error(string message) => Log(LogLevel.ERROR, message);
     }
 }
