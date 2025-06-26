@@ -2,20 +2,18 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using SyncGuard.Core;
+using System.Runtime.Versioning;
 
 namespace SyncGuard.Tray
 {
+    [SupportedOSPlatform("windows")]
     public partial class Form1 : Form
     {
-        private NotifyIcon notifyIcon;
-        private SyncChecker syncChecker;
-        private System.Windows.Forms.Timer syncTimer;
+        private NotifyIcon? notifyIcon;
+        private SyncChecker? syncChecker;
+        private System.Windows.Forms.Timer? syncTimer;
         private SyncChecker.SyncStatus lastStatus = SyncChecker.SyncStatus.Unknown;
         
-        // Master/Slave 메뉴 아이템 참조 추가
-        private ToolStripMenuItem masterMenuItem;
-        private ToolStripMenuItem slaveMenuItem;
-
         public Form1()
         {
             InitializeComponent();
@@ -70,55 +68,23 @@ namespace SyncGuard.Tray
 
             // 컨텍스트 메뉴 생성
             var contextMenu = new ContextMenuStrip();
-            contextMenu.Items.Add("Sync 상태 확인", null, OnCheckSyncStatus);
             contextMenu.Items.Add("리프레시", null, OnRefreshSyncStatus);
-            contextMenu.Items.Add("WMI 클래스 탐색", null, OnExploreWmiClasses);
-            contextMenu.Items.Add("-"); // 구분선
-            
-            // Master/Slave 설정 메뉴
-            var roleMenu = new ToolStripMenuItem("역할 설정");
-            masterMenuItem = new ToolStripMenuItem("Master", null, OnSetMaster);
-            slaveMenuItem = new ToolStripMenuItem("Slave", null, OnSetSlave);
-            roleMenu.DropDownItems.Add(masterMenuItem);
-            roleMenu.DropDownItems.Add(slaveMenuItem);
-            contextMenu.Items.Add(roleMenu);
-            
             contextMenu.Items.Add("-"); // 구분선
             contextMenu.Items.Add("종료", null, OnExit);
             
             notifyIcon.ContextMenuStrip = contextMenu;
             notifyIcon.DoubleClick += OnTrayIconDoubleClick;
-            
-            // 초기 체크 표시 업데이트
-            UpdateRoleMenuCheckmarks();
-        }
-        
-        // 역할 메뉴 체크 표시 업데이트
-        private void UpdateRoleMenuCheckmarks()
-        {
-            if (syncChecker != null)
-            {
-                var currentRole = syncChecker.GetUserRole();
-                masterMenuItem.Checked = (currentRole == SyncGuard.Core.SyncChecker.SyncRole.Master);
-                slaveMenuItem.Checked = (currentRole == SyncGuard.Core.SyncChecker.SyncRole.Slave);
-            }
-            else
-            {
-                // SyncChecker가 없으면 기본값(Slave)으로 체크
-                masterMenuItem.Checked = false;
-                slaveMenuItem.Checked = true;
-            }
         }
 
         private void InitializeSyncTimer()
         {
             syncTimer = new System.Windows.Forms.Timer();
-            syncTimer.Interval = 5000; // 5초마다 체크
+            syncTimer.Interval = 1000; // 1초마다 체크
             syncTimer.Tick += OnSyncTimerTick;
             syncTimer.Start();
         }
 
-        private void OnSyncTimerTick(object sender, EventArgs e)
+        private void OnSyncTimerTick(object? sender, EventArgs e)
         {
             if (syncChecker == null)
             {
@@ -149,13 +115,15 @@ namespace SyncGuard.Tray
 
         private void UpdateTrayIcon(SyncChecker.SyncStatus status)
         {
+            if (notifyIcon == null) return;
+            
             // 상태에 따른 아이콘 색상 변경
             Color iconColor = status switch
             {
-                SyncChecker.SyncStatus.Synced => Color.Green,      // 초록색: 동기화됨
-                SyncChecker.SyncStatus.Free => Color.Blue,         // 파란색: 동기화 안됨
-                SyncChecker.SyncStatus.ConfigConflict => Color.Red, // 빨간색: 설정 충돌
-                SyncChecker.SyncStatus.Unknown => Color.Yellow,    // 노란색: 알 수 없음
+                SyncChecker.SyncStatus.Locked => Color.Green,      // 초록색: 마스터 (State: 2)
+                SyncChecker.SyncStatus.Unknown => Color.Yellow,    // 노란색: 슬레이브 (State: 1)
+                SyncChecker.SyncStatus.Error => Color.Red,         // 빨간색: 동기화 안됨 (State: 0)
+                SyncChecker.SyncStatus.Unlocked => Color.Blue,     // 파란색: 기타
                 _ => Color.Gray
             };
 
@@ -175,16 +143,18 @@ namespace SyncGuard.Tray
         {
             return status switch
             {
-                SyncChecker.SyncStatus.Synced => "Sync Synced (동기화됨)",
-                SyncChecker.SyncStatus.Free => "Sync Free (동기화 안됨)",
-                SyncChecker.SyncStatus.ConfigConflict => "Sync Config Conflict (설정 충돌)",
-                SyncChecker.SyncStatus.Unknown => "Sync Unknown (알 수 없음)",
-                _ => "Sync Unknown (알 수 없음)"
+                SyncChecker.SyncStatus.Locked => "Master (마스터)",
+                SyncChecker.SyncStatus.Unknown => "Slave (슬레이브)",
+                SyncChecker.SyncStatus.Error => "UnSynced (동기화 안됨)",
+                SyncChecker.SyncStatus.Unlocked => "Unknown (알 수 없음)",
+                _ => "Unknown (알 수 없음)"
             };
         }
 
         private void ShowToastNotification(string title, string message)
         {
+            if (notifyIcon == null) return;
+            
             // Windows 10/11 토스트 알림
             try
             {
@@ -205,35 +175,13 @@ namespace SyncGuard.Tray
             }
         }
 
-        private void OnCheckSyncStatus(object sender, EventArgs e)
+        private void OnTrayIconDoubleClick(object? sender, EventArgs e)
         {
-            if (syncChecker == null)
-            {
-                MessageBox.Show("NVAPI 초기화 실패로 Sync 상태를 확인할 수 없습니다.", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                var status = syncChecker.GetSyncStatus();
-                string message = GetStatusMessage(status);
-                MessageBox.Show($"현재 Sync 상태: {message}", "Sync 상태", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Sync 상태 확인 중 오류: {ex.Message}", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // 더블클릭 시 리프레시 실행
+            OnRefreshSyncStatus(sender, e);
         }
 
-        private void OnTrayIconDoubleClick(object sender, EventArgs e)
-        {
-            OnCheckSyncStatus(sender, e);
-        }
-
-        private void OnExit(object sender, EventArgs e)
+        private void OnExit(object? sender, EventArgs e)
         {
             syncChecker?.Dispose();
             notifyIcon?.Dispose();
@@ -256,15 +204,21 @@ namespace SyncGuard.Tray
             base.OnFormClosing(e);
         }
 
-        private void OnSyncStatusChanged(object sender, SyncChecker.SyncStatus newStatus)
+        private void OnSyncStatusChanged(object? sender, SyncChecker.SyncStatus newStatus)
         {
-            // 실시간 상태 변경 처리
+            // UI 스레드에서 실행
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => OnSyncStatusChanged(sender, newStatus)));
+                return;
+            }
+            
             UpdateTrayIcon(newStatus);
             string message = GetStatusMessage(newStatus);
             ShowToastNotification("Sync 상태 변경", message);
         }
 
-        private void OnRefreshSyncStatus(object sender, EventArgs e)
+        private void OnRefreshSyncStatus(object? sender, EventArgs e)
         {
             if (syncChecker == null)
             {
@@ -292,56 +246,6 @@ namespace SyncGuard.Tray
                 Console.WriteLine($"리프레시 중 오류: {ex.Message}");
                 MessageBox.Show($"Sync 상태 새로고침 중 오류: {ex.Message}", "오류", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void OnSetMaster(object sender, EventArgs e)
-        {
-            if (syncChecker == null)
-            {
-                MessageBox.Show("NVAPI 초기화 실패로 역할을 설정할 수 없습니다.", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                syncChecker.SetUserRole(SyncGuard.Core.SyncChecker.SyncRole.Master);
-                UpdateRoleMenuCheckmarks(); // 체크 표시 업데이트
-                ShowToastNotification("역할 설정", "Master로 설정되었습니다.");
-                Console.WriteLine("역할을 Master로 설정했습니다.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Master 설정 중 오류: {ex.Message}");
-                MessageBox.Show($"Master 설정 중 오류: {ex.Message}", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        
-        private void OnSetSlave(object sender, EventArgs e)
-        {
-            if (syncChecker != null)
-            {
-                syncChecker.SetUserRole(SyncGuard.Core.SyncChecker.SyncRole.Slave);
-                UpdateRoleMenuCheckmarks();
-                ShowToastNotification("역할 설정", "Slave로 설정되었습니다.");
-            }
-        }
-        
-        private void OnExploreWmiClasses(object sender, EventArgs e)
-        {
-            if (syncChecker != null)
-            {
-                try
-                {
-                    syncChecker.ExploreNvidiaWmiClasses();
-                    ShowToastNotification("WMI 탐색", "NVIDIA WMI 클래스 탐색이 완료되었습니다. 로그를 확인하세요.");
-                }
-                catch (Exception ex)
-                {
-                    ShowToastNotification("WMI 탐색 실패", $"오류: {ex.Message}");
-                }
             }
         }
     }

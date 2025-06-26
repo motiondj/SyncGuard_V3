@@ -1,9 +1,11 @@
 using System;
 using System.Windows.Forms;
 using SyncGuard.Core;
+using System.Runtime.Versioning;
 
 namespace SyncGuard.Tray;
 
+[SupportedOSPlatform("windows")]
 static class Program
 {
     /// <summary>
