@@ -262,14 +262,19 @@ public partial class Form1 : Form
                     if (isTcpClientEnabled)
                     {
                         StartTcpClient();
+                        Logger.Info("외부 전송 활성화됨 - TCP 클라이언트 시작");
                     }
                     else
                     {
                         StopTcpClient();
+                        Logger.Info("외부 전송 비활성화됨 - TCP 클라이언트 중지");
                     }
                     
                     // 트레이 메뉴 업데이트
                     UpdateTrayMenu();
+                    
+                    // 설정 변경 알림
+                    MessageBox.Show($"설정이 저장되었습니다.\n외부 전송: {(isTcpClientEnabled ? "활성화" : "비활성화")}", "설정 저장", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                     settingsForm.Close();
                 }

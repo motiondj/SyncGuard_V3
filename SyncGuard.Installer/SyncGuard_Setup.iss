@@ -8,6 +8,12 @@
 #define MyAppURL "https://github.com/syncguard"
 #define MyAppExeName "SyncGuard.Tray.exe"
 
+[Code]
+function GetInstallDate(Param: string): string;
+begin
+  Result := GetDateTimeString('yyyymmdd', '-', ':');
+end;
+
 [Setup]
 ; 기본 설정
 AppId={{12345678-1234-1234-1234-123456789012}
@@ -29,6 +35,11 @@ WizardStyle=modern
 PrivilegesRequired=admin
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
+
+; Uninstall 설정
+UninstallDisplayIcon={app}\{#MyAppExeName}
+UninstallDisplayName={#MyAppName}
+UninstallFilesDir={app}\uninstall
 
 ; 한국어 지원
 LanguageDetectionMethod=locale
@@ -57,7 +68,7 @@ Name: "{app}\config"; Permissions: users-full
 [Icons]
 ; 시작 메뉴 바로가기
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
+Name: "{group}\SyncGuard V3 제거"; Filename: "{uninstallexe}"
 
 ; 바탕화면 바로가기
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
@@ -75,4 +86,20 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyApp
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayIcon"; ValueData: "{app}\{#MyAppExeName}"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "Publisher"; ValueData: "{#MyAppPublisher}"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "URLInfoAbout"; ValueData: "{#MyAppURL}"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayVersion"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey 
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayVersion"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "InstallLocation"; ValueData: "{app}"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: dword; ValueName: "NoModify"; ValueData: 1; Flags: uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: dword; ValueName: "NoRepair"; ValueData: 1; Flags: uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "EstimatedSize"; ValueData: "50000"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "InstallDate"; ValueData: "{code:GetInstallDate}"; Flags: uninsdeletekey
+
+[UninstallDelete]
+; 설치 폴더의 모든 파일 삭제
+Type: files; Name: "{app}\*"
+Type: dirifempty; Name: "{app}"
+; 로그 파일 삭제
+Type: files; Name: "{app}\logs\*"
+Type: dirifempty; Name: "{app}\logs"
+; 설정 파일 삭제 (사용자 데이터 보존을 위해 주석 처리)
+; Type: files; Name: "{app}\config\*"
+; Type: dirifempty; Name: "{app}\config" 

@@ -567,7 +567,7 @@ namespace SyncGuard.Core
             }
         }
         
-        public static void SaveConfig(string serverIP, int serverPort, int transmissionInterval = 1000, bool enableExternalSend = true)
+        public static void SaveConfig(string serverIP, int serverPort, int transmissionInterval = 1000, bool enableExternalSend = false)
         {
             lock (lockObject)
             {
@@ -604,6 +604,12 @@ namespace SyncGuard.Core
                         string json = File.ReadAllText(configFile, System.Text.Encoding.UTF8);
                         var config = JsonSerializer.Deserialize<dynamic>(json);
                         
+                        if (config == null)
+                        {
+                            Logger.Warning("설정 파일이 비어있거나 잘못된 형식입니다. 기본값을 사용합니다.");
+                            return ("127.0.0.1", 8080, 1000, false);
+                        }
+                        
                         string serverIP = config.GetProperty("ServerIP").GetString() ?? "127.0.0.1";
                         int serverPort = config.GetProperty("ServerPort").GetInt32();
                         
@@ -622,8 +628,8 @@ namespace SyncGuard.Core
                             transmissionInterval = 1000;
                         }
                         
-                        // EnableExternalSend가 있으면 사용, 없으면 기본값 true
-                        bool enableExternalSend = true;
+                        // EnableExternalSend가 있으면 사용, 없으면 기본값 false
+                        bool enableExternalSend = false;
                         try
                         {
                             if (config.TryGetProperty("EnableExternalSend", out System.Text.Json.JsonElement enableProperty))
@@ -634,7 +640,7 @@ namespace SyncGuard.Core
                         catch
                         {
                             // EnableExternalSend가 없거나 읽을 수 없는 경우 기본값 사용
-                            enableExternalSend = true;
+                            enableExternalSend = false;
                         }
                         
                         Logger.Info($"설정 로드 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms, ExternalSend={enableExternalSend}");
@@ -647,8 +653,8 @@ namespace SyncGuard.Core
                 }
                 
                 // 기본값 반환
-                Logger.Info("기본 설정 사용: 127.0.0.1:8080, Interval=1000ms, ExternalSend=true");
-                return ("127.0.0.1", 8080, 1000, true);
+                Logger.Info("기본 설정 사용: 127.0.0.1:8080, Interval=1000ms, ExternalSend=false");
+                return ("127.0.0.1", 8080, 1000, false);
             }
         }
     }
