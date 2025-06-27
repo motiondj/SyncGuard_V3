@@ -10,8 +10,8 @@ using System.Net.Sockets;
 namespace SyncGuard.Tray
 {
     [SupportedOSPlatform("windows")]
-    public partial class Form1 : Form
-    {
+public partial class Form1 : Form
+{
         private NotifyIcon? notifyIcon;
         private SyncChecker? syncChecker;
         private System.Windows.Forms.Timer? syncTimer;
@@ -21,9 +21,9 @@ namespace SyncGuard.Tray
         private string targetIpAddress = "127.0.0.1";
         private readonly string configFilePath = "syncguard_config.txt";
         
-        public Form1()
-        {
-            InitializeComponent();
+    public Form1()
+    {
+        InitializeComponent();
             
             // 설정 파일에서 값 불러오기
             LoadConfig();

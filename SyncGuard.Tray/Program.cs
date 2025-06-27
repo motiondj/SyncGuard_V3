@@ -32,7 +32,7 @@ static class Program
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Application.Run(new Form1());
-    }
+    }    
     
     // AllocConsole 함수 제거 - 더 이상 사용하지 않음
 }

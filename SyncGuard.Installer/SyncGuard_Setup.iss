@@ -44,18 +44,10 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Name: "autostart"; Description: "{cm:AutoStartProgram,{#MyAppName}}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; 메인 실행 파일
-Source: "..\build\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\build\SyncGuard.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-
-; 의존성 라이브러리들
-Source: "..\build\*.dll"; DestDir: "{app}"; Flags: ignoreversion
-
+; Self-contained 단일 실행 파일만 포함
+Source: "..\SyncGuard.Tray\bin\Release\net6.0-windows\win-x64\publish\SyncGuard.Tray.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; 설정 파일 (기본값)
 Source: "config\syncguard_config.txt"; DestDir: "{app}\config"; Flags: ignoreversion
-
-; .NET 6.0 런타임 오프라인 설치 파일 포함
-Source: "windowsdesktop-runtime-6.0.36-win-x64.exe"; DestDir: "{tmp}"; Flags: ignoreversion
 
 ; 로그 폴더 생성
 [Dirs]
@@ -83,76 +75,4 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyApp
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayIcon"; ValueData: "{app}\{#MyAppExeName}"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "Publisher"; ValueData: "{#MyAppPublisher}"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "URLInfoAbout"; ValueData: "{#MyAppURL}"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayVersion"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey
-
-[Run]
-; 기존 프로그램 실행
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-
-[Code]
-// 설치 전 확인사항
-function InitializeSetup(): Boolean;
-begin
-  Result := True;
-  // .NET 6.0 확인 제거 - 자동으로 설치됨
-end;
-
-// 설치 완료 후 .NET 런타임 설치
-procedure CurStepChanged(CurStep: TSetupStep);
-var
-  ResultCode: Integer;
-  DotNetInstalled: Boolean;
-begin
-  if CurStep = ssPostInstall then
-  begin
-    Log('=== .NET 6.0 Runtime Installation Check ===');
-    
-    // 설치 전 .NET 런타임 상태 확인
-    DotNetInstalled := RegKeyExists(HKLM, 'SOFTWARE\Microsoft\NET Core\Setup\InstalledVersions\x64\sharedhost');
-    if DotNetInstalled then
-      Log('Before installation - .NET 6.0 Runtime installed: True')
-    else
-      Log('Before installation - .NET 6.0 Runtime installed: False');
-    
-    if not DotNetInstalled then
-    begin
-      Log('Starting .NET 6.0 Runtime installation...');
-      
-      // 설치 파일 존재 확인
-      if FileExists(ExpandConstant('{tmp}\windowsdesktop-runtime-6.0.36-win-x64.exe')) then
-      begin
-        Log('Found windowsdesktop-runtime-6.0.36-win-x64.exe in temp directory');
-        Log('Executing: ' + ExpandConstant('{tmp}\windowsdesktop-runtime-6.0.36-win-x64.exe') + ' /install /quiet /norestart /log "{tmp}\dotnet_install.log"');
-        
-        // .NET 런타임 설치 실행
-        if Exec(ExpandConstant('{tmp}\windowsdesktop-runtime-6.0.36-win-x64.exe'), '/install /quiet /norestart /log "{tmp}\dotnet_install.log"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
-        begin
-          Log('Installation process completed. Exit code: ' + IntToStr(ResultCode));
-          if ResultCode = 0 then
-          begin
-            Log('Successfully installed .NET 6.0 Runtime');
-          end
-          else
-          begin
-            Log('Failed to install .NET 6.0 Runtime. Error code: ' + IntToStr(ResultCode));
-          end;
-        end
-        else
-        begin
-          Log('Failed to start .NET 6.0 Runtime installation process');
-        end;
-      end
-      else
-      begin
-        Log('ERROR: windowsdesktop-runtime-6.0.36-win-x64.exe not found in temp directory');
-        Log('Temp directory: ' + ExpandConstant('{tmp}'));
-      end;
-    end
-    else
-    begin
-      Log('.NET 6.0 Runtime is already installed - skipping installation');
-    end;
-    
-    Log('=== .NET 6.0 Runtime Installation Check Complete ===');
-  end;
-end; 
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "DisplayVersion"; ValueData: "{#MyAppVersion}"; Flags: uninsdeletekey 
