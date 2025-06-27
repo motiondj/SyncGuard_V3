@@ -19,6 +19,7 @@ public partial class Form1 : Form
         private bool isTcpClientEnabled = false;
         private int tcpServerPort = 8080;
         private string targetIpAddress = "127.0.0.1";
+        private int tcpTransmissionInterval = 1000; // TCP 전송 간격 (밀리초, 기본값: 1초)
         private readonly string configFilePath = "syncguard_config.txt";
         
     public Form1()
@@ -127,7 +128,7 @@ public partial class Form1 : Form
             var settingsForm = new Form
             {
                 Text = "SyncGuard 설정",
-                Size = new Size(400, 300),
+                Size = new Size(400, 350),
                 StartPosition = FormStartPosition.CenterScreen,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 MaximizeBox = false,
@@ -142,11 +143,42 @@ public partial class Form1 : Form
             var lblPort = new Label { Text = "포트:", Location = new Point(20, 50), Size = new Size(100, 20) };
             var txtPort = new TextBox { Location = new Point(130, 50), Size = new Size(200, 20), Text = tcpServerPort.ToString() };
 
+            // TCP 전송 간격 선택
+            var lblInterval = new Label { Text = "전송 간격:", Location = new Point(20, 80), Size = new Size(100, 20) };
+            var cmbInterval = new ComboBox 
+            { 
+                Location = new Point(130, 80), 
+                Size = new Size(200, 20), 
+                DropDownStyle = ComboBoxStyle.DropDownList 
+            };
+            
+            // 간격 옵션 추가
+            cmbInterval.Items.AddRange(new object[] 
+            {
+                "1초",
+                "5초", 
+                "10초",
+                "30초",
+                "60초"
+            });
+            
+            // 현재 설정된 간격 선택
+            var currentIntervalText = tcpTransmissionInterval switch
+            {
+                1000 => "1초",
+                5000 => "5초",
+                10000 => "10초",
+                30000 => "30초",
+                60000 => "60초",
+                _ => "1초"
+            };
+            cmbInterval.SelectedItem = currentIntervalText;
+
             // 외부 전송 활성화 체크박스
-            var chkEnable = new CheckBox { Text = "외부 전송 활성화", Location = new Point(20, 80), Size = new Size(150, 20), Checked = true };
+            var chkEnable = new CheckBox { Text = "외부 전송 활성화", Location = new Point(20, 110), Size = new Size(150, 20), Checked = true };
 
             // 연결 테스트 버튼
-            var btnTest = new Button { Text = "연결 테스트", Location = new Point(20, 110), Size = new Size(100, 30) };
+            var btnTest = new Button { Text = "연결 테스트", Location = new Point(20, 140), Size = new Size(100, 30) };
             btnTest.Click += async (s, e) =>
             {
                 try
@@ -186,17 +218,35 @@ public partial class Form1 : Form
             };
 
             // 저장 버튼
-            var btnSave = new Button { Text = "저장", Location = new Point(200, 200), Size = new Size(80, 30) };
+            var btnSave = new Button { Text = "저장", Location = new Point(200, 250), Size = new Size(80, 30) };
             btnSave.Click += (s, e) =>
             {
                 try
                 {
                     tcpServerPort = int.Parse(txtPort.Text);
                     targetIpAddress = txtIp.Text;
-                    Logger.Info($"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}");
+                    
+                    // 선택된 간격을 밀리초로 변환
+                    tcpTransmissionInterval = cmbInterval.SelectedItem?.ToString() switch
+                    {
+                        "1초" => 1000,
+                        "5초" => 5000,
+                        "10초" => 10000,
+                        "30초" => 30000,
+                        "60초" => 60000,
+                        _ => 1000
+                    };
+                    
+                    Logger.Info($"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
                     
                     // 설정 파일에 저장
                     SaveConfig();
+                    
+                    // 타이머 간격 업데이트
+                    if (syncTimer != null)
+                    {
+                        syncTimer.Interval = tcpTransmissionInterval;
+                    }
                     
                     // TCP 클라이언트 재시작
                     StopTcpClient();
@@ -211,11 +261,11 @@ public partial class Form1 : Form
             };
 
             // 취소 버튼
-            var btnCancel = new Button { Text = "취소", Location = new Point(290, 200), Size = new Size(80, 30) };
+            var btnCancel = new Button { Text = "취소", Location = new Point(290, 250), Size = new Size(80, 30) };
             btnCancel.Click += (s, e) => settingsForm.Close();
 
             // 컨트롤 추가
-            settingsForm.Controls.AddRange(new Control[] { lblIp, txtIp, lblPort, txtPort, chkEnable, btnTest, btnSave, btnCancel });
+            settingsForm.Controls.AddRange(new Control[] { lblIp, txtIp, lblPort, txtPort, lblInterval, cmbInterval, chkEnable, btnTest, btnSave, btnCancel });
 
             settingsForm.ShowDialog();
         }
@@ -245,7 +295,7 @@ public partial class Form1 : Form
         private void InitializeSyncTimer()
         {
             syncTimer = new System.Windows.Forms.Timer();
-            syncTimer.Interval = 1000; // 1초마다 체크
+            syncTimer.Interval = tcpTransmissionInterval; // 설정된 간격으로 설정
             syncTimer.Tick += OnSyncTimerTick;
             syncTimer.Start();
         }
@@ -538,10 +588,11 @@ public partial class Form1 : Form
         {
             try
             {
-                var (serverIP, serverPort) = ConfigManager.LoadConfig();
+                var (serverIP, serverPort, transmissionInterval) = ConfigManager.LoadConfig();
                 targetIpAddress = serverIP;
                 tcpServerPort = serverPort;
-                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}");
+                tcpTransmissionInterval = transmissionInterval;
+                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
             }
             catch (Exception ex)
             {
@@ -554,8 +605,8 @@ public partial class Form1 : Form
         {
             try
             {
-                ConfigManager.SaveConfig(targetIpAddress, tcpServerPort);
-                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}");
+                ConfigManager.SaveConfig(targetIpAddress, tcpServerPort, tcpTransmissionInterval);
+                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
             }
             catch (Exception ex)
             {

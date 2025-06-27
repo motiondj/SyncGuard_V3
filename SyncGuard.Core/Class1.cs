@@ -567,7 +567,7 @@ namespace SyncGuard.Core
             }
         }
         
-        public static void SaveConfig(string serverIP, int serverPort)
+        public static void SaveConfig(string serverIP, int serverPort, int transmissionInterval = 1000)
         {
             lock (lockObject)
             {
@@ -577,12 +577,13 @@ namespace SyncGuard.Core
                     {
                         ServerIP = serverIP,
                         ServerPort = serverPort,
+                        TransmissionInterval = transmissionInterval,
                         LastUpdated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                     };
                     
                     string json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(configFile, json, System.Text.Encoding.UTF8);
-                    Logger.Info($"설정 저장 완료: {serverIP}:{serverPort}");
+                    Logger.Info($"설정 저장 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms");
                 }
                 catch (Exception ex)
                 {
@@ -591,7 +592,7 @@ namespace SyncGuard.Core
             }
         }
         
-        public static (string serverIP, int serverPort) LoadConfig()
+        public static (string serverIP, int serverPort, int transmissionInterval) LoadConfig()
         {
             lock (lockObject)
             {
@@ -605,8 +606,23 @@ namespace SyncGuard.Core
                         string serverIP = config.GetProperty("ServerIP").GetString() ?? "127.0.0.1";
                         int serverPort = config.GetProperty("ServerPort").GetInt32();
                         
-                        Logger.Info($"설정 로드 완료: {serverIP}:{serverPort}");
-                        return (serverIP, serverPort);
+                        // TransmissionInterval이 있으면 사용, 없으면 기본값 1000ms
+                        int transmissionInterval = 1000;
+                        try
+                        {
+                            if (config.TryGetProperty("TransmissionInterval", out System.Text.Json.JsonElement intervalProperty))
+                            {
+                                transmissionInterval = intervalProperty.GetInt32();
+                            }
+                        }
+                        catch
+                        {
+                            // TransmissionInterval이 없거나 읽을 수 없는 경우 기본값 사용
+                            transmissionInterval = 1000;
+                        }
+                        
+                        Logger.Info($"설정 로드 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms");
+                        return (serverIP, serverPort, transmissionInterval);
                     }
                 }
                 catch (Exception ex)
@@ -615,8 +631,8 @@ namespace SyncGuard.Core
                 }
                 
                 // 기본값 반환
-                Logger.Info("기본 설정 사용: 127.0.0.1:8080");
-                return ("127.0.0.1", 8080);
+                Logger.Info("기본 설정 사용: 127.0.0.1:8080, Interval=1000ms");
+                return ("127.0.0.1", 8080, 1000);
             }
         }
     }
