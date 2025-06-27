@@ -95,26 +95,64 @@ public partial class Form1 : Form
 
         private void InitializeTrayIcon()
         {
-            notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = SystemIcons.Application;
-            notifyIcon.Text = "SyncGuard - Quadro Sync 모니터링";
-            notifyIcon.Visible = true;
+            try
+            {
+                // 기존 NotifyIcon이 있다면 정리
+                if (notifyIcon != null)
+                {
+                    notifyIcon.Visible = false;
+                    notifyIcon.Dispose();
+                }
 
-            // 컨텍스트 메뉴 생성
-            var contextMenu = new ContextMenuStrip();
-            
-            // TCP 서버 상태
-            var tcpStatusItem = contextMenu.Items.Add($"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}");
-            tcpStatusItem.Enabled = false;
-            
-            contextMenu.Items.Add("-"); // 구분선
-            contextMenu.Items.Add("설정...", null, OnSettings);
-            contextMenu.Items.Add("리프레시", null, OnRefreshSyncStatus);
-            contextMenu.Items.Add("-"); // 구분선
-            contextMenu.Items.Add("종료", null, OnExit);
-            
-            notifyIcon.ContextMenuStrip = contextMenu;
-            notifyIcon.DoubleClick += OnTrayIconDoubleClick;
+                // 새로운 NotifyIcon 생성
+                notifyIcon = new NotifyIcon();
+                
+                // 기본 아이콘 설정
+                notifyIcon.Icon = SystemIcons.Application;
+                notifyIcon.Text = "SyncGuard - Quadro Sync 모니터링";
+                
+                // 컨텍스트 메뉴 생성
+                var contextMenu = new ContextMenuStrip();
+                
+                // TCP 서버 상태 (첫 번째 항목)
+                var tcpStatusItem = new ToolStripMenuItem($"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}");
+                tcpStatusItem.Enabled = false;
+                contextMenu.Items.Add(tcpStatusItem);
+                
+                // 구분선
+                contextMenu.Items.Add(new ToolStripSeparator());
+                
+                // 설정 메뉴
+                var settingsItem = new ToolStripMenuItem("설정...", null, OnSettings);
+                contextMenu.Items.Add(settingsItem);
+                
+                // 리프레시 메뉴
+                var refreshItem = new ToolStripMenuItem("리프레시", null, OnRefreshSyncStatus);
+                contextMenu.Items.Add(refreshItem);
+                
+                // 구분선
+                contextMenu.Items.Add(new ToolStripSeparator());
+                
+                // 종료 메뉴
+                var exitItem = new ToolStripMenuItem("종료", null, OnExit);
+                contextMenu.Items.Add(exitItem);
+                
+                // 컨텍스트 메뉴를 NotifyIcon에 연결
+                notifyIcon.ContextMenuStrip = contextMenu;
+                
+                // 더블클릭 이벤트 연결
+                notifyIcon.DoubleClick += OnTrayIconDoubleClick;
+                
+                // 트레이 아이콘 표시
+                notifyIcon.Visible = true;
+                
+                Logger.Info("트레이 아이콘 초기화 완료");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"트레이 아이콘 초기화 실패: {ex.Message}");
+                MessageBox.Show($"트레이 아이콘 초기화 실패: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private string GetStatusText(SyncChecker.SyncStatus status)
@@ -296,16 +334,49 @@ public partial class Form1 : Form
 
         private void UpdateTrayMenu()
         {
-            if (notifyIcon?.ContextMenuStrip == null) return;
-            
             try
             {
+                // Form이 유효한지 확인
+                if (this.IsDisposed || !this.IsHandleCreated)
+                {
+                    Logger.Warning("Form이 유효하지 않아 트레이 메뉴 업데이트를 건너뜁니다.");
+                    return;
+                }
+                
+                // NotifyIcon이 유효한지 확인
+                if (notifyIcon == null)
+                {
+                    Logger.Warning("NotifyIcon이 null입니다.");
+                    return;
+                }
+                
+                // ContextMenuStrip이 유효한지 확인
+                if (notifyIcon.ContextMenuStrip == null)
+                {
+                    Logger.Warning("ContextMenuStrip이 null입니다. 트레이 아이콘을 재초기화합니다.");
+                    InitializeTrayIcon();
+                    return;
+                }
+                
                 var contextMenu = notifyIcon.ContextMenuStrip;
                 
-                // TCP 서버 상태 업데이트 (첫 번째 항목)
-                if (contextMenu.Items.Count > 0)
+                // 컨텍스트 메뉴가 유효한지 확인
+                if (contextMenu.IsDisposed)
                 {
-                    contextMenu.Items[0].Text = $"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}";
+                    Logger.Warning("ContextMenuStrip이 disposed 상태입니다. 트레이 아이콘을 재초기화합니다.");
+                    InitializeTrayIcon();
+                    return;
+                }
+                
+                // TCP 서버 상태 업데이트 (첫 번째 항목)
+                if (contextMenu.Items.Count > 0 && contextMenu.Items[0] is ToolStripMenuItem tcpStatusItem)
+                {
+                    tcpStatusItem.Text = $"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}";
+                    Logger.Info($"TCP 상태 메뉴 업데이트: {(isTcpClientEnabled ? "활성" : "비활성")}");
+                }
+                else
+                {
+                    Logger.Warning("TCP 상태 메뉴 항목을 찾을 수 없습니다.");
                 }
                 
                 Logger.Info("트레이 메뉴 업데이트 완료");
@@ -313,6 +384,15 @@ public partial class Form1 : Form
             catch (Exception ex)
             {
                 Logger.Error($"트레이 메뉴 업데이트 실패: {ex.Message}");
+                // 오류 발생 시 트레이 아이콘 재초기화 시도
+                try
+                {
+                    InitializeTrayIcon();
+                }
+                catch (Exception reinitEx)
+                {
+                    Logger.Error($"트레이 아이콘 재초기화 실패: {reinitEx.Message}");
+                }
             }
         }
 
@@ -333,48 +413,69 @@ public partial class Form1 : Form
                 return;
             }
 
-            try
+            // WMI 호출을 백그라운드에서 실행하여 UI 스레드 블로킹 방지
+            _ = Task.Run(() =>
             {
-                var status = syncChecker.GetSyncStatus();
-                Logger.Info($"감지된 상태: {status}, 이전 상태: {lastStatus}");
-                
-                // 항상 트레이 아이콘 업데이트
-                UpdateTrayIcon(status);
-                
-                // 상태 변경 시 또는 초기 상태일 때 알림 및 메뉴 업데이트
-                if (status != lastStatus || lastStatus == SyncChecker.SyncStatus.Unknown)
+                try
                 {
-                    string message = GetStatusMessage(status);
-                    Logger.Info($"Sync 상태 변경: {lastStatus} -> {status}");
-                    ShowToastNotification("Sync 상태 변경", message);
-                    lastStatus = status;
-                }
-                
-                // 주기적으로 TCP 전송 (상태 변경 여부와 관계없이)
-                if (isTcpClientEnabled && syncChecker != null)
-                {
-                    _ = Task.Run(async () => 
+                    var status = syncChecker.GetSyncStatus();
+                    Logger.Info($"감지된 상태: {status}, 이전 상태: {lastStatus}");
+                    
+                    // UI 업데이트는 메인 스레드에서 실행 (Form이 유효한 경우에만)
+                    if (!this.IsDisposed && this.IsHandleCreated)
                     {
-                        try
+                        this.BeginInvoke(() =>
                         {
-                            await syncChecker.SendStatusToServer();
-                            Logger.Info("주기적 TCP 전송 완료");
-                        }
-                        catch (Exception ex)
+                            try
+                            {
+                                // 항상 트레이 아이콘 업데이트
+                                UpdateTrayIcon(status);
+                                
+                                // 상태 변경 시 또는 초기 상태일 때 알림 및 메뉴 업데이트
+                                if (status != lastStatus || lastStatus == SyncChecker.SyncStatus.Unknown)
+                                {
+                                    string message = GetStatusMessage(status);
+                                    Logger.Info($"Sync 상태 변경: {lastStatus} -> {status}");
+                                    ShowToastNotification("Sync 상태 변경", message);
+                                    lastStatus = status;
+                                    
+                                    // 상태 변경 시에만 트레이 메뉴 업데이트
+                                    UpdateTrayMenu();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.Error($"UI 업데이트 중 오류: {ex.Message}");
+                            }
+                        });
+                    }
+                    
+                    // 주기적으로 TCP 전송 (상태 변경 여부와 관계없이)
+                    if (isTcpClientEnabled && syncChecker != null)
+                    {
+                        _ = Task.Run(async () => 
                         {
-                            Logger.Error($"주기적 TCP 전송 실패: {ex.Message}");
-                        }
-                    });
+                            try
+                            {
+                                await syncChecker.SendStatusToServer();
+                                Logger.Info("주기적 TCP 전송 완료");
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.Error($"주기적 TCP 전송 실패: {ex.Message}");
+                            }
+                        });
+                    }
                 }
-                
-                // 항상 트레이 메뉴 업데이트 (상태 표시를 위해)
-                UpdateTrayMenu();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"Sync 체크 중 오류: {ex.Message}");
-                UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
-            }
+                catch (Exception ex)
+                {
+                    Logger.Error($"Sync 체크 중 오류: {ex.Message}");
+                    if (!this.IsDisposed && this.IsHandleCreated)
+                    {
+                        this.BeginInvoke(() => UpdateTrayIcon(SyncChecker.SyncStatus.Unknown));
+                    }
+                }
+            });
         }
 
         private void UpdateTrayIcon(SyncChecker.SyncStatus status)
@@ -447,8 +548,27 @@ public partial class Form1 : Form
 
         private void OnTrayIconDoubleClick(object? sender, EventArgs e)
         {
-            // 더블클릭 시 리프레시 실행
-            OnRefreshSyncStatus(sender, e);
+            try
+            {
+                // 더블클릭 시 컨텍스트 메뉴 표시
+                if (notifyIcon?.ContextMenuStrip != null && !notifyIcon.ContextMenuStrip.IsDisposed)
+                {
+                    // 메뉴를 화면 중앙에 표시하여 시작 메뉴바 자동 숨김 문제 해결
+                    var screen = Screen.PrimaryScreen;
+                    var menuLocation = new Point(screen.WorkingArea.Width / 2, screen.WorkingArea.Height / 2);
+                    
+                    notifyIcon.ContextMenuStrip.Show(menuLocation);
+                    Logger.Info("더블클릭으로 트레이 메뉴 표시됨");
+                }
+                else
+                {
+                    Logger.Warning("컨텍스트 메뉴를 표시할 수 없습니다.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"더블클릭 메뉴 표시 실패: {ex.Message}");
+            }
         }
 
         private void OnExit(object? sender, EventArgs e)
@@ -496,10 +616,10 @@ public partial class Form1 : Form
             {
                 Logger.Info($"Sync 상태 변경: {lastStatus} → {newStatus}");
                 
-                // UI 스레드에서 실행
-                if (this.InvokeRequired)
+                // UI 스레드에서 실행 (Form이 유효한 경우에만)
+                if (this.InvokeRequired && !this.IsDisposed && this.IsHandleCreated)
                 {
-                    this.Invoke(new Action(() => OnSyncStatusChanged(sender, newStatus)));
+                    this.BeginInvoke(new Action(() => OnSyncStatusChanged(sender, newStatus)));
                     return;
                 }
                 
@@ -640,3 +760,5 @@ public partial class Form1 : Form
         }
     }
 }
+
+
