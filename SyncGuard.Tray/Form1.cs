@@ -21,7 +21,6 @@ public partial class Form1 : Form
         private int tcpServerPort = 8080;
         private string targetIpAddress = "127.0.0.1";
         private int tcpTransmissionInterval = 1000; // TCP 전송 간격 (밀리초, 기본값: 1초)
-        private readonly string configFilePath = "syncguard_config.txt";
         
     public Form1()
     {
@@ -46,8 +45,15 @@ public partial class Form1 : Form
                 Logger.Info("SyncChecker 초기화 시작...");
                 syncChecker = new SyncChecker();
                 
-                // TCP 클라이언트 자동 시작 (저장된 설정으로)
-                StartTcpClient();
+                // TCP 클라이언트 설정에 따라 시작
+                if (isTcpClientEnabled)
+                {
+                    StartTcpClient();
+                }
+                else
+                {
+                    Logger.Info("외부 전송이 비활성화되어 TCP 클라이언트를 시작하지 않습니다.");
+                }
                 
                 // Sync 상태 변경 이벤트 구독
                 syncChecker.SyncStatusChanged += OnSyncStatusChanged;
@@ -176,7 +182,7 @@ public partial class Form1 : Form
             cmbInterval.SelectedItem = currentIntervalText;
 
             // 외부 전송 활성화 체크박스
-            var chkEnable = new CheckBox { Text = "외부 전송 활성화", Location = new Point(20, 110), Size = new Size(150, 20), Checked = true };
+            var chkEnable = new CheckBox { Text = "외부 전송 활성화", Location = new Point(20, 110), Size = new Size(150, 20), Checked = isTcpClientEnabled };
 
             // 연결 테스트 버튼
             var btnTest = new Button { Text = "연결 테스트", Location = new Point(20, 140), Size = new Size(100, 30) };
@@ -227,6 +233,9 @@ public partial class Form1 : Form
                     tcpServerPort = int.Parse(txtPort.Text);
                     targetIpAddress = txtIp.Text;
                     
+                    // 외부 전송 활성화 상태 저장
+                    isTcpClientEnabled = chkEnable.Checked;
+                    
                     // 선택된 간격을 밀리초로 변환
                     tcpTransmissionInterval = cmbInterval.SelectedItem?.ToString() switch
                     {
@@ -238,7 +247,7 @@ public partial class Form1 : Form
                         _ => 1000
                     };
                     
-                    Logger.Info($"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
+                    Logger.Info($"설정 저장: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
                     
                     // 설정 파일에 저장
                     SaveConfig();
@@ -249,9 +258,18 @@ public partial class Form1 : Form
                         syncTimer.Interval = tcpTransmissionInterval;
                     }
                     
-                    // TCP 클라이언트 재시작
-                    StopTcpClient();
-                    StartTcpClient();
+                    // TCP 클라이언트 상태 업데이트
+                    if (isTcpClientEnabled)
+                    {
+                        StartTcpClient();
+                    }
+                    else
+                    {
+                        StopTcpClient();
+                    }
+                    
+                    // 트레이 메뉴 업데이트
+                    UpdateTrayMenu();
                     
                     settingsForm.Close();
                 }
@@ -589,11 +607,12 @@ public partial class Form1 : Form
         {
             try
             {
-                var (serverIP, serverPort, transmissionInterval) = ConfigManager.LoadConfig();
+                var (serverIP, serverPort, transmissionInterval, enableExternalSend) = ConfigManager.LoadConfig();
                 targetIpAddress = serverIP;
                 tcpServerPort = serverPort;
                 tcpTransmissionInterval = transmissionInterval;
-                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
+                isTcpClientEnabled = enableExternalSend;
+                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
             }
             catch (Exception ex)
             {
@@ -606,8 +625,8 @@ public partial class Form1 : Form
         {
             try
             {
-                ConfigManager.SaveConfig(targetIpAddress, tcpServerPort, tcpTransmissionInterval);
-                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms");
+                ConfigManager.SaveConfig(targetIpAddress, tcpServerPort, tcpTransmissionInterval, isTcpClientEnabled);
+                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
             }
             catch (Exception ex)
             {
