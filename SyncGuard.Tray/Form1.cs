@@ -6,6 +6,7 @@ using System.Runtime.Versioning;
 using System.IO;
 using System.Threading.Tasks;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace SyncGuard.Tray
 {

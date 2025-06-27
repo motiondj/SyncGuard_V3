@@ -13,6 +13,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <ApplicationIcon>..\SyncGuard.Installer\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>
