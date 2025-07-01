@@ -7,20 +7,34 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Threading;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SyncGuard.Tray
 {
     [SupportedOSPlatform("windows")]
-public partial class Form1 : Form
+    public partial class Form1 : Form
 {
         private NotifyIcon? notifyIcon;
         private SyncChecker? syncChecker;
         private System.Windows.Forms.Timer? syncTimer;
+        
+        // 🔥 최적화를 위한 상태 추적
         private SyncChecker.SyncStatus lastStatus = SyncChecker.SyncStatus.Unknown;
+        private SyncChecker.SyncStatus lastUiStatus = SyncChecker.SyncStatus.Unknown;
+        private DateTime lastStatusChangeTime = DateTime.Now;
+        
         private bool isTcpClientEnabled = false;
         private int tcpServerPort = 8080;
         private string targetIpAddress = "127.0.0.1";
         private int tcpTransmissionInterval = 1000; // TCP 전송 간격 (밀리초, 기본값: 1초)
+        
+        // 🔥 아이콘 캐시
+        private readonly Dictionary<SyncChecker.SyncStatus, Icon> iconCache = new();
+        
+        // 🔥 성능 모니터링
+        private System.Windows.Forms.Timer? statsTimer;
+        private ToolStripMenuItem? statsMenuItem;
         
     public Form1()
     {
@@ -36,6 +50,9 @@ public partial class Form1 : Form
             
             // 로그 시스템 초기화
             InitializeLogging();
+            
+            // 🔥 아이콘 캐시 초기화
+            InitializeIconCache();
             
             InitializeTrayIcon();
             
@@ -61,6 +78,10 @@ public partial class Form1 : Form
                 Logger.Info("SyncChecker 초기화 성공!");
                 
                 InitializeSyncTimer();
+                
+                // 🔥 통계 타이머 초기화
+                InitializeStatsTimer();
+                
                 ShowToastNotification("SyncGuard 시작됨", "Quadro Sync 모니터링이 시작되었습니다.");
             }
             catch (Exception ex)
@@ -80,15 +101,49 @@ public partial class Form1 : Form
             }
         }
 
+        // 🔥 아이콘 캐시 초기화
+        private void InitializeIconCache()
+        {
+            iconCache[SyncChecker.SyncStatus.Master] = CreateColorIcon(Color.Green);
+            iconCache[SyncChecker.SyncStatus.Slave] = CreateColorIcon(Color.Yellow);
+            iconCache[SyncChecker.SyncStatus.Error] = CreateColorIcon(Color.Red);
+            iconCache[SyncChecker.SyncStatus.Unknown] = CreateColorIcon(Color.Red);
+        }
+        
+        // 🔥 색상 아이콘 생성
+        private Icon CreateColorIcon(Color color)
+        {
+            var bitmap = new Bitmap(16, 16);
+            using (var graphics = Graphics.FromImage(bitmap))
+            {
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                
+                // 원 그리기
+                using (var brush = new SolidBrush(color))
+                {
+                    graphics.FillEllipse(brush, 1, 1, 14, 14);
+                }
+                
+                // 테두리
+                using (var pen = new Pen(Color.FromArgb(64, 0, 0, 0), 1))
+                {
+                    graphics.DrawEllipse(pen, 1, 1, 14, 14);
+                }
+            }
+            
+            return Icon.FromHandle(bitmap.GetHicon());
+        }
+
         private void InitializeLogging()
         {
             try
             {
-                Logger.Info("SyncGuard 로그 시스템 초기화 완료");
+                Logger.Info("=== SyncGuard 시작 ===");
+                Logger.Info($"버전: 3.0 (최적화)");
+                Logger.Info($"로그 레벨: {Environment.GetEnvironmentVariable("SYNCGUARD_LOG_LEVEL") ?? "INFO"}");
             }
             catch (Exception ex)
             {
-                // 로그 초기화 실패 시 콘솔에 출력
                 Console.WriteLine($"로그 시스템 초기화 실패: {ex.Message}");
             }
         }
@@ -118,6 +173,10 @@ public partial class Form1 : Form
                 var tcpStatusItem = new ToolStripMenuItem($"TCP 서버: {(isTcpClientEnabled ? "활성" : "비활성")}");
                 tcpStatusItem.Enabled = false;
                 contextMenu.Items.Add(tcpStatusItem);
+                
+                // 🔥 성능 통계 메뉴
+                statsMenuItem = new ToolStripMenuItem("성능 통계", null, OnShowStats);
+                contextMenu.Items.Add(statsMenuItem);
                 
                 // 구분선
                 contextMenu.Items.Add(new ToolStripSeparator());
@@ -403,110 +462,116 @@ public partial class Form1 : Form
             syncTimer.Tick += OnSyncTimerTick;
             syncTimer.Start();
         }
+        
+        // 🔥 통계 타이머 초기화
+        private void InitializeStatsTimer()
+        {
+            statsTimer = new System.Windows.Forms.Timer();
+            statsTimer.Interval = 60000; // 1분마다
+            statsTimer.Tick += (s, e) =>
+            {
+                if (syncChecker != null)
+                {
+                    var stats = syncChecker.GetPerformanceStats();
+                    Logger.Debug($"[통계] 메시지: {stats.messages}, 처리율: {stats.messagesPerSec:F1}/s, 효율: {stats.connectionEfficiency * 100:F1}%");
+                }
+            };
+            statsTimer.Start();
+        }
+        
+        // 🔥 성능 통계 표시
+        private void OnShowStats(object? sender, EventArgs e)
+        {
+            if (syncChecker == null) return;
+            
+            var stats = syncChecker.GetPerformanceStats();
+            var uptime = DateTime.Now - Process.GetCurrentProcess().StartTime;
+            
+            var message = $@"=== SyncGuard 성능 통계 ===
 
+실행 시간: {uptime:hh\:mm\:ss}
+
+전송 통계:
+• 총 메시지: {stats.messages:N0}개
+• 총 데이터: {stats.bytes:N0} bytes ({stats.bytes / 1024.0:F1} KB)
+• 전송률: {stats.messagesPerSec:F1} msg/s
+
+연결 효율성: {stats.connectionEfficiency * 100:F1}%
+
+현재 상태: {GetStatusText(lastStatus)}
+마지막 변경: {lastStatusChangeTime:HH:mm:ss}";
+            
+            MessageBox.Show(message, "성능 통계", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // 🔥 최적화된 타이머 이벤트
         private void OnSyncTimerTick(object? sender, EventArgs e)
         {
             if (syncChecker == null)
             {
-                // SyncChecker가 없으면 기본 상태 표시
                 UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
                 return;
             }
 
-            // WMI 호출을 백그라운드에서 실행하여 UI 스레드 블로킹 방지
-            _ = Task.Run(() =>
+            _ = Task.Run(async () =>
             {
                 try
                 {
                     var status = syncChecker.GetSyncStatus();
-                    Logger.Info($"감지된 상태: {status}, 이전 상태: {lastStatus}");
                     
-                    // UI 업데이트는 메인 스레드에서 실행 (Form이 유효한 경우에만)
-                    if (!this.IsDisposed && this.IsHandleCreated)
+                    // UI 업데이트는 상태 변경 시에만
+                    if (status != lastUiStatus)
                     {
-                        this.BeginInvoke(() =>
+                        lastUiStatus = status;
+                        
+                        if (!this.IsDisposed && this.IsHandleCreated)
                         {
-                            try
+                            this.BeginInvoke(() =>
                             {
-                                // 항상 트레이 아이콘 업데이트
-                                UpdateTrayIcon(status);
-                                
-                                // 상태 변경 시 또는 초기 상태일 때 알림 및 메뉴 업데이트
-                                if (status != lastStatus || lastStatus == SyncChecker.SyncStatus.Unknown)
+                                try
                                 {
-                                    string message = GetStatusMessage(status);
-                                    Logger.Info($"Sync 상태 변경: {lastStatus} -> {status}");
-                                    ShowToastNotification("Sync 상태 변경", message);
-                                    lastStatus = status;
+                                    UpdateTrayIcon(status);
                                     
-                                    // 상태 변경 시에만 트레이 메뉴 업데이트
-                                    UpdateTrayMenu();
+                                    if (lastStatus != SyncChecker.SyncStatus.Unknown)
+                                    {
+                                        lastStatusChangeTime = DateTime.Now;
+                                        ShowToastNotification("Sync 상태 변경", GetStatusMessage(status));
+                                    }
+                                    
+                                    lastStatus = status;
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.Error($"UI 업데이트 중 오류: {ex.Message}");
-                            }
-                        });
+                                catch (Exception ex)
+                                {
+                                    Logger.Error($"UI 업데이트 중 오류: {ex.Message}");
+                                }
+                            });
+                        }
                     }
                     
-                    // 주기적으로 TCP 전송 (상태 변경 여부와 관계없이)
+                    // TCP 전송 (상태 변경과 무관하게)
                     if (isTcpClientEnabled && syncChecker != null)
                     {
-                        _ = Task.Run(async () => 
-                        {
-                            try
-                            {
-                                await syncChecker.SendStatusToServer();
-                                Logger.Info("주기적 TCP 전송 완료");
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.Error($"주기적 TCP 전송 실패: {ex.Message}");
-                            }
-                        });
+                        await syncChecker.SendStatusToServer();
                     }
                 }
                 catch (Exception ex)
                 {
                     Logger.Error($"Sync 체크 중 오류: {ex.Message}");
-                    if (!this.IsDisposed && this.IsHandleCreated)
-                    {
-                        this.BeginInvoke(() => UpdateTrayIcon(SyncChecker.SyncStatus.Unknown));
-                    }
                 }
             });
         }
 
+        // 🔥 최적화된 트레이 아이콘 업데이트
         private void UpdateTrayIcon(SyncChecker.SyncStatus status)
         {
             if (notifyIcon == null) return;
             
-            // 디버깅: 상태값 로그 추가
-            Logger.Info($"UpdateTrayIcon 호출됨 - 상태: {status}");
-            
-            // 상태에 따른 아이콘 색상 변경
-            Color iconColor = status switch
+            // 캐시된 아이콘 사용
+            if (iconCache.TryGetValue(status, out var icon))
             {
-                SyncChecker.SyncStatus.Master => Color.Green,      // 초록색: 마스터 (State 2)
-                SyncChecker.SyncStatus.Slave => Color.Yellow,      // 노랑색: 슬레이브 (State 1)
-                SyncChecker.SyncStatus.Error => Color.Red,         // 빨간색: 오류
-                SyncChecker.SyncStatus.Unknown => Color.Red,       // 빨간색: 알 수 없음
-                _ => Color.Red
-            };
-
-            // 디버깅: 선택된 색상 로그 추가
-            Logger.Info($"선택된 색상: {iconColor.Name}");
-
-            // 간단한 아이콘 생성 (실제로는 더 정교한 아이콘이 필요)
-            using (var bitmap = new Bitmap(16, 16))
-            using (var graphics = Graphics.FromImage(bitmap))
-            {
-                graphics.Clear(iconColor);
-                notifyIcon.Icon = Icon.FromHandle(bitmap.GetHicon());
+                notifyIcon.Icon = icon;
             }
-
-            // 툴크 업데이트
+            
             notifyIcon.Text = $"SyncGuard - {GetStatusMessage(status)}";
         }
 
@@ -573,9 +638,25 @@ public partial class Form1 : Form
 
         private void OnExit(object? sender, EventArgs e)
         {
-            Logger.Info("SyncGuard 종료됨");
+            Logger.Info("SyncGuard 종료 중...");
+            
+            // 🔥 통계 출력
+            if (syncChecker != null)
+            {
+                var stats = syncChecker.GetPerformanceStats();
+                Logger.Info($"[최종 통계] 메시지: {stats.messages}, 데이터: {stats.bytes} bytes, 효율: {stats.connectionEfficiency * 100:F1}%");
+            }
+            
             syncChecker?.Dispose();
             notifyIcon?.Dispose();
+            
+            // 🔥 아이콘 캐시 정리
+            foreach (var icon in iconCache.Values)
+            {
+                icon?.Dispose();
+            }
+            
+            Logger.Info("SyncGuard 종료됨");
             Application.Exit();
         }
 
@@ -583,18 +664,25 @@ public partial class Form1 : Form
         {
             try
             {
-                // TCP 서버 중지
                 StopTcpClient();
                 
-                // 타이머 중지
                 syncTimer?.Stop();
                 syncTimer?.Dispose();
                 
-                // SyncChecker 정리
+                statsTimer?.Stop();
+                statsTimer?.Dispose();
+                
                 if (syncChecker != null)
                 {
                     syncChecker.SyncStatusChanged -= OnSyncStatusChanged;
                     syncChecker.Dispose();
+                }
+                
+                notifyIcon?.Dispose();
+                
+                foreach (var icon in iconCache.Values)
+                {
+                    icon?.Dispose();
                 }
                 
                 // 트레이 아이콘 정리

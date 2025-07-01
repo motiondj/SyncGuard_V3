@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace SyncGuard.Core
 {
@@ -47,6 +49,29 @@ namespace SyncGuard.Core
         private bool isClientEnabled = false;
         private string targetServerIp = "192.168.1.100";
         private int targetServerPort = 8080;
+        
+        // 🔥 최적화를 위한 새로운 멤버 변수들
+        private TcpClient? persistentClient;
+        private NetworkStream? persistentStream;
+        private readonly SemaphoreSlim connectionSemaphore = new(1, 1);
+        private DateTime lastConnectionTime = DateTime.MinValue;
+        private DateTime lastSuccessfulSend = DateTime.MinValue;
+        private int reconnectAttempts = 0;
+        private readonly CancellationTokenSource cancellationTokenSource = new();
+        
+        // 🔥 성능 모니터링용
+        private long totalMessagesSent = 0;
+        private long totalBytesSent = 0;
+        private long connectionCount = 0;
+        private long reconnectCount = 0;
+        
+        // 🔥 캐싱용
+        private string? cachedLocalIp;
+        private readonly Dictionary<(string ip, SyncStatus status), string> statusMessageCache = new();
+        
+        // 🔥 로그 집계용
+        private readonly Dictionary<string, int> logAggregator = new();
+        private DateTime lastLogFlush = DateTime.Now;
         
         public SyncChecker()
         {
@@ -379,7 +404,283 @@ namespace SyncGuard.Core
             }
         }
         
-        // TCP 클라이언트 시작
+        // 🔥 연결 상태 확인 (최적화)
+        private bool IsConnected()
+        {
+            try
+            {
+                if (persistentClient == null || !persistentClient.Connected)
+                    return false;
+                
+                // 실제 연결 상태 테스트 (non-blocking)
+                if (persistentClient.Client.Poll(0, SelectMode.SelectRead))
+                {
+                    byte[] buff = new byte[1];
+                    if (persistentClient.Client.Receive(buff, SocketFlags.Peek) == 0)
+                    {
+                        return false; // 연결 끊김
+                    }
+                }
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        
+        // 🔥 연결 확보 (최적화된 버전)
+        private async Task<bool> EnsureConnectionAsync()
+        {
+            // 이미 연결되어 있으면 바로 반환
+            if (IsConnected())
+                return true;
+            
+            await connectionSemaphore.WaitAsync();
+            try
+            {
+                // Double-check after acquiring semaphore
+                if (IsConnected())
+                    return true;
+                
+                // 재연결 간격 제한 (지수 백오프)
+                var timeSinceLastAttempt = DateTime.Now - lastConnectionTime;
+                var waitTime = TimeSpan.FromSeconds(Math.Min(Math.Pow(2, reconnectAttempts), 30));
+                
+                if (timeSinceLastAttempt < waitTime)
+                {
+                    LogAggregated("connection_skip", $"재연결 대기 중 (다음 시도까지 {(waitTime - timeSinceLastAttempt).TotalSeconds:F0}초)", LogLevel.DEBUG);
+                    return false;
+                }
+                
+                // 기존 연결 정리
+                if (persistentClient != null)
+                {
+                    try
+                    {
+                        persistentStream?.Close();
+                        persistentClient.Close();
+                    }
+                    catch { }
+                    finally
+                    {
+                        persistentStream = null;
+                        persistentClient = null;
+                    }
+                }
+                
+                // 새 연결 시도
+                Logger.Info($"TCP 서버 연결 시도: {targetServerIp}:{targetServerPort}");
+                
+                persistentClient = new TcpClient
+                {
+                    ReceiveTimeout = 5000,
+                    SendTimeout = 5000,
+                    NoDelay = true, // Nagle 알고리즘 비활성화 (지연 감소)
+                };
+                
+                // 연결 (타임아웃 포함)
+                var connectTask = persistentClient.ConnectAsync(targetServerIp, targetServerPort);
+                if (await Task.WhenAny(connectTask, Task.Delay(5000)) != connectTask)
+                {
+                    throw new TimeoutException("연결 시간 초과");
+                }
+                
+                await connectTask; // 예외 확인
+                
+                persistentStream = persistentClient.GetStream();
+                
+                // 성공
+                lastConnectionTime = DateTime.Now;
+                connectionCount++;
+                
+                if (reconnectAttempts > 0)
+                {
+                    reconnectCount++;
+                    Logger.Info($"TCP 서버 재연결 성공 (시도 {reconnectAttempts}회 후)");
+                }
+                else
+                {
+                    Logger.Info($"TCP 서버 연결 성공 (지속 연결 모드)");
+                }
+                
+                reconnectAttempts = 0;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                reconnectAttempts++;
+                lastConnectionTime = DateTime.Now;
+                
+                var errorMsg = ex switch
+                {
+                    SocketException se => $"소켓 오류: {se.SocketErrorCode}",
+                    TimeoutException => "연결 시간 초과",
+                    _ => ex.Message
+                };
+                
+                Logger.Error($"TCP 연결 실패 (시도 {reconnectAttempts}회): {errorMsg}");
+                
+                persistentStream = null;
+                persistentClient = null;
+                
+                return false;
+            }
+            finally
+            {
+                connectionSemaphore.Release();
+            }
+        }
+        
+        // 🔥 최적화된 전송 메서드
+        public async Task SendStatusToServer()
+        {
+            if (!isClientEnabled)
+                return;
+            
+            try
+            {
+                // 연결 확인/재연결
+                if (!await EnsureConnectionAsync())
+                {
+                    return; // 연결 실패 시 조용히 스킵
+                }
+                
+                // 메시지 준비 (캐싱된 메서드 사용)
+                var status = GetExternalStatusCached();
+                var message = status + "\r\n";
+                var data = Encoding.UTF8.GetBytes(message);
+                
+                // 전송
+                await persistentStream!.WriteAsync(data, 0, data.Length, cancellationTokenSource.Token);
+                await persistentStream.FlushAsync();
+                
+                // 통계 업데이트
+                Interlocked.Increment(ref totalMessagesSent);
+                Interlocked.Add(ref totalBytesSent, data.Length);
+                lastSuccessfulSend = DateTime.Now;
+                
+                // 로그 (집계)
+                LogAggregated("send_success", $"상태 전송: {status}", LogLevel.DEBUG);
+                
+                // 주기적으로 통계 출력 (1000번마다)
+                if (totalMessagesSent % 1000 == 0)
+                {
+                    PrintStatistics();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogAggregated("send_error", $"전송 실패: {ex.Message}", LogLevel.ERROR);
+                
+                // 연결 리셋 (다음 전송 시 재연결)
+                await connectionSemaphore.WaitAsync();
+                try
+                {
+                    persistentStream?.Close();
+                    persistentClient?.Close();
+                    persistentStream = null;
+                    persistentClient = null;
+                }
+                catch { }
+                finally
+                {
+                    connectionSemaphore.Release();
+                }
+            }
+        }
+        
+        // 🔥 캐싱된 외부 상태 가져오기
+        private string GetExternalStatusCached()
+        {
+            lock (lockObject)
+            {
+                // IP 주소 캐싱
+                cachedLocalIp ??= GetLocalIpAddress();
+                
+                var key = (cachedLocalIp, lastStatus);
+                
+                if (!statusMessageCache.TryGetValue(key, out var cached))
+                {
+                    string status = lastStatus switch
+                    {
+                        SyncStatus.Master => "state2",
+                        SyncStatus.Slave => "state1",
+                        SyncStatus.Error => "state0",
+                        SyncStatus.Unknown => "state0",
+                        _ => "state0"
+                    };
+                    
+                    cached = $"{cachedLocalIp}_{status}";
+                    statusMessageCache[key] = cached;
+                    
+                    // 캐시 크기 제한
+                    if (statusMessageCache.Count > 20)
+                    {
+                        statusMessageCache.Clear();
+                        statusMessageCache[key] = cached;
+                    }
+                }
+                
+                return cached;
+            }
+        }
+        
+        // 🔥 집계된 로깅
+        private void LogAggregated(string key, string message, LogLevel level)
+        {
+            lock (logAggregator)
+            {
+                if (!logAggregator.ContainsKey(key))
+                {
+                    logAggregator[key] = 0;
+                }
+                
+                logAggregator[key]++;
+                
+                // 1분마다 또는 처음 발생 시 로그 출력
+                var now = DateTime.Now;
+                if ((now - lastLogFlush).TotalMinutes >= 1 || logAggregator[key] == 1)
+                {
+                    FlushAggregatedLogs();
+                    lastLogFlush = now;
+                }
+            }
+        }
+        
+        // 🔥 집계된 로그 출력
+        private void FlushAggregatedLogs()
+        {
+            lock (logAggregator)
+            {
+                foreach (var kvp in logAggregator)
+                {
+                    if (kvp.Value > 1)
+                    {
+                        Logger.Debug($"[집계] {kvp.Key}: {kvp.Value}회 발생");
+                    }
+                }
+                
+                logAggregator.Clear();
+            }
+        }
+        
+        // 🔥 통계 출력
+        private void PrintStatistics()
+        {
+            var uptime = DateTime.Now - Process.GetCurrentProcess().StartTime;
+            var messagesPerSecond = totalMessagesSent / uptime.TotalSeconds;
+            var bytesPerSecond = totalBytesSent / uptime.TotalSeconds;
+            var connectionEfficiency = connectionCount > 0 ? (1.0 - (double)reconnectCount / connectionCount) * 100 : 100;
+            
+            Logger.Info($"[통계] 실행시간: {uptime:hh\\:mm\\:ss}, " +
+                       $"전송: {totalMessagesSent:N0}개 ({messagesPerSecond:F1}/초), " +
+                       $"처리량: {bytesPerSecond:F0}B/s, " +
+                       $"연결효율: {connectionEfficiency:F1}%");
+        }
+        
+        // TCP 클라이언트 시작 (수정됨)
         public void StartTcpClient(string ip, int port)
         {
             if (isClientEnabled)
@@ -393,8 +694,12 @@ namespace SyncGuard.Core
                 targetServerIp = ip;
                 targetServerPort = port;
                 isClientEnabled = true;
+                
+                // 캐시 초기화
+                cachedLocalIp = null;
+                statusMessageCache.Clear();
 
-                Logger.Info($"TCP 클라이언트 시작됨 - {ip}:{port}");
+                Logger.Info($"TCP 클라이언트 시작됨 - {ip}:{port} (최적화 모드)");
             }
             catch (Exception ex)
             {
@@ -402,7 +707,7 @@ namespace SyncGuard.Core
             }
         }
 
-        // TCP 클라이언트 중지
+        // TCP 클라이언트 중지 (수정됨)
         public void StopTcpClient()
         {
             if (!isClientEnabled)
@@ -411,6 +716,27 @@ namespace SyncGuard.Core
             try
             {
                 isClientEnabled = false;
+                cancellationTokenSource.Cancel();
+                
+                // 연결 정리
+                connectionSemaphore.Wait();
+                try
+                {
+                    persistentStream?.Close();
+                    persistentClient?.Close();
+                }
+                catch { }
+                finally
+                {
+                    persistentStream = null;
+                    persistentClient = null;
+                    connectionSemaphore.Release();
+                }
+                
+                // 최종 통계 출력
+                PrintStatistics();
+                FlushAggregatedLogs();
+                
                 Logger.Info("TCP 클라이언트 중지됨");
             }
             catch (Exception ex)
@@ -418,67 +744,67 @@ namespace SyncGuard.Core
                 Logger.Error($"TCP 클라이언트 중지 실패: {ex.Message}");
             }
         }
-
-        // 상태를 서버로 전송
-        public async Task SendStatusToServer()
+        
+        // 🔥 성능 통계 가져오기
+        public (long messages, long bytes, double messagesPerSec, double connectionEfficiency) GetPerformanceStats()
         {
-            if (!isClientEnabled)
-                return;
-
-            try
-            {
-                using var client = new TcpClient();
-                client.ReceiveTimeout = 5000;  // 5초 타임아웃
-                client.SendTimeout = 5000;     // 5초 타임아웃
-                
-                Logger.Info($"TCP 서버에 연결 시도: {targetServerIp}:{targetServerPort}");
-                await client.ConnectAsync(targetServerIp, targetServerPort);
-                Logger.Info("TCP 서버 연결 성공");
-                
-                using var stream = client.GetStream();
-                var status = GetExternalStatus();
-                var message = status + "\r\n";  // 개행 문자 추가
-                var data = Encoding.UTF8.GetBytes(message);
-                
-                Logger.Info($"메시지 전송 시작: '{status}' ({data.Length} bytes)");
-                await stream.WriteAsync(data, 0, data.Length);
-                await stream.FlushAsync();  // 스트림 플러시
-                
-                Logger.Info($"상태 전송 완료: {status} -> {targetServerIp}:{targetServerPort}");
-                
-                // 연결을 잠시 유지하여 서버가 메시지를 받을 시간 제공
-                await Task.Delay(100);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"상태 전송 실패: {ex.Message}");
-            }
+            var uptime = DateTime.Now - Process.GetCurrentProcess().StartTime;
+            var messagesPerSec = uptime.TotalSeconds > 0 ? totalMessagesSent / uptime.TotalSeconds : 0;
+            var efficiency = connectionCount > 0 ? (1.0 - (double)reconnectCount / connectionCount) : 1.0;
+            
+            return (totalMessagesSent, totalBytesSent, messagesPerSec, efficiency);
         }
         
         public void Dispose()
         {
             StopTcpClient();
+            cancellationTokenSource?.Dispose();
+            connectionSemaphore?.Dispose();
             syncTopology?.Dispose();
         }
     }
 
+    // 🔥 최적화된 Logger 클래스
     public class Logger
     {
         private static readonly object lockObject = new object();
         private static readonly string logDirectory = Path.Combine(GetApplicationDirectory(), "logs");
         private static readonly int maxFileSizeMB = 10;
-        private static LogLevel currentLogLevel = LogLevel.INFO;
+        private static LogLevel currentLogLevel = GetConfiguredLogLevel();
+        
+        // 🔥 로그 레벨 설정 읽기
+        private static LogLevel GetConfiguredLogLevel()
+        {
+            try
+            {
+                // 환경 변수에서 읽기
+                var envLogLevel = Environment.GetEnvironmentVariable("SYNCGUARD_LOG_LEVEL");
+                if (!string.IsNullOrEmpty(envLogLevel) && Enum.TryParse<LogLevel>(envLogLevel, out var level))
+                {
+                    return level;
+                }
+                
+                // 디버그 빌드에서는 DEBUG, 릴리즈에서는 INFO
+                #if DEBUG
+                    return LogLevel.DEBUG;
+                #else
+                    return LogLevel.INFO;
+                #endif
+            }
+            catch
+            {
+                return LogLevel.INFO;
+            }
+        }
         
         static Logger()
         {
-            // 로그 디렉토리 생성
             if (!Directory.Exists(logDirectory))
             {
                 Directory.CreateDirectory(logDirectory);
             }
         }
         
-        // 애플리케이션 설치 디렉토리 가져오기
         private static string GetApplicationDirectory()
         {
             try
@@ -507,10 +833,12 @@ namespace SyncGuard.Core
                     string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     string logEntry = $"[{timestamp}] [{level}] {message}";
                     
-                    // 콘솔 출력
+                    // 콘솔 출력 (디버그 모드에서만)
+                    #if DEBUG
                     Console.WriteLine(logEntry);
+                    #endif
                     
-                    // 파일에 로그 저장 (logs 디렉토리)
+                    // 파일에 로그 저장
                     string logFile = Path.Combine(logDirectory, "syncguard_log.txt");
                     
                     // 파일 크기 확인 및 로테이션
@@ -521,6 +849,9 @@ namespace SyncGuard.Core
                         {
                             string backupFile = Path.Combine(logDirectory, $"syncguard_log_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
                             File.Move(logFile, backupFile);
+                            
+                            // 오래된 백업 파일 삭제 (7일 이상)
+                            CleanOldLogs();
                         }
                     }
                     
@@ -528,9 +859,31 @@ namespace SyncGuard.Core
                 }
                 catch (Exception ex)
                 {
+                    #if DEBUG
                     Console.WriteLine($"[ERROR] 로그 쓰기 실패: {ex.Message}");
+                    #endif
                 }
             }
+        }
+        
+        // 🔥 오래된 로그 파일 정리
+        private static void CleanOldLogs()
+        {
+            try
+            {
+                var files = Directory.GetFiles(logDirectory, "syncguard_log_*.txt");
+                var cutoffDate = DateTime.Now.AddDays(-7);
+                
+                foreach (var file in files)
+                {
+                    var fileInfo = new FileInfo(file);
+                    if (fileInfo.CreationTime < cutoffDate)
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
+            catch { }
         }
         
         public static void Debug(string message) => Log(LogLevel.DEBUG, message);
