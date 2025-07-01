@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 기본 설정 -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- 애플리케이션 정보 -->
+    <AssemblyName>SyncGuardMonitor</AssemblyName>
+    <RootNamespace>SyncGuardMonitor</RootNamespace>
+    <!-- <ApplicationIcon>Resources\Icons\app.ico</ApplicationIcon> -->
+    
+    <!-- 버전 정보 -->
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <ProductVersion>1.0.0</ProductVersion>
+    
+    <!-- 회사 정보 -->
+    <Company>SyncGuard Monitor Team</Company>
+    <Product>SyncGuard Monitor</Product>
+    <Copyright>Copyright © 2025 SyncGuard Monitor Team</Copyright>
+    <Description>TCP 기반 SyncGuard 상태 모니터링 독립 소프트웨어</Description>
+    
+    <!-- 빌드 옵션 -->
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>embedded</DebugType>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    
+    <!-- 코드 분석 -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>CA1416;NU1903;CS8600</NoWarn>
+  </PropertyGroup>
+
+  <!-- NuGet 패키지 -->
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- 리소스 파일 -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\**\*.*" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- 컴파일 시 경고 무시 -->
+  <PropertyGroup>
+    <NoWarn>CA1416</NoWarn> <!-- Windows 전용 API 경고 -->
+  </PropertyGroup>
+
+</Project>
