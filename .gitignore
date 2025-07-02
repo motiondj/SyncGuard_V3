@@ -381,9 +381,6 @@ build_monitor_package.ps1
 build_installer.ps1
 build_package.bat
 
-# Sample Code (용량이 크고 실제 프로젝트와 무관하므로 제외)
-SampleCode/
-
 # Build output folders
 build/
 Output/SyncGuard_V3_Portable/
