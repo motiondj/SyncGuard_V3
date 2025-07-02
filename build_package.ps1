@@ -27,18 +27,35 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "2. Copying executable files..." -ForegroundColor Yellow
-$trayBinDir = "SyncGuard.Tray\bin\Release\net9.0-windows"
-$coreBinDir = "SyncGuard.Core\bin\Release\net9.0-windows"
 
+# SyncGuard.Tray 파일 복사 (win-x64 포함)
+$trayBinDir = "SyncGuard.Tray\bin\Release\net6.0-windows\win-x64"
 if (Test-Path $trayBinDir) {
     Copy-Item "$trayBinDir\SyncGuard.Tray.exe" $buildDir -Force
     Copy-Item "$trayBinDir\*.dll" $buildDir -Force
-    Write-Host "   - SyncGuard.Tray.exe copied" -ForegroundColor Gray
+    Write-Host "   - SyncGuard.Tray.exe copied from $trayBinDir" -ForegroundColor Gray
+}
+else {
+    # 대안 경로 시도
+    $trayBinDirAlt = "SyncGuard.Tray\bin\Release\net6.0-windows"
+    if (Test-Path $trayBinDirAlt) {
+        Copy-Item "$trayBinDirAlt\SyncGuard.Tray.exe" $buildDir -Force
+        Copy-Item "$trayBinDirAlt\*.dll" $buildDir -Force
+        Write-Host "   - SyncGuard.Tray.exe copied from $trayBinDirAlt" -ForegroundColor Gray
+    }
+    else {
+        Write-Host "   - ERROR: SyncGuard.Tray.exe not found!" -ForegroundColor Red
+    }
 }
 
+# SyncGuard.Core 파일 복사
+$coreBinDir = "SyncGuard.Core\bin\Release\net6.0-windows"
 if (Test-Path $coreBinDir) {
     Copy-Item "$coreBinDir\SyncGuard.Core.dll" $buildDir -Force
-    Write-Host "   - SyncGuard.Core.dll copied" -ForegroundColor Gray
+    Write-Host "   - SyncGuard.Core.dll copied from $coreBinDir" -ForegroundColor Gray
+}
+else {
+    Write-Host "   - ERROR: SyncGuard.Core.dll not found!" -ForegroundColor Red
 }
 
 Write-Host "3. Copying configuration files..." -ForegroundColor Yellow

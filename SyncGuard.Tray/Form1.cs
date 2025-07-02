@@ -820,16 +820,23 @@ namespace SyncGuard.Tray
         {
             try
             {
+                Logger.Info("Form1.LoadConfig 시작");
+                
                 var (serverIP, serverPort, transmissionInterval, enableExternalSend) = ConfigManager.LoadConfig();
+                
+                Logger.Info($"ConfigManager.LoadConfig 결과: IP={serverIP}, Port={serverPort}, Interval={transmissionInterval}ms, ExternalSend={enableExternalSend}");
+                
                 targetIpAddress = serverIP;
                 tcpServerPort = serverPort;
                 tcpTransmissionInterval = transmissionInterval;
                 isTcpClientEnabled = enableExternalSend;
-                Logger.Info($"설정 로드 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
+                
+                Logger.Info($"Form1.LoadConfig 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
             }
             catch (Exception ex)
             {
-                Logger.Error($"설정 로드 실패: {ex.Message}");
+                Logger.Error($"Form1.LoadConfig 실패: {ex.Message}");
+                Logger.Error($"Form1.LoadConfig 스택 트레이스: {ex.StackTrace}");
             }
         }
         
@@ -838,12 +845,16 @@ namespace SyncGuard.Tray
         {
             try
             {
+                Logger.Info($"Form1.SaveConfig 시작 - IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
+                
                 ConfigManager.SaveConfig(targetIpAddress, tcpServerPort, tcpTransmissionInterval, isTcpClientEnabled);
-                Logger.Info($"설정 저장 완료: IP={targetIpAddress}, Port={tcpServerPort}, Interval={tcpTransmissionInterval}ms, ExternalSend={isTcpClientEnabled}");
+                
+                Logger.Info($"Form1.SaveConfig 완료 - ConfigManager.SaveConfig 호출됨");
             }
             catch (Exception ex)
             {
-                Logger.Error($"설정 저장 실패: {ex.Message}");
+                Logger.Error($"Form1.SaveConfig 실패: {ex.Message}");
+                Logger.Error($"Form1.SaveConfig 스택 트레이스: {ex.StackTrace}");
             }
         }
     }

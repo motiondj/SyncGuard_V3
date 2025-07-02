@@ -903,10 +903,39 @@ namespace SyncGuard.Core
         {
             try
             {
-                return AppContext.BaseDirectory;
+                // 먼저 실행 파일이 있는 디렉토리 확인
+                string exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? ".";
+                Logger.Info($"Executing Assembly Location: {exeDir}");
+                
+                // AppContext.BaseDirectory 확인
+                string baseDir = AppContext.BaseDirectory;
+                Logger.Info($"AppContext.BaseDirectory: {baseDir}");
+                
+                // 현재 작업 디렉토리도 확인
+                string currentDir = Environment.CurrentDirectory;
+                Logger.Info($"Current Directory: {currentDir}");
+                
+                // 실행 파일이 있는 디렉토리를 우선 사용
+                if (!string.IsNullOrEmpty(exeDir) && exeDir != ".")
+                {
+                    Logger.Info($"실행 파일 디렉토리 사용: {exeDir}");
+                    return exeDir;
+                }
+                
+                // 대안으로 AppContext.BaseDirectory 사용
+                if (!string.IsNullOrEmpty(baseDir) && baseDir != ".")
+                {
+                    Logger.Info($"AppContext.BaseDirectory 사용: {baseDir}");
+                    return baseDir;
+                }
+                
+                // 마지막 대안으로 현재 디렉토리 사용
+                Logger.Info($"현재 디렉토리 사용: {currentDir}");
+                return currentDir;
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.Error($"GetApplicationDirectory 실패: {ex.Message}");
                 return ".";
             }
         }
@@ -926,6 +955,16 @@ namespace SyncGuard.Core
             {
                 try
                 {
+                    Logger.Info($"설정 저장 시작 - configDirectory: {configDirectory}");
+                    Logger.Info($"설정 저장 시작 - configFile: {configFile}");
+                    
+                    // 설정 디렉토리가 없으면 생성
+                    if (!Directory.Exists(configDirectory))
+                    {
+                        Directory.CreateDirectory(configDirectory);
+                        Logger.Info($"설정 디렉토리 생성: {configDirectory}");
+                    }
+                    
                     var config = new
                     {
                         ServerIP = serverIP,
@@ -936,12 +975,26 @@ namespace SyncGuard.Core
                     };
                     
                     string json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
+                    Logger.Info($"JSON 설정 내용: {json}");
+                    
                     File.WriteAllText(configFile, json, System.Text.Encoding.UTF8);
-                    Logger.Info($"설정 저장 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms, ExternalSend={enableExternalSend}");
+                    Logger.Info($"설정 저장 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms, ExternalSend={enableExternalSend} -> {configFile}");
+                    
+                    // 파일이 실제로 생성되었는지 확인
+                    if (File.Exists(configFile))
+                    {
+                        var fileInfo = new FileInfo(configFile);
+                        Logger.Info($"설정 파일 생성 확인: {configFile}, 크기: {fileInfo.Length} bytes, 수정시간: {fileInfo.LastWriteTime}");
+                    }
+                    else
+                    {
+                        Logger.Error($"설정 파일이 생성되지 않았습니다: {configFile}");
+                    }
                 }
                 catch (Exception ex)
                 {
                     Logger.Error($"설정 저장 실패: {ex.Message}");
+                    Logger.Error($"스택 트레이스: {ex.StackTrace}");
                 }
             }
         }
@@ -952,9 +1005,20 @@ namespace SyncGuard.Core
             {
                 try
                 {
+                    Logger.Info($"설정 로드 시작 - 설정 파일 경로: {configFile}");
+                    
+                    // 🔥 레거시 설정 파일 마이그레이션 체크
+                    if (TryMigrateLegacyConfig())
+                    {
+                        Logger.Info("레거시 설정 파일을 JSON 형식으로 마이그레이션했습니다.");
+                    }
+                    
                     if (File.Exists(configFile))
                     {
+                        Logger.Info($"설정 파일 발견: {configFile}");
                         string json = File.ReadAllText(configFile, System.Text.Encoding.UTF8);
+                        Logger.Info($"설정 파일 내용: {json}");
+                        
                         var config = JsonSerializer.Deserialize<dynamic>(json);
                         
                         if (config == null)
@@ -973,11 +1037,16 @@ namespace SyncGuard.Core
                             if (config.TryGetProperty("TransmissionInterval", out System.Text.Json.JsonElement intervalProperty))
                             {
                                 transmissionInterval = intervalProperty.GetInt32();
+                                Logger.Info($"TransmissionInterval 로드: {transmissionInterval}ms");
+                            }
+                            else
+                            {
+                                Logger.Warning("TransmissionInterval 필드가 없어 기본값 1000ms를 사용합니다.");
                             }
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            // TransmissionInterval이 없거나 읽을 수 없는 경우 기본값 사용
+                            Logger.Warning($"TransmissionInterval 읽기 실패: {ex.Message}, 기본값 1000ms 사용");
                             transmissionInterval = 1000;
                         }
                         
@@ -988,16 +1057,25 @@ namespace SyncGuard.Core
                             if (config.TryGetProperty("EnableExternalSend", out System.Text.Json.JsonElement enableProperty))
                             {
                                 enableExternalSend = enableProperty.GetBoolean();
+                                Logger.Info($"EnableExternalSend 로드: {enableExternalSend}");
+                            }
+                            else
+                            {
+                                Logger.Warning("EnableExternalSend 필드가 없어 기본값 false를 사용합니다.");
                             }
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            // EnableExternalSend가 없거나 읽을 수 없는 경우 기본값 사용
+                            Logger.Warning($"EnableExternalSend 읽기 실패: {ex.Message}, 기본값 false 사용");
                             enableExternalSend = false;
                         }
                         
                         Logger.Info($"설정 로드 완료: {serverIP}:{serverPort}, Interval={transmissionInterval}ms, ExternalSend={enableExternalSend}");
                         return (serverIP, serverPort, transmissionInterval, enableExternalSend);
+                    }
+                    else
+                    {
+                        Logger.Warning($"설정 파일이 존재하지 않습니다: {configFile}");
                     }
                 }
                 catch (Exception ex)
@@ -1009,6 +1087,66 @@ namespace SyncGuard.Core
                 Logger.Info("기본 설정 사용: 127.0.0.1:8080, Interval=1000ms, ExternalSend=false");
                 return ("127.0.0.1", 8080, 1000, false);
             }
+        }
+        
+        // 🔥 레거시 설정 파일을 JSON 형식으로 마이그레이션
+        private static bool TryMigrateLegacyConfig()
+        {
+            try
+            {
+                // 루트 디렉토리의 레거시 설정 파일 확인
+                string legacyConfigFile = Path.Combine(GetApplicationDirectory(), "syncguard_config.txt");
+                
+                if (File.Exists(legacyConfigFile))
+                {
+                    Logger.Info("레거시 설정 파일을 발견했습니다. JSON 형식으로 마이그레이션을 시작합니다.");
+                    
+                    // 레거시 파일 읽기
+                    string[] lines = File.ReadAllLines(legacyConfigFile, System.Text.Encoding.UTF8);
+                    
+                    string serverIP = "127.0.0.1";
+                    int serverPort = 8080;
+                    int transmissionInterval = 1000;
+                    bool enableExternalSend = false;
+                    
+                    // 레거시 형식 파싱 (IP:Port 형식)
+                    foreach (string line in lines)
+                    {
+                        string trimmedLine = line.Trim();
+                        if (!string.IsNullOrEmpty(trimmedLine) && trimmedLine.Contains(":"))
+                        {
+                            string[] parts = trimmedLine.Split(':');
+                            if (parts.Length >= 2)
+                            {
+                                if (IPAddress.TryParse(parts[0], out _))
+                                {
+                                    serverIP = parts[0];
+                                    if (int.TryParse(parts[1], out int port))
+                                    {
+                                        serverPort = port;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    // JSON 형식으로 저장
+                    SaveConfig(serverIP, serverPort, transmissionInterval, enableExternalSend);
+                    
+                    // 레거시 파일 백업 후 삭제
+                    string backupFile = Path.Combine(GetApplicationDirectory(), $"syncguard_config_backup_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
+                    File.Move(legacyConfigFile, backupFile);
+                    
+                    Logger.Info($"레거시 설정 마이그레이션 완료: {serverIP}:{serverPort} -> {backupFile}");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"레거시 설정 마이그레이션 실패: {ex.Message}");
+            }
+            
+            return false;
         }
     }
 }

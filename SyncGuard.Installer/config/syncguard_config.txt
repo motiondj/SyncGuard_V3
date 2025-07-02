@@ -1,5 +1,7 @@
 {
   "ServerIP": "127.0.0.1",
   "ServerPort": 8080,
+  "TransmissionInterval": 1000,
+  "EnableExternalSend": false,
   "LastUpdated": "2024-01-01 00:00:00"
 } 

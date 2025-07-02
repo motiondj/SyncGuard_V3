@@ -1,0 +1,9 @@
+﻿# SyncGuard Monitor Configuration
+[Monitor]
+Port=8888
+MaxConnections=100
+LogLevel=Information
+
+[UI]
+AutoRefresh=5000
+ShowNotifications=true
