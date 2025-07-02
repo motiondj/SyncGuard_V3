@@ -10,10 +10,14 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <PublishSingleFile>true</PublishSingleFile>
+    <!-- PublishSingleFile 제거 -->
+    <!-- <PublishSingleFile>true</PublishSingleFile> -->
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ApplicationIcon>..\SyncGuard.Installer\icon.ico</ApplicationIcon>
+    <!-- 한글 인코딩 설정 -->
+    <FileEncoding>utf-8</FileEncoding>
+    <NeutralLanguage>ko</NeutralLanguage>
   </PropertyGroup>
 
 </Project>

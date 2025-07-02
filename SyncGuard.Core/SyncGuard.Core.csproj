@@ -4,6 +4,9 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- 한글 인코딩 설정 -->
+    <FileEncoding>utf-8</FileEncoding>
+    <NeutralLanguage>ko</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

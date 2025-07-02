@@ -43,6 +43,9 @@ namespace SyncGuard.Tray
             // 설정 파일에서 값 불러오기
             LoadConfig();
             
+            // 첫 실행 확인
+            CheckFirstRun();
+            
             // 폼을 숨기기
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
@@ -855,6 +858,36 @@ namespace SyncGuard.Tray
             {
                 Logger.Error($"Form1.SaveConfig 실패: {ex.Message}");
                 Logger.Error($"Form1.SaveConfig 스택 트레이스: {ex.StackTrace}");
+            }
+        }
+        
+        private void CheckFirstRun()
+        {
+            string firstRunFile = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "SyncGuard",
+                "first_run_complete.txt"
+            );
+            
+            if (!File.Exists(firstRunFile))
+            {
+                // 첫 실행
+                ShowToastNotification("SyncGuard에 오신 것을 환영합니다!", 
+                    "설정 메뉴에서 TCP 서버를 구성해주세요.");
+                
+                // 첫 실행 완료 표시
+                try
+                {
+                    var dir = Path.GetDirectoryName(firstRunFile);
+                    if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                        Directory.CreateDirectory(dir);
+                    
+                    File.WriteAllText(firstRunFile, DateTime.Now.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"첫 실행 파일 생성 실패: {ex.Message}");
+                }
             }
         }
     }

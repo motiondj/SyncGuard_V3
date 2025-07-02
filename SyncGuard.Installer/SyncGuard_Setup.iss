@@ -1,6 +1,7 @@
 ; SyncGuard V3 Setup Script for Inno Setup
 ; 생성일: 2024년 1월
 ; 버전: 3.0.0
+; 인코딩: UTF-8 with BOM
 
 #define MyAppName "SyncGuard V3"
 #define MyAppVersion "3.0.0"
@@ -12,6 +13,53 @@
 function GetInstallDate(Param: string): string;
 begin
   Result := GetDateTimeString('yyyymmdd', '-', ':');
+end;
+
+procedure InitializeWizard();
+begin
+  // 설치 마법사 초기화
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  DefaultConfigPath: String;
+  UserConfigPath: String;
+  UserConfigDir: String;
+begin
+  if CurStep = ssPostInstall then
+  begin
+    // 사용자 설정 폴더 경로
+    UserConfigDir := ExpandConstant('{userappdata}\SyncGuard');
+    UserConfigPath := UserConfigDir + '\syncguard_config.json';
+    DefaultConfigPath := ExpandConstant('{app}\defaults\default_config.json');
+    
+    // 설정 폴더가 없으면 생성
+    if not DirExists(UserConfigDir) then
+      CreateDir(UserConfigDir);
+    
+    // 기존 설정 파일이 없는 경우에만 기본 설정 복사
+    if not FileExists(UserConfigPath) then
+    begin
+      FileCopy(DefaultConfigPath, UserConfigPath, False);
+    end;
+  end;
+end;
+
+function InitializeUninstall(): Boolean;
+var
+  ResultCode: Integer;
+begin
+  Result := True;
+  
+  // 사용자 데이터 삭제 여부 확인
+  if MsgBox('프로그램 설정과 로그 파일을 삭제하시겠습니까?' + #13#10 + 
+            '(아니오를 선택하면 설정이 보존됩니다)', 
+            mbConfirmation, MB_YESNO) = IDYES then
+  begin
+    // 사용자 데이터 삭제
+    DelTree(ExpandConstant('{userappdata}\SyncGuard'), True, True, True);
+    DelTree(ExpandConstant('{localappdata}\SyncGuard'), True, True, True);
+  end;
 end;
 
 [Setup]
@@ -35,6 +83,7 @@ WizardStyle=modern
 PrivilegesRequired=admin
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
+SetupIconFile=..\Docs\icon\icon.ico
 
 ; Uninstall 설정
 UninstallDisplayIcon={app}\{#MyAppExeName}
@@ -55,15 +104,18 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Name: "autostart"; Description: "{cm:AutoStartProgram,{#MyAppName}}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Self-contained 단일 실행 파일만 포함
-Source: "..\SyncGuard.Tray\bin\Release\net6.0-windows\win-x64\publish\SyncGuard.Tray.exe"; DestDir: "{app}"; Flags: ignoreversion
-; 설정 파일 (기본값)
-Source: "config\syncguard_config.txt"; DestDir: "{app}\config"; Flags: ignoreversion
+; Self-contained 실행 파일 (모든 의존성 포함)
+Source: "..\SyncGuard.Tray\bin\Release\net6.0-windows\win-x64\self-contained\SyncGuard.Tray.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\SyncGuard.Tray\bin\Release\net6.0-windows\win-x64\self-contained\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\SyncGuard.Tray\bin\Release\net6.0-windows\win-x64\self-contained\*.json"; DestDir: "{app}"; Flags: ignoreversion
 
-; 로그 폴더 생성
+; 기본 설정 파일 (사용자 폴더에 복사)
+Source: "config\default_config.json"; DestDir: "{app}\defaults"; Flags: ignoreversion
+
+; 사용자 데이터 폴더 생성
 [Dirs]
-Name: "{app}\logs"; Permissions: users-full
-Name: "{app}\config"; Permissions: users-full
+Name: "{userappdata}\SyncGuard"; Permissions: users-full
+Name: "{localappdata}\SyncGuard\logs"; Permissions: users-full
 
 [Icons]
 ; 시작 메뉴 바로가기
@@ -94,12 +146,5 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyApp
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{#MyAppName}"; ValueType: string; ValueName: "InstallDate"; ValueData: "{code:GetInstallDate}"; Flags: uninsdeletekey
 
 [UninstallDelete]
-; 설치 폴더의 모든 파일 삭제
-Type: files; Name: "{app}\*"
-Type: dirifempty; Name: "{app}"
-; 로그 파일 삭제
-Type: files; Name: "{app}\logs\*"
-Type: dirifempty; Name: "{app}\logs"
-; 설정 파일 삭제 (사용자 데이터 보존을 위해 주석 처리)
-; Type: files; Name: "{app}\config\*"
-; Type: dirifempty; Name: "{app}\config" 
+; 프로그램 폴더의 남은 파일들 삭제
+Type: filesandordirs; Name: "{app}" 

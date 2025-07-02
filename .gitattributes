@@ -1,2 +1,40 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# SyncGuard V3 - Git 인코딩 설정
+
+# 텍스트 파일들을 UTF-8로 처리
+*.cs text eol=crlf working-tree-encoding=UTF-8
+*.csproj text eol=crlf working-tree-encoding=UTF-8
+*.sln text eol=crlf working-tree-encoding=UTF-8
+*.iss text eol=crlf working-tree-encoding=UTF-8
+*.bat text eol=crlf working-tree-encoding=UTF-8
+*.ps1 text eol=crlf working-tree-encoding=UTF-8
+*.md text eol=crlf working-tree-encoding=UTF-8
+*.txt text eol=crlf working-tree-encoding=UTF-8
+*.json text eol=crlf working-tree-encoding=UTF-8
+*.xml text eol=crlf working-tree-encoding=UTF-8
+*.config text eol=crlf working-tree-encoding=UTF-8
+
+# 바이너리 파일들
+*.exe binary
+*.dll binary
+*.pdb binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.zip binary
+*.7z binary
+*.rar binary
+
+# 로그 파일들 (텍스트이지만 바이너리로 처리)
+*.log binary
+
+# 빌드 출력 폴더들
+bin/ -text
+obj/ -text
+build/ -text
+Output/SyncGuard_V3_Portable/ -text
