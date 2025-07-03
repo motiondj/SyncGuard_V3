@@ -14,7 +14,7 @@ namespace SyncGuard.Tray
 {
     [SupportedOSPlatform("windows")]
     public partial class Form1 : Form
-{
+    {
         private NotifyIcon? notifyIcon;
         private SyncChecker? syncChecker;
         private System.Windows.Forms.Timer? syncTimer;
@@ -36,9 +36,9 @@ namespace SyncGuard.Tray
         private System.Windows.Forms.Timer? statsTimer;
         private ToolStripMenuItem? statsMenuItem;
         
-    public Form1()
-    {
-        InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
             
             // 설정 파일에서 값 불러오기
             LoadConfig();
@@ -58,6 +58,7 @@ namespace SyncGuard.Tray
             InitializeIconCache();
             
             InitializeTrayIcon();
+            ShowUnsupportedNoticeIfNeeded();
             
             try
             {
@@ -110,7 +111,7 @@ namespace SyncGuard.Tray
             iconCache[SyncChecker.SyncStatus.Master] = CreateColorIcon(Color.Green);
             iconCache[SyncChecker.SyncStatus.Slave] = CreateColorIcon(Color.Yellow);
             iconCache[SyncChecker.SyncStatus.Error] = CreateColorIcon(Color.Red);
-            iconCache[SyncChecker.SyncStatus.Unknown] = CreateColorIcon(Color.Red);
+            iconCache[SyncChecker.SyncStatus.Unknown] = CreateColorIcon(Color.Gray); // 미지원/오류 환경은 회색
         }
         
         // 🔥 색상 아이콘 생성
@@ -155,19 +156,24 @@ namespace SyncGuard.Tray
         {
             try
             {
-                // 기존 NotifyIcon이 있다면 정리
                 if (notifyIcon != null)
                 {
                     notifyIcon.Visible = false;
                     notifyIcon.Dispose();
                 }
-
-                // 새로운 NotifyIcon 생성
                 notifyIcon = new NotifyIcon();
-                
-                // 기본 아이콘 설정
                 notifyIcon.Icon = SystemIcons.Application;
-                notifyIcon.Text = "SyncGuard - Quadro Sync 모니터링";
+                // 미지원 환경이면 안내 툴팁
+                string tip = "SyncGuard - ";
+                if (syncChecker != null && syncChecker.GetSyncStatus() == SyncChecker.SyncStatus.Unknown)
+                {
+                    tip += "지원되지 않는 환경(Unknown)";
+                }
+                else
+                {
+                    tip += "Quadro Sync 모니터링";
+                }
+                notifyIcon.Text = tip;
                 
                 // 컨텍스트 메뉴 생성
                 var contextMenu = new ContextMenuStrip();
@@ -888,6 +894,15 @@ namespace SyncGuard.Tray
                 {
                     Logger.Error($"첫 실행 파일 생성 실패: {ex.Message}");
                 }
+            }
+        }
+
+        private void ShowUnsupportedNoticeIfNeeded()
+        {
+            // 미지원 환경이면 안내 메시지 1회 표시
+            if (syncChecker != null && syncChecker.GetSyncStatus() == SyncChecker.SyncStatus.Unknown)
+            {
+                ShowToastNotification("SyncGuard 안내", "이 시스템은 GPU 동기화 기능을 지원하지 않습니다. NVIDIA Quadro GPU 및 Sync 카드가 필요합니다.");
             }
         }
     }

@@ -75,13 +75,17 @@ namespace SyncGuard.Core
         
         public SyncChecker()
         {
-            // WMI 방법이 사용 가능한지 확인
+            // WMI 방법이 사용 가능한지 확인 (예외 던지지 않음)
             if (!IsWmiMethodAvailable())
             {
-                throw new InvalidOperationException("WMI SyncTopology를 찾을 수 없습니다. NVIDIA 드라이버가 설치되어 있는지 확인하세요.");
+                Logger.Warning("WMI SyncTopology를 찾을 수 없습니다. 이 시스템은 GPU 동기화 기능을 지원하지 않을 수 있습니다.");
+                // 예외를 던지지 않고 Unknown 상태로 동작
+                // 트레이에서 안내 및 TCP 전송은 state0
             }
-            
-            InitializeSyncTopology();
+            else
+            {
+                InitializeSyncTopology();
+            }
         }
         
         private void InitializeSyncTopology()
@@ -109,15 +113,19 @@ namespace SyncGuard.Core
         {
             try
             {
+                // WMI가 사용 불가능하면 Unknown 반환 (미지원 환경)
+                if (!IsWmiMethodAvailable())
+                {
+                    return SyncStatus.Unknown;
+                }
+                
                 SyncStatus newStatus = GetSyncStatusFromWmi();
                 
                 lock (lockObject)
                 {
-                    // 초기 상태이거나 상태 변경 시에만 업데이트
                     if (lastStatus == SyncStatus.Unknown || newStatus != lastStatus)
                     {
                         lastStatus = newStatus;
-                        // 상태 변경 이벤트 발생
                         SyncStatusChanged?.Invoke(this, newStatus);
                     }
                     
