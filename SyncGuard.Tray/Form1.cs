@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace SyncGuard.Tray
 {
@@ -36,6 +37,9 @@ namespace SyncGuard.Tray
         private System.Windows.Forms.Timer? statsTimer;
         private ToolStripMenuItem? statsMenuItem;
         
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool DestroyIcon(IntPtr hIcon);
+        
         public Form1()
         {
             InitializeComponent();
@@ -58,6 +62,7 @@ namespace SyncGuard.Tray
             InitializeIconCache();
             
             InitializeTrayIcon();
+            UpdateTrayIcon(lastStatus); // 항상 커스텀 아이콘으로 초기화
             ShowUnsupportedNoticeIfNeeded();
             
             try
@@ -95,13 +100,12 @@ namespace SyncGuard.Tray
                 Logger.Error($"오류 메시지: {ex.Message}");
                 Logger.Error($"스택 트레이스: {ex.StackTrace}");
                 
-                // 사용자에게 알림
-                MessageBox.Show($"SyncGuard 초기화 실패:\n\n{ex.Message}", "오류", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-                // 기본 상태로 시작
+                // 팝업 없이 내부 상태만 Unknown(state0)으로 처리
                 syncChecker = null;
-                ShowToastNotification("SyncGuard 시작됨 (제한된 모드)", "NVAPI 초기화 실패로 기본 모드로 실행됩니다.");
+                lastStatus = SyncChecker.SyncStatus.Unknown; // state0 처리
+                ShowToastNotification("SyncGuard 제한 모드", "이 시스템은 Sync 기능이 없는 GPU입니다. (state0)");
+                // 트레이 아이콘을 Unknown(회색)으로 강제 설정
+                UpdateTrayIcon(SyncChecker.SyncStatus.Unknown);
             }
         }
 
@@ -135,7 +139,10 @@ namespace SyncGuard.Tray
                 }
             }
             
-            return Icon.FromHandle(bitmap.GetHicon());
+            IntPtr hIcon = bitmap.GetHicon();
+            Icon icon = (Icon)Icon.FromHandle(hIcon).Clone();
+            DestroyIcon(hIcon); // 핸들 해제
+            return icon;
         }
 
         private void InitializeLogging()
@@ -162,7 +169,7 @@ namespace SyncGuard.Tray
                     notifyIcon.Dispose();
                 }
                 notifyIcon = new NotifyIcon();
-                notifyIcon.Icon = SystemIcons.Application;
+                // notifyIcon.Icon = SystemIcons.Application; // 기본 아이콘 할당 제거
                 // 미지원 환경이면 안내 툴팁
                 string tip = "SyncGuard - ";
                 if (syncChecker != null && syncChecker.GetSyncStatus() == SyncChecker.SyncStatus.Unknown)
@@ -904,6 +911,12 @@ namespace SyncGuard.Tray
             {
                 ShowToastNotification("SyncGuard 안내", "이 시스템은 GPU 동기화 기능을 지원하지 않습니다. NVIDIA Quadro GPU 및 Sync 카드가 필요합니다.");
             }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            UpdateTrayIcon(lastStatus); // 폼이 완전히 로드된 후에도 아이콘을 한 번 더 설정
         }
     }
 }
