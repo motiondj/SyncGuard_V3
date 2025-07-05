@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- <ApplicationIcon>icon.ico</ApplicationIcon> -->
+    <AssemblyName>SyncGuardMonitor</AssemblyName>
+    <Product>SyncGuard Floating Monitor</Product>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>
